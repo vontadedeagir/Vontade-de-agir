@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Vontade de Agir</title>
+
+<!-- META PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','SEU_PIXEL_ID_AQUI');
+fbq('track','PageView');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--black:#070707;--dark:#0E0E0E;--card:#161616;--border:#272727;--text:#C2BEB6;--soft:#D8D4CC;--white:#F0EDE6;--acid:#C8F400;--acid2:#A5CB00;--red:#FF4444;--orange:#E07010;}
+html,body{-webkit-font-smoothing:antialiased;}
+body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pisca{0%,100%{opacity:1}50%{opacity:.2}}
+.au{opacity:0;animation:fadeUp .5s ease .1s forwards;}
+
+.btn-cta{display:block;width:100%;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;padding:20px;border-radius:3px;border:none;cursor:pointer;text-align:center;letter-spacing:.3px;animation:pulse 2.5s infinite;}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--acid);display:block;margin-bottom:14px;}
+
+/* FLOAT BAR */
+.float-bar{position:fixed;bottom:0;left:0;right:0;background:#08080A;border-top:1px solid rgba(200,244,0,.2);padding:10px 18px;z-index:999;display:flex;gap:10px;align-items:center;}
+.fb-timer{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);letter-spacing:2px;flex-shrink:0;}
+.fb-btn{flex:1;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;padding:13px;border-radius:3px;border:none;cursor:pointer;text-align:center;}
+
+/* VSL */
+.vsl-top{padding:28px 22px 20px;background:var(--dark);border-bottom:1px solid var(--border);}
+.vsl-top h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,8vw,40px);line-height:.93;letter-spacing:2px;margin-bottom:8px;}
+.vsl-top h2 em{font-style:normal;color:var(--acid);}
+.vsl-top p{font-size:15px;color:var(--text);line-height:1.65;}
+.vsl-top p strong{color:var(--white);}
+.vsl-player-wrap{position:relative;background:#000;width:100%;}
+.vsl-placeholder{width:100%;aspect-ratio:1/1;background:#0A0A0A;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.vsl-placeholder-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(60%) brightness(.3);}
+.vsl-play-btn{position:relative;z-index:2;width:72px;height:72px;border-radius:50%;background:var(--acid);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s;}
+.vsl-play-btn:active{transform:scale(.92);}
+.vsl-play-icon{width:0;height:0;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:22px solid var(--black);margin-left:4px;}
+.vsl-play-label{position:relative;z-index:2;margin-top:14px;font-size:13px;color:rgba(255,255,255,.7);letter-spacing:1px;}
+.vsl-placeholder.hide{display:none;}
+.vsl-progress{height:3px;background:var(--border);}
+.vsl-progress-fill{height:100%;background:var(--acid);width:0%;transition:width .5s linear;}
+.vsl-mid-cta{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 22px;display:none;}
+.vsl-mid-cta.show{display:block;}
+.vsl-mid-cta p{font-size:14px;color:var(--text);margin-bottom:10px;line-height:1.5;}
+.vsl-mid-cta p strong{color:var(--white);}
+.ticker-w{background:var(--acid);overflow:hidden;padding:10px 0;white-space:nowrap;}
+.ticker-i{display:inline-flex;animation:ticker 14s linear infinite;}
+.tit{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--black);padding:0 18px;}
+.tit::after{content:'·';margin-left:18px;opacity:.35;}
+
+/* CARTA */
+.sec{padding:40px 22px;border-top:1px solid var(--border);}
+.sec h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,8vw,42px);line-height:.92;letter-spacing:2px;margin-bottom:14px;}
+.sec h2 em{font-style:normal;color:var(--acid);}
+.sec p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:12px;}
+.sec p strong{color:var(--white);}
+.dor-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin:14px 0;}
+.dor-item{background:var(--dark);padding:16px 18px;display:flex;gap:12px;align-items:flex-start;}
+.dor-x{color:var(--red);font-size:15px;flex-shrink:0;font-weight:700;}
+.dor-item p{font-size:14px;color:var(--text);line-height:1.65;}
+.dor-item p strong{color:var(--white);}
+.transf-grid{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin:14px 0;}
+.transf-b{background:#120808;padding:16px 18px;border-left:3px solid var(--red);}
+.transf-a{background:#080E08;padding:16px 18px;border-left:3px solid var(--acid);}
+.transf-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;display:block;}
+.transf-b .transf-lbl{color:var(--red);}
+.transf-a .transf-lbl{color:var(--acid);}
+.transf-b p,.transf-a p{font-size:14px;line-height:1.65;}
+.transf-b p{color:#C09090;}
+.transf-a p{color:var(--text);}
+.transf-a p strong{color:var(--white);}
+.anchor-box{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:18px 16px;margin:14px 0;}
+.anchor-vs{display:flex;gap:14px;align-items:center;margin-top:12px;}
+.anchor-item{flex:1;text-align:center;}
+.anchor-price{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;}
+.anchor-price.s{color:#555;text-decoration:line-through;font-size:20px;}
+.anchor-price.r{color:var(--acid);}
+.anchor-lbl{font-size:11px;color:#666;margin-top:3px;}
+.anchor-div{font-size:16px;color:#444;}
+.ebook-box{background:linear-gradient(145deg,#1A1A1A,#0A0A0A);border:1px solid var(--border);border-radius:6px;padding:22px 18px;position:relative;overflow:hidden;margin:14px 0;}
+.ebook-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--acid);}
+.ebook-bg{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:110px;color:rgba(200,244,0,.04);top:-8px;right:-6px;line-height:1;}
+.ebook-t{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--acid);display:block;margin-bottom:8px;position:relative;z-index:1;}
+.ebook-title{font-family:'Bebas Neue',sans-serif;font-size:34px;line-height:.9;letter-spacing:2px;position:relative;z-index:1;margin-bottom:6px;}
+.ebook-sub{font-size:13px;color:#888;line-height:1.5;position:relative;z-index:1;}
+.caps{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin:14px 0;}
+.cap{background:var(--card);padding:15px 16px;display:flex;gap:12px;align-items:flex-start;}
+.capn{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--acid);flex-shrink:0;line-height:1.1;min-width:26px;}
+.cap h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:2px;}
+.cap p{font-size:14px;color:var(--text);line-height:1.6;}
+
+/* BÔNUS */
+.bonus-sec{padding:40px 22px;background:var(--dark);border-top:1px solid var(--border);}
+.bonus-sec h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,8vw,42px);line-height:.92;letter-spacing:2px;margin-bottom:6px;}
+.bonus-sec h2 em{font-style:normal;color:var(--acid);}
+.bonus-sub{font-size:14px;color:var(--text);margin-bottom:20px;line-height:1.6;}
+.bonus-sub strong{color:var(--white);}
+.bonus-list{display:flex;flex-direction:column;gap:12px;}
+.bonus-item{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--acid);border-radius:6px;padding:18px 16px;display:flex;gap:14px;align-items:flex-start;}
+.bonus-icon{font-size:28px;flex-shrink:0;line-height:1;}
+.bonus-info h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.bonus-info p{font-size:13px;color:var(--text);line-height:1.6;}
+.bonus-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:rgba(200,244,0,.1);color:var(--acid);padding:3px 8px;border-radius:2px;margin-top:6px;}
+
+/* DEPOIMENTOS */
+.deps-new{display:flex;flex-direction:column;gap:12px;margin:14px 0;}
+.dep-new{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.dep-comprou{background:rgba(200,244,0,.07);border-bottom:1px solid var(--border);padding:10px 14px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--acid);font-weight:700;}
+.dep-new-body{padding:16px 14px;}
+.dep-new-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.dep-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--black);flex-shrink:0;}
+.dep-name-wrap{display:flex;flex-direction:column;gap:1px;}
+.dep-new-name{font-size:14px;font-weight:700;color:var(--white);}
+.dep-new-verified{font-size:11px;color:var(--acid);}
+.dep-new-stars{color:var(--acid);font-size:12px;letter-spacing:1px;margin-bottom:8px;}
+.dep-new-txt{font-size:14px;color:var(--text);line-height:1.75;}
+.dep-new-txt strong{color:var(--white);}
+.urgencia-social{background:var(--dark);border:1px solid rgba(200,244,0,.15);border-radius:6px;padding:12px 16px;margin:12px 0;display:flex;align-items:center;gap:10px;}
+.us-dot{width:8px;height:8px;border-radius:50%;background:#FF4444;flex-shrink:0;animation:pisca 1.2s infinite;}
+.urgencia-social p{font-size:13px;color:var(--text);line-height:1.5;}
+.urgencia-social p strong{color:var(--white);}
+
+/* OFERTA */
+.counter-box{background:#0A0800;border:1px solid rgba(200,244,0,.15);border-radius:6px;padding:14px 16px;margin:14px 0;text-align:center;}
+.counter-lbl{font-size:12px;color:var(--acid);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;display:block;}
+.counter-time{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--white);letter-spacing:4px;line-height:1;}
+.counter-sub{font-size:13px;color:#777;margin-top:3px;}
+.oferta-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:26px 18px;position:relative;overflow:hidden;margin:14px 0;}
+.oferta-box::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--acid);}
+.of-de{font-size:13px;color:#555;text-decoration:line-through;margin-bottom:2px;}
+.of-por{font-family:'Bebas Neue',sans-serif;font-size:76px;line-height:1;color:var(--white);letter-spacing:2px;}
+.of-por sup{font-size:26px;vertical-align:super;}
+.of-parcela{font-size:13px;color:var(--text);margin-bottom:22px;}
+.of-items{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:22px;}
+.of-items li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:var(--soft);}
+.of-items li::before{content:'—';color:var(--acid);font-weight:700;flex-shrink:0;}
+.of-safe{font-size:13px;color:#888;text-align:center;margin-top:8px;}
+.of-guar{display:flex;gap:10px;align-items:flex-start;background:rgba(200,244,0,.04);border:1px solid rgba(200,244,0,.1);border-radius:4px;padding:12px 14px;margin-top:12px;}
+.of-guar-bar{width:3px;background:var(--acid);border-radius:2px;flex-shrink:0;align-self:stretch;}
+.of-guar p{font-size:13px;color:var(--text);line-height:1.6;}
+.of-guar p strong{color:var(--white);}
+.faqs{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin:14px 0;}
+.faqit{background:var(--card);padding:16px;}
+.faqq{font-size:15px;font-weight:700;color:var(--white);margin-bottom:6px;}
+.faqa{font-size:14px;color:var(--text);line-height:1.7;}
+.cfooter{background:var(--black);border-top:1px solid var(--border);padding:22px;text-align:center;}
+.cfooter p{font-size:13px;color:#777;line-height:1.7;}
+.flogo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;margin-bottom:4px;}
+.flogo em{font-style:normal;color:var(--acid);}
+</style>
+</head>
+<body>
+
+<!-- FLOAT BAR -->
+<div class="float-bar">
+  <span class="fb-timer" id="fb-timer">15:00</span>
+  <button class="fb-btn" onclick="irCheckout()">GARANTIR R$ 47 →</button>
+</div>
+
+<!-- VSL -->
+<div class="vsl-top au">
+  <span class="eyebrow">Sua solução personalizada</span>
+  <h2>ENCONTRAMOS<br><em>O QUE TE TRAVA.</em></h2>
+  <p>Assista ao vídeo. <strong>São 90 segundos que podem mudar como você enxerga isso pra sempre.</strong></p>
+</div>
+
+<div class="vsl-player-wrap">
+  <div class="vsl-placeholder" id="vsl-placeholder">
+    <img class="vsl-placeholder-img" src="https://images.unsplash.com/photo-1620862657788-c37e7b0b0c8e?w=800&q=80" alt="">
+    <button class="vsl-play-btn" onclick="playVSL()"><div class="vsl-play-icon"></div></button>
+    <span class="vsl-play-label">ASSISTIR AGORA · 90 SEGUNDOS</span>
+  </div>
+  <div id="vsl-iframe-wrap" style="display:none;position:relative;width:100%;aspect-ratio:1/1;background:#000;">
+    <iframe id="vsl-iframe" src="" data-src="https://player.vimeo.com/video/1204975057?autoplay=1&title=0&byline=0&portrait=0&color=C8F400&transparent=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+  </div>
+  <div class="vsl-progress"><div class="vsl-progress-fill" id="vsl-prog"></div></div>
+</div>
+
+<div class="vsl-mid-cta" id="vsl-mid-cta">
+  <p>Reconheceu o loop? <strong>Quebre ele agora por R$ 47.</strong></p>
+  <button onclick="irCheckout()" style="display:block;width:100%;background:var(--acid);color:var(--black);font-family:Manrope,sans-serif;font-size:15px;font-weight:800;padding:16px;border-radius:3px;border:none;cursor:pointer;">QUERO POR R$ 47 AGORA →</button>
+</div>
+
+<div class="ticker-w">
+  <div class="ticker-i">
+    <span class="tit">NÃO É PREGUIÇA</span><span class="tit">É UM LOOP</span>
+    <span class="tit">ANSIEDADE VIRA CULPA</span><span class="tit">CULPA VIRA BLOQUEIO</span>
+    <span class="tit">TEM SAÍDA</span><span class="tit">NÃO É PREGUIÇA</span>
+    <span class="tit">É UM LOOP</span><span class="tit">ANSIEDADE VIRA CULPA</span>
+    <span class="tit">CULPA VIRA BLOQUEIO</span><span class="tit">TEM SAÍDA</span>
+  </div>
+</div>
+
+<!-- DOR -->
+<div class="sec au" style="background:var(--dark);">
+  <h2>VOCÊ SE<br>RECONHECEU<br><em>AQUI?</em></h2>
+  <div class="dor-list">
+    <div class="dor-item"><span class="dor-x">✕</span><p>Você abre o celular "só um segundo" — passam duas horas.</p></div>
+    <div class="dor-item"><span class="dor-x">✕</span><p><strong>A culpa não para.</strong> Ela drena a energia que você precisaria pra agir.</p></div>
+    <div class="dor-item"><span class="dor-x">✕</span><p>Você já tentou técnicas. Funcionaram dois dias. O loop voltou.</p></div>
+    <div class="dor-item"><span class="dor-x">✕</span><p>Você já desistiu de algo que queria porque não conseguiu começar.</p></div>
+  </div>
+</div>
+
+<!-- TRANSFORMAÇÃO -->
+<div class="sec au">
+  <h2>COMO SERIA<br>SUA VIDA<br><em>SEM O LOOP</em></h2>
+  <div class="transf-grid">
+    <div class="transf-b"><span class="transf-lbl">Hoje</span><p>Acorda pesado. Celular vira fuga. Culpa chega. Dia passa. Amanhã vai ser igual.</p></div>
+    <div class="transf-a"><span class="transf-lbl">Depois do e-book</span><p>Você entende o que dispara o loop. Tem uma ferramenta pra usar no momento exato. <strong>Para de se punir e começa a se mover.</strong></p></div>
+  </div>
+</div>
+
+<!-- ANCORAGEM -->
+<div class="sec au" style="background:var(--dark);">
+  <h2>QUANTO ESTÁ<br>TE CUSTANDO<br><em>NÃO AGIR?</em></h2>
+  <p>Uma sessão de terapia custa R$ 180. E você precisaria de várias.</p>
+  <div class="anchor-box">
+    <p>Ou você entende o que te trava agora por <strong>menos que um jantar.</strong></p>
+    <div class="anchor-vs">
+      <div class="anchor-item"><div class="anchor-price s">R$180</div><div class="anchor-lbl">1 sessão de terapia</div></div>
+      <div class="anchor-div">VS</div>
+      <div class="anchor-item"><div class="anchor-price r">R$47</div><div class="anchor-lbl">Vontade de Agir</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUTO -->
+<div class="sec au">
+  <h2>O QUE VOCÊ<br>VAI <em>RECEBER</em></h2>
+  <div class="ebook-box">
+    <div class="ebook-bg">V</div>
+    <span class="ebook-t">E-book PDF · Acesso imediato</span>
+    <p class="ebook-title">VONTADE<br>DE AGIR</p>
+    <p class="ebook-sub">Como quebrar o loop de ansiedade, culpa e desânimo</p>
+  </div>
+  <div class="caps">
+    <div class="cap"><span class="capn">01</span><div><h4>O Loop que Ninguém Explica</h4><p>Por que você procrastina não tem nada a ver com preguiça.</p></div></div>
+    <div class="cap"><span class="capn">02</span><div><h4>A Culpa que Paralisa Mais que o Medo</h4><p>Por que se cobrar demais é parte do problema.</p></div></div>
+    <div class="cap"><span class="capn">03</span><div><h4>Desânimo Não é Fraqueza</h4><p>O que está por trás do vazio e como identificar.</p></div></div>
+    <div class="cap"><span class="capn">04</span><div><h4>Ferramentas que Funcionam de Verdade</h4><p>Técnicas pro momento exato em que a trava aparece.</p></div></div>
+    <div class="cap"><span class="capn">05</span><div><h4>Pequenos Começos, Grandes Mudanças</h4><p>Como criar movimento quando não tem energia pra nada.</p></div></div>
+    <div class="cap"><span class="capn">06</span><div><h4>Construindo Vontade Todo Dia</h4><p>Rotina simples que funciona mesmo nos dias ruins.</p></div></div>
+  </div>
+</div>
+
+<!-- BÔNUS -->
+<div class="bonus-sec au">
+  <h2>+ 5 BÔNUS<br><em>EXCLUSIVOS</em></h2>
+  <p class="bonus-sub">Incluídos sem custo extra. <strong>Só pra quem comprar hoje.</strong></p>
+  <div class="bonus-list">
+    <div class="bonus-item"><span class="bonus-icon">⚡</span><div class="bonus-info"><h4>Guia de Emergência — 5 Passos</h4><p>PDF de bolso pra usar no momento exato em que a trava aparecer. Sai do bloqueio em menos de 3 minutos.</p><span class="bonus-tag">Bônus 01 · Valor: R$ 27</span></div></div>
+    <div class="bonus-item"><span class="bonus-icon">📓</span><div class="bonus-info"><h4>Diário de 30 Dias — Quebrando o Loop</h4><p>Uma pergunta por dia durante 30 dias pra identificar seus gatilhos e padrões.</p><span class="bonus-tag">Bônus 02 · Valor: R$ 37</span></div></div>
+    <div class="bonus-item"><span class="bonus-icon">🧠</span><div class="bonus-info"><h4>Mapa Mental do Loop</h4><p>Visual completo do ciclo ansiedade → evitação → culpa com os pontos de interrupção.</p><span class="bonus-tag">Bônus 03 · Valor: R$ 17</span></div></div>
+    <div class="bonus-item"><span class="bonus-icon">🌙</span><div class="bonus-info"><h4>Rotina Noturna Anti-Loop</h4><p>O que fazer nos últimos 10 minutos antes de dormir pra acordar com menos ansiedade.</p><span class="bonus-tag">Bônus 04 · Valor: R$ 17</span></div></div>
+    <div class="bonus-item"><span class="bonus-icon">🎯</span><div class="bonus-info"><h4>Checklist Semanal de Progresso</h4><p>Acompanhe seus avanços semana a semana — sem cobrança, sem perfeição.</p><span class="bonus-tag">Bônus 05 · Valor: R$ 17</span></div></div>
+  </div>
+</div>
+
+<!-- DEPOIMENTOS -->
+<div class="sec au" style="background:var(--dark);">
+  <h2>QUEM COMPROU<br><em>AGIU 💪</em></h2>
+  <div class="urgencia-social"><div class="us-dot"></div><p><strong>47 pessoas</strong> compraram nas últimas 3 horas.</p></div>
+  <div class="deps-new">
+    <div class="dep-new"><div class="dep-comprou"><span>💪</span> Mariana Silva comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#C8F400;">M</div><div class="dep-name-wrap"><span class="dep-new-name">Mariana Silva</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"Li numa tarde e fiquei em silêncio depois. <strong>Fez sentido de um jeito que nenhum vídeo de produtividade fez.</strong>"</p></div></div>
+    <div class="dep-new"><div class="dep-comprou"><span>💪</span> Lucas Ferreira comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#A8D4FF;">L</div><div class="dep-name-wrap"><span class="dep-new-name">Lucas Ferreira</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"Tentei de tudo — Pomodoro, GTD, coach online. Esse foi o único que <strong>foi direto no problema de verdade.</strong>"</p></div></div>
+    <div class="urgencia-social"><div class="us-dot"></div><p>Preço de R$ 47 <strong>válido por tempo limitado.</strong></p></div>
+    <div class="dep-new"><div class="dep-comprou"><span>💪</span> Juliana Matos comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#FFB3C1;">J</div><div class="dep-name-wrap"><span class="dep-new-name">Juliana Matos</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"O capítulo sobre culpa foi o mais importante que já li. <strong>O problema não era eu — era o loop.</strong>"</p></div></div>
+    <div class="dep-new"><div class="dep-comprou"><span>💪</span> Rafael Costa Mendes comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#FFD580;">R</div><div class="dep-name-wrap"><span class="dep-new-name">Rafael Costa Mendes</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"Comprei sem expectativa. No capítulo 4 já estava aplicando. <strong>Simples, direto, sem enrolação.</strong>"</p></div></div>
+    <div class="dep-new"><div class="dep-comprou"><span>💪</span> Camila Rodrigues comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#B5EAD7;">C</div><div class="dep-name-wrap"><span class="dep-new-name">Camila Rodrigues</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"Tinha dias que não conseguia fazer nada e me odiava por isso. Agora <strong>entendo o que está acontecendo</strong> — isso muda tudo."</p></div></div>
+    <div class="dep-new"><div class="dep-comprou"><span>💪</span> Thiago Almeida comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#D4A5F5;">T</div><div class="dep-name-wrap"><span class="dep-new-name">Thiago Almeida</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"Sempre achei que era só falta de disciplina. Agora entendi que <strong>o problema era emocional — não organizacional.</strong>"</p></div></div>
+    <div class="urgencia-social"><div class="us-dot"></div><p><strong>Mais 12 pessoas</strong> estão vendo essa página agora.</p></div>
+  </div>
+</div>
+
+<!-- OFERTA FINAL -->
+<div class="sec au">
+  <h2>SUA DECISÃO<br><em>É AGORA</em></h2>
+  <div style="background:#0A0808;border:1px solid #3A1010;border-radius:6px;padding:16px;margin-bottom:16px;">
+    <p style="font-size:13px;color:#FF8080;font-weight:700;margin-bottom:8px;">⚠️ Lê isso antes de fechar.</p>
+    <p style="font-size:14px;color:var(--text);line-height:1.75;margin:0;">Amanhã você vai lembrar que viu isso. Vai pensar "podia ter comprado." E vai continuar no mesmo loop. <strong style="color:var(--white);">Você chegou até aqui porque algo em você quer mudar. Não deixa esse momento passar.</strong></p>
+  </div>
+  <p>Você pode fechar e continuar no loop. <strong>Amanhã vai ser igual a hoje.</strong></p>
+  <div class="counter-box">
+    <span class="counter-lbl">Preço de lançamento encerra em</span>
+    <div class="counter-time" id="counter">15:00</div>
+    <p class="counter-sub">Depois sobe pra R$ 97</p>
+  </div>
+  <div class="oferta-box">
+    <p class="of-de">De R$ 97</p>
+    <div class="of-por"><sup>R$</sup>47</div>
+    <p class="of-parcela">ou 2× de R$ 24,90 sem juros</p>
+    <ul class="of-items">
+      <li>E-book completo — 6 capítulos</li>
+      <li>Bônus 01 — Guia de Emergência (R$ 27)</li>
+      <li>Bônus 02 — Diário de 30 Dias (R$ 37)</li>
+      <li>Bônus 03 — Mapa Mental do Loop (R$ 17)</li>
+      <li>Bônus 04 — Rotina Noturna Anti-Loop (R$ 17)</li>
+      <li>Bônus 05 — Checklist Semanal (R$ 17)</li>
+      <li>Acesso imediato em PDF · Funciona no celular</li>
+    </ul>
+    <!-- CTA → dispara InitiateCheckout e vai pro link da Kirvano -->
+    <button class="btn-cta" onclick="irCheckout()">GARANTIR MEU ACESSO — R$ 47 →</button>
+    <p class="of-safe">Pix, Cartão ou Boleto · Acesso imediato</p>
+    <div class="of-guar"><div class="of-guar-bar"></div><p><strong>Garantia de 7 dias.</strong> Se não gostar devolvemos 100%. Sem perguntas.</p></div>
+  </div>
+  <div class="faqs">
+    <div class="faqit"><p class="faqq">Quando recebo o e-book e os bônus?</p><p class="faqa">Imediatamente. O link chega no e-mail em até 5 minutos com tudo incluído.</p></div>
+    <div class="faqit"><p class="faqq">Funciona no celular?</p><p class="faqa">Sim. PDF — você lê onde e quando quiser.</p></div>
+    <div class="faqit"><p class="faqq">E se eu não gostar?</p><p class="faqa">7 dias de garantia total. 100% de volta sem perguntas.</p></div>
+  </div>
+</div>
+
+<div class="cfooter">
+  <p class="flogo">Vontade de <em>Agir</em></p>
+  <p>2026 · Produto digital independente</p>
+  <p>contato@vontadedeagir.com</p>
+</div>
+
+<script>
+// Timer persistente com localStorage
+const KEY = 'vda_timer_end';
+let endTime = localStorage.getItem(KEY);
+if (!endTime || parseInt(endTime) <= Date.now()) {
+  endTime = Date.now() + 15 * 60 * 1000;
+  localStorage.setItem(KEY, endTime);
+} else {
+  endTime = parseInt(endTime);
+}
+
+setInterval(() => {
+  const rem = Math.max(0, endTime - Date.now());
+  const m = String(Math.floor(rem/60000)).padStart(2,'0');
+  const s = String(Math.floor((rem%60000)/1000)).padStart(2,'0');
+  const txt = m+':'+s;
+  const c = document.getElementById('counter');
+  const fb = document.getElementById('fb-timer');
+  if(c) c.textContent = txt;
+  if(fb) fb.textContent = txt;
+  if(rem <= 60000 && c) c.style.color = '#FF4444';
+  if(rem <= 0) localStorage.removeItem(KEY);
+}, 1000);
+
+// VSL — 90 segundos, CTA aos 45s
+function playVSL() {
+  document.getElementById('vsl-placeholder').classList.add('hide');
+  const wrap = document.getElementById('vsl-iframe-wrap');
+  const iframe = document.getElementById('vsl-iframe');
+  wrap.style.display = 'block';
+  iframe.src = iframe.dataset.src;
+  let secs = 0;
+  const midCta = document.getElementById('vsl-mid-cta');
+  const prog = document.getElementById('vsl-prog');
+  const t = setInterval(() => {
+    secs++;
+    if(prog) prog.style.width = Math.min((secs/90)*100,100)+'%';
+    if(secs===45 && midCta && !midCta.classList.contains('show')) midCta.classList.add('show');
+    if(secs>=90) clearInterval(t);
+  },1000);
+}
+
+// CTA → dispara InitiateCheckout e redireciona pro checkout da Kirvano
+function irCheckout() {
+  fbq('track','InitiateCheckout');
+  window.location.href = 'LINK_CHECKOUT_KIRVANO_AQUI';
+}
+</script>
+</body>
+</html>
