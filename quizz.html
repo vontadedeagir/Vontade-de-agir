@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Vontade de Agir — Quiz</title>
+
+<!-- META PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','SEU_PIXEL_ID_AQUI');
+fbq('track','PageView');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--black:#070707;--dark:#0E0E0E;--card:#161616;--border:#272727;--text:#C2BEB6;--soft:#D8D4CC;--white:#F0EDE6;--acid:#C8F400;--acid2:#A5CB00;}
+html,body{-webkit-font-smoothing:antialiased;}
+body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
+.screen{display:none;min-height:100vh;flex-direction:column;}
+.screen.active{display:flex;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+.au{opacity:0}.au.on{animation:fadeUp .5s ease forwards}
+.d1{animation-delay:.06s!important}.d2{animation-delay:.14s!important}
+.d3{animation-delay:.22s!important}.d4{animation-delay:.30s!important}
+.d5{animation-delay:.38s!important}
+
+.btn-cta{display:block;width:100%;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;padding:20px;border-radius:3px;border:none;cursor:pointer;text-align:center;letter-spacing:.3px;animation:pulse 2.5s infinite;}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--acid);display:block;margin-bottom:14px;}
+
+/* INTRO */
+#s-intro{background:var(--black);}
+.intro-img{position:relative;height:52vw;max-height:280px;overflow:hidden;flex-shrink:0;}
+.intro-img img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(20%) brightness(.6);}
+.intro-img-ov{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 20%,var(--black) 100%);}
+.intro-body{padding:16px 22px 80px;flex:1;display:flex;flex-direction:column;}
+.intro-body h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,12vw,64px);line-height:.88;letter-spacing:2px;margin-bottom:16px;}
+.intro-body h1 em{font-style:normal;color:var(--acid);display:block;}
+.intro-sub{font-size:15px;color:var(--text);line-height:1.75;margin-bottom:10px;}
+.intro-sub strong{color:var(--white);}
+.proof-strip{display:flex;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin-bottom:28px;}
+.proof-item{flex:1;background:var(--card);padding:14px 10px;text-align:center;}
+.proof-num{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--acid);line-height:1;display:block;}
+.proof-lbl{font-size:12px;color:#888;display:block;margin-top:3px;}
+.intro-note{font-size:13px;color:#666;text-align:center;margin-top:10px;}
+
+/* QUIZ */
+#s-quiz{background:var(--dark);}
+.qhdr{padding:18px 22px 0;flex-shrink:0;}
+.qprow{display:flex;justify-content:space-between;margin-bottom:8px;}
+.qpn{font-size:12px;font-weight:700;color:var(--acid);letter-spacing:1px;}
+.qppct{font-size:11px;color:#555;}
+.qptrack{height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
+.qpfill{height:100%;background:var(--acid);border-radius:2px;transition:width .4s ease;}
+.qslide{display:none;flex:1;padding:24px 22px 48px;flex-direction:column;}
+.qslide.active{display:flex;animation:fadeUp .35s ease forwards;}
+.qlbl{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--acid);margin-bottom:12px;display:block;}
+.qtxt{font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,7vw,38px);line-height:1.0;letter-spacing:1px;margin-bottom:6px;color:var(--white);}
+.qhint{font-size:13px;color:#888;line-height:1.6;margin-bottom:24px;}
+.opts{display:flex;flex-direction:column;gap:9px;}
+.opt{background:var(--card);border:1.5px solid var(--border);border-radius:6px;padding:15px 16px;cursor:pointer;display:flex;align-items:flex-start;gap:12px;transition:border-color .15s,background .15s;}
+.opt.sel{border-color:var(--acid);background:rgba(200,244,0,.05);}
+.optb{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--border);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.opt.sel .optb{border-color:var(--acid);background:var(--acid);}
+.optbi{width:7px;height:7px;border-radius:50%;background:var(--black);display:none;}
+.opt.sel .optbi{display:block;}
+.optt{font-size:15px;color:var(--soft);line-height:1.5;}
+.opt.sel .optt{color:var(--white);}
+.btnnxt{display:block;width:100%;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;padding:16px;border-radius:3px;border:none;cursor:pointer;margin-top:22px;opacity:0;pointer-events:none;transition:opacity .2s;}
+.btnnxt.show{opacity:1;pointer-events:all;}
+</style>
+</head>
+<body>
+
+<!-- S1: INTRO -->
+<div class="screen active" id="s-intro">
+  <div class="intro-img">
+    <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&q=80" alt="">
+    <div class="intro-img-ov"></div>
+  </div>
+  <div class="intro-body">
+    <span class="eyebrow au on d1">Teste gratuito · 2 minutos</span>
+    <h1 class="au on d2">VOCÊ SABE<br>O QUE FAZER.<br><em>E NÃO<br>CONSEGUE<br>FAZER.</em></h1>
+    <p class="intro-sub au on d3">Responda <strong>10 perguntas honestas</strong> e descubra exatamente o que está te travando.</p>
+    <div class="proof-strip au on d4">
+      <div class="proof-item"><span class="proof-num">4.8K</span><span class="proof-lbl">já fizeram</span></div>
+      <div class="proof-item"><span class="proof-num">2min</span><span class="proof-lbl">pra completar</span></div>
+      <div class="proof-item"><span class="proof-num">100%</span><span class="proof-lbl">gratuito</span></div>
+    </div>
+    <button class="btn-cta au on d5" onclick="startQuiz()">QUERO DESCOBRIR O QUE ME TRAVA →</button>
+    <p class="intro-note">Sem cadastro. Resultado imediato.</p>
+  </div>
+</div>
+
+<!-- S2: QUIZ -->
+<div class="screen" id="s-quiz">
+  <div class="qhdr">
+    <div class="qprow"><span class="qpn" id="qn">1 / 10</span><span class="qppct" id="qpct">10%</span></div>
+    <div class="qptrack"><div class="qpfill" id="qfill" style="width:10%"></div></div>
+  </div>
+
+  <div class="qslide active" id="q1">
+    <span class="qlbl">01 / 10</span>
+    <div class="qtxt">Quando pensa em tudo que precisa fazer, como você se sente?</div>
+    <p class="qhint">Seja honesto — ninguém está te julgando aqui.</p>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Paralisado. Tanta coisa que não sei por onde começar.</span></div>
+      <div class="opt" onclick="pick(this,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ansioso. Fico acelerado mas não sai nada.</span></div>
+      <div class="opt" onclick="pick(this,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Cansado antes de começar. O gás já acabou.</span></div>
+      <div class="opt" onclick="pick(this,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Culpado. Sei que deveria fazer e não consigo.</span></div>
+    </div>
+    <button class="btnnxt" id="nx1" onclick="nextQ(1,2)">Continuar →</button>
+  </div>
+
+  <div class="qslide" id="q2">
+    <span class="qlbl">02 / 10</span>
+    <div class="qtxt">Qual dessas frases você já falou pra si mesmo?</div>
+    <p class="qhint">Marque a que mais combina com você.</p>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Amanhã eu começo de verdade."</span></div>
+      <div class="opt" onclick="pick(this,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Por que eu sou tão preguiçoso?"</span></div>
+      <div class="opt" onclick="pick(this,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Eu sei o que fazer mas não consigo fazer."</span></div>
+      <div class="opt" onclick="pick(this,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Todo mundo parece conseguir menos eu."</span></div>
+    </div>
+    <button class="btnnxt" id="nx2" onclick="nextQ(2,3)">Continuar →</button>
+  </div>
+
+  <div class="qslide" id="q3">
+    <span class="qlbl">03 / 10</span>
+    <div class="qtxt">Quando você procrastina, o que acontece depois?</div>
+    <p class="qhint">Pensa em como você se sente no restante do dia.</p>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">A culpa fica na minha cabeça o dia inteiro.</span></div>
+      <div class="opt" onclick="pick(this,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me distraio com celular pra não pensar.</span></div>
+      <div class="opt" onclick="pick(this,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Fico irritado comigo mesmo e com todo mundo.</span></div>
+      <div class="opt" onclick="pick(this,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me sinto um fracasso — como se nunca fosse mudar.</span></div>
+    </div>
+    <button class="btnnxt" id="nx3" onclick="nextQ(3,4)">Continuar →</button>
+  </div>
+
+  <div class="qslide" id="q4">
+    <span class="qlbl">04 / 10</span>
+    <div class="qtxt">Como é o seu fim de dia na maioria das vezes?</div>
+    <p class="qhint">Pensa nos últimos 30 dias.</p>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Cansado mas não fiz quase nada do que precisava.</span></div>
+      <div class="opt" onclick="pick(this,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Aliviado que acabou — mas com culpa acumulada.</span></div>
+      <div class="opt" onclick="pick(this,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Com a mesma lista de amanhã que tinha ontem.</span></div>
+      <div class="opt" onclick="pick(this,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Com a sensação que o dia passou e eu fiquei parado.</span></div>
+    </div>
+    <button class="btnnxt" id="nx4" onclick="nextQ(4,5)">Continuar →</button>
+  </div>
+
+  <div class="qslide" id="q5">
+    <span class="qlbl">05 / 10</span>
+    <div class="qtxt">Você já tentou alguma técnica pra se organizar?</div>
+    <p class="qhint">Marque o que você já tentou.</p>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,5)"><div class="optb"><div class="optbi"></div></div><span class="optt">Aplicativos, Pomodoro, agenda — não durou.</span></div>
+      <div class="opt" onclick="pick(this,5)"><div class="optb"><div class="optbi"></div></div><span class="optt">Vídeos de produtividade — motiva na hora, some depois.</span></div>
+      <div class="opt" onclick="pick(this,5)"><div class="optb"><div class="optbi"></div></div><span class="optt">Listas de metas — começo empolgado, abandono em dias.</span></div>
+      <div class="opt" onclick="pick(this,5)"><div class="optb"><div class="optbi"></div></div><span class="optt">Nunca tentei — nem sei por onde começar.</span></div>
+    </div>
+    <button class="btnnxt" id="nx5" onclick="nextQ(5,6)">Continuar →</button>
+  </div>
+
+  <div class="qslide" id="q6">
+    <span class="qlbl">06 / 10</span>
+    <div class="qtxt">Como você se sente quando vê alguém avançando?</div>
+    <p class="qhint">Seja honesto — essa pergunta é importante.</p>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,6)"><div class="optb"><div class="optbi"></div></div><span class="optt">Feliz por eles, mas por dentro me sinto pra trás.</span></div>
+      <div class="opt" onclick="pick(this,6)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me pergunto o que eles têm que eu não tenho.</span></div>
+      <div class="opt" onclick="pick(this,6)"><div class="optb"><div class="optbi"></div></div><span class="optt">Admiração misturada com frustração comigo mesmo.</span></div>
+      <div class="opt" onclick="pick(this,6)"><div class="optb"><div class="optbi"></div></div><span class="optt">Evito ver — dói demais comparar.</span></div>
+    </div>
+    <button class="btnnxt" id="nx6" onclick="nextQ(6,7)">Continuar →</button>
+  </div>
+
+  <div class="qslide" id="q7">
+    <span class="qlbl">07 / 10</span>
+    <div class="qtxt">Como está sua saúde mental nos últimos meses?</div>
+    <p class="qhint">Responda com calma — não tem resposta errada.</p>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,7)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ansioso com frequência — às vezes sem motivo claro.</span></div>
+      <div class="opt" onclick="pick(this,7)"><div class="optb"><div class="optbi"></div></div><span class="optt">Desanimado — acordo sem vontade de encarar o dia.</span></div>
+      <div class="opt" onclick="pick(this,7)"><div class="optb"><div class="optbi"></div></div><span class="optt">Os dois — oscilo entre ansiedade e vazio.</span></div>
+      <div class="opt" onclick="pick(this,7)"><div class="optb"><div class="optbi"></div></div><span class="optt">Estou bem, mas algo me trava mesmo assim.</span></div>
+    </div>
+    <button class="btnnxt" id="nx7" onclick="nextQ(7,8)">Continuar →</button>
+  </div>
+
+  <div class="qslide" id="q8">
+    <span class="qlbl">08 / 10</span>
+    <div class="qtxt">O que você faz quando a tarefa parece grande demais?</div>
+    <p class="qhint">Pensa no seu comportamento real.</p>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,8)"><div class="optb"><div class="optbi"></div></div><span class="optt">Abro o celular e fico lá até o tempo passar.</span></div>
+      <div class="opt" onclick="pick(this,8)"><div class="optb"><div class="optbi"></div></div><span class="optt">Faço coisas menores pra parecer produtivo.</span></div>
+      <div class="opt" onclick="pick(this,8)"><div class="optb"><div class="optbi"></div></div><span class="optt">Fico pensando nela sem agir — angústia que não para.</span></div>
+      <div class="opt" onclick="pick(this,8)"><div class="optb"><div class="optbi"></div></div><span class="optt">Deixo pra amanhã prometendo que vai ser diferente.</span></div>
+    </div>
+    <button class="btnnxt" id="nx8" onclick="nextQ(8,9)">Continuar →</button>
+  </div>
+
+  <div class="qslide" id="q9">
+    <span class="qlbl">09 / 10</span>
+    <div class="qtxt">Você já desistiu de algo que queria por não conseguir começar?</div>
+    <p class="qhint">Pode ser um projeto, uma mudança, um sonho.</p>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,9)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — várias vezes. Ainda dói pensar nisso.</span></div>
+      <div class="opt" onclick="pick(this,9)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — e me convenço de que "não era pra ser".</span></div>
+      <div class="opt" onclick="pick(this,9)"><div class="optb"><div class="optbi"></div></div><span class="optt">Quase — estou no limite de desistir de algo agora.</span></div>
+      <div class="opt" onclick="pick(this,9)"><div class="optb"><div class="optbi"></div></div><span class="optt">Não ainda — mas sinto que posso chegar lá.</span></div>
+    </div>
+    <button class="btnnxt" id="nx9" onclick="nextQ(9,10)">Continuar →</button>
+  </div>
+
+  <div class="qslide" id="q10">
+    <span class="qlbl">10 / 10 — ÚLTIMA</span>
+    <div class="qtxt">Se pudesse mudar uma coisa agora, qual seria?</div>
+    <p class="qhint">Essa resposta define seu resultado.</p>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,10)"><div class="optb"><div class="optbi"></div></div><span class="optt">Parar de procrastinar e finalmente começar.</span></div>
+      <div class="opt" onclick="pick(this,10)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me sentir bem comigo mesmo e parar de me cobrar tanto.</span></div>
+      <div class="opt" onclick="pick(this,10)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ter mais energia e disposição pra viver de verdade.</span></div>
+      <div class="opt" onclick="pick(this,10)"><div class="optb"><div class="optbi"></div></div><span class="optt">Entender por que tudo parece mais difícil pra mim.</span></div>
+    </div>
+    <!-- BOTÃO FINAL — dispara Lead e vai pra página de vendas -->
+    <button class="btnnxt" id="nx10" onclick="finalizarQuiz()">VER MEU RESULTADO →</button>
+  </div>
+</div>
+
+<script>
+const ans = {};
+const TOTAL = 10;
+
+function startQuiz() {
+  document.getElementById('s-intro').classList.remove('active');
+  document.getElementById('s-quiz').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function pick(el, n) {
+  el.closest('.opts').querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+  el.classList.add('sel');
+  ans[n] = true;
+  const nx = document.getElementById('nx' + n);
+  if (nx) nx.classList.add('show');
+}
+
+function nextQ(from, to) {
+  if (!ans[from]) return;
+  document.getElementById('q' + from).classList.remove('active');
+  document.getElementById('q' + to).classList.add('active');
+  const pct = Math.round((to / TOTAL) * 100);
+  document.getElementById('qfill').style.width = pct + '%';
+  document.getElementById('qn').textContent = to + ' / ' + TOTAL;
+  document.getElementById('qpct').textContent = pct + '%';
+  window.scrollTo(0, 0);
+}
+
+function finalizarQuiz() {
+  if (!ans[10]) return;
+  // Dispara evento Lead — lead quente saiu do quiz
+  fbq('track', 'Lead');
+  // Redireciona para a página de vendas
+  window.location.href = 'https://vontadedeagir.github.io/Vontade-de-agir/';
+}
+</script>
+</body>
+</html>
