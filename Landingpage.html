@@ -170,30 +170,34 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
   <button class="fb-btn" onclick="irCheckout()">GARANTIR R$ 47 →</button>
 </div>
 
-<!-- VSL -->
-<div class="vsl-top au">
-  <span class="eyebrow">Sua solução personalizada</span>
-  <h2>ENCONTRAMOS<br><em>O QUE TE TRAVA.</em></h2>
-  <p>Assista ao vídeo. <strong>São 90 segundos que podem mudar como você enxerga isso pra sempre.</strong></p>
-</div>
+<!-- HERO DE ABERTURA -->
+<div style="background:var(--dark);padding:36px 22px 32px;border-bottom:1px solid var(--border);">
+  <span class="eyebrow au">Resultado do seu diagnóstico</span>
+  <h1 class="au" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,13vw,72px);line-height:.86;letter-spacing:2px;margin-bottom:16px;">VOCÊ NÃO<br>É PREGUIÇOSO.<br><span style="color:var(--acid);">VOCÊ ESTÁ<br>PRESO NUM<br>LOOP.</span></h1>
+  <p class="au" style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:24px;">Ansiedade gera evitação. Evitação gera culpa. Culpa gera mais ansiedade. <strong style="color:var(--white);">Esse ciclo roda sozinho todo dia — e ninguém te ensinou como quebrá-lo.</strong></p>
 
-<div class="vsl-player-wrap">
-  <div class="vsl-placeholder" id="vsl-placeholder">
-    <img class="vsl-placeholder-img" src="https://images.unsplash.com/photo-1620862657788-c37e7b0b0c8e?w=800&q=80" alt="">
-    <button class="vsl-play-btn" onclick="playVSL()"><div class="vsl-play-icon"></div></button>
-    <span class="vsl-play-label">ASSISTIR AGORA · 90 SEGUNDOS</span>
+  <!-- MINI PROVA SOCIAL -->
+  <div class="au" style="display:flex;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin-bottom:24px;">
+    <div style="flex:1;background:var(--card);padding:14px 10px;text-align:center;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--acid);line-height:1;display:block;">4.8K</span>
+      <span style="font-size:11px;color:#888;display:block;margin-top:3px;">já descobriram</span>
+    </div>
+    <div style="flex:1;background:var(--card);padding:14px 10px;text-align:center;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--acid);line-height:1;display:block;">2h</span>
+      <span style="font-size:11px;color:#888;display:block;margin-top:3px;">de leitura</span>
+    </div>
+    <div style="flex:1;background:var(--card);padding:14px 10px;text-align:center;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--acid);line-height:1;display:block;">7d</span>
+      <span style="font-size:11px;color:#888;display:block;margin-top:3px;">de garantia</span>
+    </div>
   </div>
-  <div id="vsl-iframe-wrap" style="display:none;position:relative;width:100%;aspect-ratio:1/1;background:#000;">
-    <iframe id="vsl-iframe" src="" data-src="https://player.vimeo.com/video/1204975057?autoplay=1&title=0&byline=0&portrait=0&color=C8F400&transparent=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
-  </div>
-  <div class="vsl-progress"><div class="vsl-progress-fill" id="vsl-prog"></div></div>
+
+  <!-- CTA HERO -->
+  <button class="btn-cta au" onclick="irCheckout()">QUERO QUEBRAR O LOOP — R$ 47 →</button>
+  <p class="au" style="font-size:12px;color:#555;text-align:center;margin-top:10px;">Pix, Cartão ou Boleto · Acesso imediato · Garantia de 7 dias</p>
 </div>
 
-<div class="vsl-mid-cta" id="vsl-mid-cta">
-  <p>Reconheceu o loop? <strong>Quebre ele agora por R$ 47.</strong></p>
-  <button onclick="irCheckout()" style="display:block;width:100%;background:var(--acid);color:var(--black);font-family:Manrope,sans-serif;font-size:15px;font-weight:800;padding:16px;border-radius:3px;border:none;cursor:pointer;">QUERO POR R$ 47 AGORA →</button>
-</div>
-
+<!-- TICKER -->
 <div class="ticker-w">
   <div class="ticker-i">
     <span class="tit">NÃO É PREGUIÇA</span><span class="tit">É UM LOOP</span>
