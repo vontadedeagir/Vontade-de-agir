@@ -4,32 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Vontade de Agir</title>
-
-<!-- ══ META PIXEL ══ -->
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','SEU_PIXEL_ID_AQUI');
-fbq('track','PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/></noscript>
-
-<!-- ══ GOOGLE ANALYTICS 4 ══ -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SEU_GA_ID"></script>
-<script>
-window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());
-gtag('config','G-SEU_GA_ID');
-</script>
-
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ══ RESET & VARS ══ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --black:#070707;--dark:#0E0E0E;--card:#161616;--card2:#1E1E1E;
@@ -38,31 +14,24 @@ gtag('config','G-SEU_GA_ID');
 }
 html,body{-webkit-font-smoothing:antialiased;}
 body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
-
-/* ══ SCREENS ══ */
 .screen{display:none;min-height:100vh;flex-direction:column;}
 .screen.active{display:flex;}
-
-/* ══ ANIMAÇÕES ══ */
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes revealBtn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pisca{0%,100%{opacity:1}50%{opacity:.2}}
-@keyframes spin{to{transform:rotate(360deg)}}
-
 .au{opacity:0}.au.on{animation:fadeUp .5s ease forwards}
 .d1{animation-delay:.06s!important}.d2{animation-delay:.14s!important}
 .d3{animation-delay:.22s!important}.d4{animation-delay:.30s!important}
 .d5{animation-delay:.38s!important}
 
-/* ══ SHARED ══ */
+/* SHARED */
 .btn-cta{display:block;width:100%;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;padding:20px;border-radius:3px;border:none;cursor:pointer;text-align:center;-webkit-tap-highlight-color:transparent;letter-spacing:.3px;animation:pulse 2.5s infinite;}
 .btn-cta:active{background:var(--acid2);transform:scale(.98);}
 .btn-ghost{display:block;width:100%;background:transparent;color:#666;font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;padding:14px;border-radius:3px;border:1px solid var(--border);cursor:pointer;text-align:center;margin-top:10px;}
 .eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--acid);display:block;margin-bottom:14px;}
 
-/* ══ FLOAT BAR ══ */
+/* FLOAT BAR */
 .float-bar{position:fixed;bottom:0;left:0;right:0;background:#08080A;border-top:1px solid rgba(200,244,0,.2);padding:10px 18px;z-index:999;display:none;gap:10px;align-items:center;}
 .float-bar.on{display:flex;}
 .fb-timer{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);letter-spacing:2px;flex-shrink:0;}
@@ -125,7 +94,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .rbarfill{height:100%;background:var(--acid);border-radius:3px;width:0;transition:width 1s cubic-bezier(.4,0,.2,1);}
 .resnote{font-size:13px;color:#666;text-align:center;margin-top:10px;}
 
-/* ══ S4 VSL ══ */
+/* ══ S4 VSL + CARTA ══ */
 #s-vsl{background:var(--black);padding:0;justify-content:flex-start;}
 .vsl-top{padding:28px 22px 20px;background:var(--dark);border-bottom:1px solid var(--border);}
 .vsl-top h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,8vw,40px);line-height:.93;letter-spacing:2px;margin-bottom:8px;}
@@ -151,7 +120,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .tit{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--black);padding:0 18px;}
 .tit::after{content:'·';margin-left:18px;opacity:.35;}
 
-/* ══ CARTA ══ */
+/* CARTA */
 .carta-sec{padding:40px 22px;}
 .carta-sec+.carta-sec{border-top:1px solid var(--border);}
 .carta-sec h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,8vw,42px);line-height:.92;letter-spacing:2px;margin-bottom:14px;}
@@ -192,7 +161,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .cap h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:2px;}
 .cap p{font-size:14px;color:var(--text);line-height:1.6;}
 
-/* ══ BÔNUS ══ */
+/* BÔNUS */
 .bonus-sec{padding:40px 22px;background:var(--dark);border-top:1px solid var(--border);}
 .bonus-sec h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,8vw,42px);line-height:.92;letter-spacing:2px;margin-bottom:6px;}
 .bonus-sec h2 em{font-style:normal;color:var(--acid);}
@@ -205,27 +174,29 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .bonus-info p{font-size:13px;color:var(--text);line-height:1.6;}
 .bonus-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:rgba(200,244,0,.1);color:var(--acid);padding:3px 8px;border-radius:2px;margin-top:6px;}
 
-/* ══ DEPOIMENTOS ESTILO PRINT ══ */
-.deps-new{display:flex;flex-direction:column;gap:12px;}
-.dep-new{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
-.dep-comprou{background:rgba(200,244,0,.07);border-bottom:1px solid var(--border);padding:10px 14px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--acid);font-weight:700;letter-spacing:.3px;}
-.dep-new-body{padding:16px 14px;}
+/* DEPOIMENTOS NOVO ESTILO */
+.deps-new{display:flex;flex-direction:column;gap:12px;margin:14px 0;}
+.dep-new{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px 14px;}
 .dep-new-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
 .dep-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--black);flex-shrink:0;}
 .dep-name-wrap{display:flex;flex-direction:column;gap:1px;}
 .dep-new-name{font-size:14px;font-weight:700;color:var(--white);}
-.dep-new-verified{font-size:11px;color:var(--acid);}
-.dep-new-stars{color:var(--acid);font-size:12px;letter-spacing:1px;margin-bottom:8px;}
+.dep-new-verified{font-size:11px;color:var(--acid);display:flex;align-items:center;gap:4px;}
+.dep-new-stars{color:var(--acid);font-size:12px;letter-spacing:1px;margin-bottom:6px;}
 .dep-new-txt{font-size:14px;color:var(--text);line-height:1.75;}
 .dep-new-txt strong{color:var(--white);}
-
-/* ══ URGÊNCIA SOCIAL ══ */
-.urgencia-social{background:var(--dark);border:1px solid rgba(200,244,0,.15);border-radius:6px;padding:12px 16px;margin:12px 0;display:flex;align-items:center;gap:10px;}
+.dep-new-likes{display:none;}
+.dep-comprou{background:rgba(200,244,0,.06);border-bottom:1px solid var(--border);padding:10px 14px;border-radius:6px 6px 0 0;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--acid);font-weight:700;letter-spacing:.3px;}
+.dep-comprou span{font-size:15px;}
+.dep-new{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.dep-new-body{padding:16px 14px;}
+.urgencia-social{background:var(--dark);border:1px solid rgba(200,244,0,.15);border-radius:6px;padding:12px 16px;margin:14px 0;display:flex;align-items:center;gap:10px;}
 .us-dot{width:8px;height:8px;border-radius:50%;background:#FF4444;flex-shrink:0;animation:pisca 1.2s infinite;}
+@keyframes pisca{0%,100%{opacity:1}50%{opacity:.2}}
 .urgencia-social p{font-size:13px;color:var(--text);line-height:1.5;}
 .urgencia-social p strong{color:var(--white);}
 
-/* ══ OFERTA ══ */
+/* OFERTA */
 .counter-box{background:#0A0800;border:1px solid rgba(200,244,0,.15);border-radius:6px;padding:14px 16px;margin:14px 0;text-align:center;}
 .counter-lbl{font-size:12px;color:var(--acid);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;display:block;}
 .counter-time{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--white);letter-spacing:4px;line-height:1;}
@@ -245,7 +216,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .of-guar p{font-size:13px;color:var(--text);line-height:1.6;}
 .of-guar p strong{color:var(--white);}
 .faqs{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin:14px 0;}
-.faqit{background:var(--card);padding:16px;}
+.faqit{background:var(--card);padding:16px 16px;}
 .faqq{font-size:15px;font-weight:700;color:var(--white);margin-bottom:6px;}
 .faqa{font-size:14px;color:var(--text);line-height:1.7;}
 .cfooter{background:var(--black);border-top:1px solid var(--border);padding:22px;text-align:center;}
@@ -253,7 +224,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .flogo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;margin-bottom:4px;}
 .flogo em{font-style:normal;color:var(--acid);}
 
-/* ══ UPSELL ══ */
+/* UPSELL */
 #s-upsell{background:var(--dark);padding:44px 22px 80px;}
 .upsell-confirm{background:rgba(200,244,0,.07);border:1px solid rgba(200,244,0,.15);border-radius:4px;padding:12px 16px;text-align:center;font-size:12px;font-weight:700;color:var(--acid);letter-spacing:1px;text-transform:uppercase;margin-bottom:32px;}
 #s-upsell h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,11vw,60px);line-height:.88;letter-spacing:2px;margin-bottom:12px;}
@@ -271,7 +242,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .up-note{font-size:13px;color:var(--text);line-height:1.5;}
 .up-guar{font-size:13px;color:#777;text-align:center;margin-top:8px;}
 
-/* ══ DOWNSELL ══ */
+/* DOWNSELL */
 #s-downsell{background:var(--black);padding:44px 22px 80px;}
 .ds-tag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:18px;}
 #s-downsell h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,10vw,56px);line-height:.88;letter-spacing:2px;margin-bottom:12px;}
@@ -291,7 +262,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .ds-new sup{font-size:18px;vertical-align:super;}
 .btn-ds{display:block;width:100%;background:var(--orange);color:var(--white);font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;padding:18px;border-radius:3px;border:none;cursor:pointer;text-align:center;margin-bottom:10px;}
 
-/* ══ CHECKOUT EXIT ══ */
+/* CHECKOUT EXIT */
 #s-checkout-exit{background:var(--dark);padding:44px 22px 80px;}
 .exit-tag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#FF4444;display:block;margin-bottom:18px;}
 #s-checkout-exit h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,10vw,56px);line-height:.88;letter-spacing:2px;margin-bottom:12px;}
@@ -304,7 +275,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .exit-por sup{font-size:22px;vertical-align:super;}
 .exit-desc{font-size:15px;color:var(--text);line-height:1.6;margin-bottom:18px;}
 
-/* ══ CHECKOUT ══ */
+/* CHECKOUT */
 #s-checkout{background:var(--dark);}
 .ckhdr{background:var(--black);border-bottom:1px solid var(--border);padding:14px 22px;text-align:center;}
 .ckhdr p{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--acid);}
@@ -340,13 +311,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .ckguar p strong{color:var(--white);}
 .btn-exit{display:block;text-align:center;font-size:12px;color:#444;cursor:pointer;padding:14px;background:none;border:none;width:100%;margin-top:6px;text-decoration:underline;}
 
-/* PROCESSANDO */
-.processando{display:none;flex-direction:column;align-items:center;justify-content:center;padding:40px 22px;gap:16px;}
-.processando.show{display:flex;}
-.proc-spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--acid);border-radius:50%;animation:spin 0.8s linear infinite;}
-.proc-txt{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--white);}
-
-/* ══ OBRIGADO ══ */
+/* OBRIGADO */
 #s-thanks{background:var(--dark);padding:60px 22px;justify-content:center;}
 .thanks-line{width:44px;height:3px;background:var(--acid);border-radius:2px;margin-bottom:28px;}
 #s-thanks h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,13vw,76px);line-height:.88;letter-spacing:3px;margin-bottom:14px;}
@@ -364,15 +329,13 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 </head>
 <body>
 
-<!-- ══ FLOAT BAR ══ -->
+<!-- FLOAT BAR -->
 <div class="float-bar" id="float-bar">
   <span class="fb-timer" id="fb-timer">15:00</span>
-  <button class="fb-btn" onclick="go('s-checkout')">GARANTIR R$ 47 →</button>
+  <button class="fb-btn" onclick="go('s-checkout')">GARANTIR R$ 37 →</button>
 </div>
 
-<!-- ══════════════════════════════════
-     S1 — INTRO
-══════════════════════════════════ -->
+<!-- ══ S1 INTRO ══ -->
 <div class="screen active" id="s-intro">
   <div class="intro-img">
     <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&q=80" alt="">
@@ -387,196 +350,58 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
       <div class="proof-item"><span class="proof-num">2min</span><span class="proof-lbl">pra completar</span></div>
       <div class="proof-item"><span class="proof-num">100%</span><span class="proof-lbl">gratuito</span></div>
     </div>
-    <button class="btn-cta au on d5" onclick="startQuiz()">QUERO DESCOBRIR O QUE ME TRAVA →</button>
+    <button class="btn-cta au on d5" onclick="go('s-quiz');initQuiz()">QUERO DESCOBRIR O QUE ME TRAVA →</button>
     <p class="intro-note">Sem cadastro. Resultado imediato.</p>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     S2 — QUIZ (10 perguntas)
-══════════════════════════════════ -->
+<!-- ══ S2 QUIZ ══ -->
 <div class="screen" id="s-quiz">
   <div class="qhdr">
     <div class="qprow"><span class="qpn" id="qn">1 / 10</span><span class="qppct" id="qpct">10%</span></div>
     <div class="qptrack"><div class="qpfill" id="qfill" style="width:10%"></div></div>
   </div>
-
-  <!-- Q1 -->
-  <div class="qslide active" id="q1">
-    <span class="qlbl">01 / 10</span>
-    <div class="qtxt">Quando pensa em tudo que precisa fazer, como você se sente?</div>
-    <p class="qhint">Seja honesto — ninguém está te julgando aqui.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,1,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Paralisado. Tanta coisa que não sei por onde começar.</span></div>
-      <div class="opt" onclick="pick(this,1,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ansioso. Fico acelerado mas não sai nada.</span></div>
-      <div class="opt" onclick="pick(this,1,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Cansado antes de começar. O gás já acabou.</span></div>
-      <div class="opt" onclick="pick(this,1,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Culpado. Sei que deveria fazer e não consigo.</span></div>
-    </div>
-    <button class="btnnxt" id="nx1" onclick="nextQ(1,2)">Continuar →</button>
-  </div>
-
-  <!-- Q2 -->
-  <div class="qslide" id="q2">
-    <span class="qlbl">02 / 10</span>
-    <div class="qtxt">Qual dessas frases você já falou pra si mesmo?</div>
-    <p class="qhint">Marque a que mais combina com você.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,2,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Amanhã eu começo de verdade."</span></div>
-      <div class="opt" onclick="pick(this,2,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Por que eu sou tão ansioso com tudo?"</span></div>
-      <div class="opt" onclick="pick(this,2,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Não tenho energia pra nada hoje."</span></div>
-      <div class="opt" onclick="pick(this,2,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Eu sei o que fazer mas não consigo fazer."</span></div>
-    </div>
-    <button class="btnnxt" id="nx2" onclick="nextQ(2,3)">Continuar →</button>
-  </div>
-
-  <!-- Q3 -->
-  <div class="qslide" id="q3">
-    <span class="qlbl">03 / 10</span>
-    <div class="qtxt">Quando você procrastina, o que acontece depois?</div>
-    <p class="qhint">Pensa em como você se sente no restante do dia.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,3,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me sinto um fracasso e fico me cobrando.</span></div>
-      <div class="opt" onclick="pick(this,3,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Fico mais ansioso — a tarefa parece crescer.</span></div>
-      <div class="opt" onclick="pick(this,3,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me distraio com celular pra não pensar.</span></div>
-      <div class="opt" onclick="pick(this,3,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">A culpa fica na cabeça o dia inteiro.</span></div>
-    </div>
-    <button class="btnnxt" id="nx3" onclick="nextQ(3,4)">Continuar →</button>
-  </div>
-
-  <!-- Q4 -->
-  <div class="qslide" id="q4">
-    <span class="qlbl">04 / 10</span>
-    <div class="qtxt">Como é o seu fim de dia na maioria das vezes?</div>
-    <p class="qhint">Pensa nos últimos 30 dias.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,4,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Com a mesma lista de amanhã que tinha ontem.</span></div>
-      <div class="opt" onclick="pick(this,4,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Aliviado que acabou — mas com preocupações acumuladas.</span></div>
-      <div class="opt" onclick="pick(this,4,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Esgotado mesmo sem ter feito quase nada.</span></div>
-      <div class="opt" onclick="pick(this,4,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Com culpa pesada por ter fugido do que era importante.</span></div>
-    </div>
-    <button class="btnnxt" id="nx4" onclick="nextQ(4,5)">Continuar →</button>
-  </div>
-
-  <!-- Q5 -->
-  <div class="qslide" id="q5">
-    <span class="qlbl">05 / 10</span>
-    <div class="qtxt">Você já tentou alguma técnica pra se organizar?</div>
-    <p class="qhint">Marque o que você já tentou.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,5,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — listas, apps, metas. Nunca durou.</span></div>
-      <div class="opt" onclick="pick(this,5,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — mas a ansiedade sempre vence antes de começar.</span></div>
-      <div class="opt" onclick="pick(this,5,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Nem tentei — não tenho energia pra isso.</span></div>
-      <div class="opt" onclick="pick(this,5,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Tentei mas a culpa de falhar me desanimou mais ainda.</span></div>
-    </div>
-    <button class="btnnxt" id="nx5" onclick="nextQ(5,6)">Continuar →</button>
-  </div>
-
-  <!-- Q6 -->
-  <div class="qslide" id="q6">
-    <span class="qlbl">06 / 10</span>
-    <div class="qtxt">Como você se sente quando vê alguém avançando?</div>
-    <p class="qhint">Seja honesto — essa pergunta é importante.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,6,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me pergunto por que pra mim é sempre mais difícil.</span></div>
-      <div class="opt" onclick="pick(this,6,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Fico ansioso — parece que estou ficando pra trás.</span></div>
-      <div class="opt" onclick="pick(this,6,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me sinto sem energia até pra me comparar.</span></div>
-      <div class="opt" onclick="pick(this,6,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Uma mistura de admiração e culpa por não estar avançando.</span></div>
-    </div>
-    <button class="btnnxt" id="nx6" onclick="nextQ(6,7)">Continuar →</button>
-  </div>
-
-  <!-- Q7 -->
-  <div class="qslide" id="q7">
-    <span class="qlbl">07 / 10</span>
-    <div class="qtxt">Como está sua saúde mental nos últimos meses?</div>
-    <p class="qhint">Responda com calma — não tem resposta errada.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,7,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Estou bem, mas algo me trava mesmo assim.</span></div>
-      <div class="opt" onclick="pick(this,7,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ansioso com frequência — às vezes sem motivo claro.</span></div>
-      <div class="opt" onclick="pick(this,7,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Desanimado — acordo sem vontade de encarar o dia.</span></div>
-      <div class="opt" onclick="pick(this,7,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Os dois — oscilo entre ansiedade e vazio.</span></div>
-    </div>
-    <button class="btnnxt" id="nx7" onclick="nextQ(7,8)">Continuar →</button>
-  </div>
-
-  <!-- Q8 -->
-  <div class="qslide" id="q8">
-    <span class="qlbl">08 / 10</span>
-    <div class="qtxt">O que você faz quando a tarefa parece grande demais?</div>
-    <p class="qhint">Pensa no seu comportamento real.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,8,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Deixo pra amanhã prometendo que vai ser diferente.</span></div>
-      <div class="opt" onclick="pick(this,8,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Fico pensando nela de forma ansiosa sem agir.</span></div>
-      <div class="opt" onclick="pick(this,8,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Abro o celular e fico lá até o tempo passar.</span></div>
-      <div class="opt" onclick="pick(this,8,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Faço coisas menores pra parecer produtivo mas evito o que importa.</span></div>
-    </div>
-    <button class="btnnxt" id="nx8" onclick="nextQ(8,9)">Continuar →</button>
-  </div>
-
-  <!-- Q9 -->
-  <div class="qslide" id="q9">
-    <span class="qlbl">09 / 10</span>
-    <div class="qtxt">Você já desistiu de algo que queria por não conseguir começar?</div>
-    <p class="qhint">Pode ser um projeto, uma mudança, um sonho.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,9,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — várias vezes. Ainda dói pensar nisso.</span></div>
-      <div class="opt" onclick="pick(this,9,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — a ansiedade me paralisou antes de começar.</span></div>
-      <div class="opt" onclick="pick(this,9,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Quase — estou sem energia pra continuar algo agora.</span></div>
-      <div class="opt" onclick="pick(this,9,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — e me convenço de que "não era pra ser".</span></div>
-    </div>
-    <button class="btnnxt" id="nx9" onclick="nextQ(9,10)">Continuar →</button>
-  </div>
-
-  <!-- Q10 -->
-  <div class="qslide" id="q10">
-    <span class="qlbl">10 / 10 — ÚLTIMA</span>
-    <div class="qtxt">Se pudesse mudar uma coisa agora, qual seria?</div>
-    <p class="qhint">Essa resposta define seu resultado.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,10,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Parar de procrastinar e finalmente começar.</span></div>
-      <div class="opt" onclick="pick(this,10,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me livrar da ansiedade que me paralisa.</span></div>
-      <div class="opt" onclick="pick(this,10,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ter mais energia e disposição pra viver de verdade.</span></div>
-      <div class="opt" onclick="pick(this,10,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Parar de me sabotar e de me cobrar de um jeito que paralisa.</span></div>
-    </div>
-    <button class="btnnxt" id="nx10" onclick="showResult()">VER MEU RESULTADO →</button>
-  </div>
+  <div class="qslide active" id="q1"><span class="qlbl">01 / 10</span><div class="qtxt">Quando pensa em tudo que precisa fazer, como você se sente?</div><p class="qhint">Seja honesto — ninguém está te julgando aqui.</p><div class="opts"><div class="opt" onclick="pick(this,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Paralisado. Tanta coisa que não sei por onde começar.</span></div><div class="opt" onclick="pick(this,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ansioso. Fico acelerado mas não sai nada.</span></div><div class="opt" onclick="pick(this,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Cansado antes de começar. O gás já acabou.</span></div><div class="opt" onclick="pick(this,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Culpado. Sei que deveria fazer e não consigo.</span></div></div><button class="btnnxt" id="nx1" onclick="nextQ(1,2)">Continuar →</button></div>
+  <div class="qslide" id="q2"><span class="qlbl">02 / 10</span><div class="qtxt">Qual dessas frases você já falou pra si mesmo?</div><p class="qhint">Marque a que mais combina com você.</p><div class="opts"><div class="opt" onclick="pick(this,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Amanhã eu começo de verdade."</span></div><div class="opt" onclick="pick(this,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Por que eu sou tão preguiçoso?"</span></div><div class="opt" onclick="pick(this,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Eu sei o que fazer mas não consigo fazer."</span></div><div class="opt" onclick="pick(this,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Todo mundo parece conseguir menos eu."</span></div></div><button class="btnnxt" id="nx2" onclick="nextQ(2,3)">Continuar →</button></div>
+  <div class="qslide" id="q3"><span class="qlbl">03 / 10</span><div class="qtxt">Quando você procrastina, o que acontece depois?</div><p class="qhint">Pensa em como você se sente no restante do dia.</p><div class="opts"><div class="opt" onclick="pick(this,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">A culpa fica na minha cabeça o dia inteiro e me consome.</span></div><div class="opt" onclick="pick(this,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me distraio com celular pra não pensar.</span></div><div class="opt" onclick="pick(this,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Fico irritado comigo mesmo e com todo mundo.</span></div><div class="opt" onclick="pick(this,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me sinto um fracasso — como se nunca fosse mudar.</span></div></div><button class="btnnxt" id="nx3" onclick="nextQ(3,4)">Continuar →</button></div>
+  <div class="qslide" id="q4"><span class="qlbl">04 / 10</span><div class="qtxt">Como é o seu fim de dia na maioria das vezes?</div><p class="qhint">Pensa nos últimos 30 dias.</p><div class="opts"><div class="opt" onclick="pick(this,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Cansado mas não fiz quase nada do que precisava.</span></div><div class="opt" onclick="pick(this,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Aliviado que acabou — mas com culpa acumulada.</span></div><div class="opt" onclick="pick(this,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Com a mesma lista de amanhã que tinha ontem.</span></div><div class="opt" onclick="pick(this,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Com a sensação que o dia passou e eu fiquei parado.</span></div></div><button class="btnnxt" id="nx4" onclick="nextQ(4,5)">Continuar →</button></div>
+  <div class="qslide" id="q5"><span class="qlbl">05 / 10</span><div class="qtxt">Você já tentou alguma técnica pra se organizar?</div><p class="qhint">Marque o que você já tentou.</p><div class="opts"><div class="opt" onclick="pick(this,5)"><div class="optb"><div class="optbi"></div></div><span class="optt">Aplicativos, Pomodoro, agenda — não durou.</span></div><div class="opt" onclick="pick(this,5)"><div class="optb"><div class="optbi"></div></div><span class="optt">Vídeos de produtividade — motiva na hora, some depois.</span></div><div class="opt" onclick="pick(this,5)"><div class="optb"><div class="optbi"></div></div><span class="optt">Listas de metas — começo empolgado, abandono em dias.</span></div><div class="opt" onclick="pick(this,5)"><div class="optb"><div class="optbi"></div></div><span class="optt">Nunca tentei — nem sei por onde começar.</span></div></div><button class="btnnxt" id="nx5" onclick="nextQ(5,6)">Continuar →</button></div>
+  <div class="qslide" id="q6"><span class="qlbl">06 / 10</span><div class="qtxt">Como você se sente quando vê alguém avançando?</div><p class="qhint">Seja honesto — essa pergunta é importante.</p><div class="opts"><div class="opt" onclick="pick(this,6)"><div class="optb"><div class="optbi"></div></div><span class="optt">Feliz por eles, mas por dentro me sinto pra trás.</span></div><div class="opt" onclick="pick(this,6)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me pergunto o que eles têm que eu não tenho.</span></div><div class="opt" onclick="pick(this,6)"><div class="optb"><div class="optbi"></div></div><span class="optt">Admiração misturada com frustração comigo mesmo.</span></div><div class="opt" onclick="pick(this,6)"><div class="optb"><div class="optbi"></div></div><span class="optt">Evito ver — dói demais comparar.</span></div></div><button class="btnnxt" id="nx6" onclick="nextQ(6,7)">Continuar →</button></div>
+  <div class="qslide" id="q7"><span class="qlbl">07 / 10</span><div class="qtxt">Como está sua saúde mental nos últimos meses?</div><p class="qhint">Responda com calma — não tem resposta errada.</p><div class="opts"><div class="opt" onclick="pick(this,7)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ansioso com frequência — às vezes sem motivo claro.</span></div><div class="opt" onclick="pick(this,7)"><div class="optb"><div class="optbi"></div></div><span class="optt">Desanimado — acordo sem vontade de encarar o dia.</span></div><div class="opt" onclick="pick(this,7)"><div class="optb"><div class="optbi"></div></div><span class="optt">Os dois — oscilo entre ansiedade e vazio.</span></div><div class="opt" onclick="pick(this,7)"><div class="optb"><div class="optbi"></div></div><span class="optt">Estou bem, mas algo me trava mesmo assim.</span></div></div><button class="btnnxt" id="nx7" onclick="nextQ(7,8)">Continuar →</button></div>
+  <div class="qslide" id="q8"><span class="qlbl">08 / 10</span><div class="qtxt">O que você faz quando a tarefa parece grande demais?</div><p class="qhint">Pensa no seu comportamento real.</p><div class="opts"><div class="opt" onclick="pick(this,8)"><div class="optb"><div class="optbi"></div></div><span class="optt">Abro o celular e fico lá até o tempo passar.</span></div><div class="opt" onclick="pick(this,8)"><div class="optb"><div class="optbi"></div></div><span class="optt">Faço coisas menores pra parecer produtivo.</span></div><div class="opt" onclick="pick(this,8)"><div class="optb"><div class="optbi"></div></div><span class="optt">Fico pensando nela sem agir — uma angústia que não para.</span></div><div class="opt" onclick="pick(this,8)"><div class="optb"><div class="optbi"></div></div><span class="optt">Deixo pra amanhã prometendo que vai ser diferente.</span></div></div><button class="btnnxt" id="nx8" onclick="nextQ(8,9)">Continuar →</button></div>
+  <div class="qslide" id="q9"><span class="qlbl">09 / 10</span><div class="qtxt">Você já desistiu de algo que queria por não conseguir começar?</div><p class="qhint">Pode ser um projeto, uma mudança, um sonho.</p><div class="opts"><div class="opt" onclick="pick(this,9)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — várias vezes. Ainda dói pensar nisso.</span></div><div class="opt" onclick="pick(this,9)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — e me convenço de que "não era pra ser".</span></div><div class="opt" onclick="pick(this,9)"><div class="optb"><div class="optbi"></div></div><span class="optt">Quase — estou no limite de desistir de algo agora.</span></div><div class="opt" onclick="pick(this,9)"><div class="optb"><div class="optbi"></div></div><span class="optt">Não ainda — mas sinto que posso chegar lá.</span></div></div><button class="btnnxt" id="nx9" onclick="nextQ(9,10)">Continuar →</button></div>
+  <div class="qslide" id="q10"><span class="qlbl">10 / 10 — ÚLTIMA</span><div class="qtxt">Se pudesse mudar uma coisa agora, qual seria?</div><p class="qhint">Essa resposta define seu resultado.</p><div class="opts"><div class="opt" onclick="pick(this,10)"><div class="optb"><div class="optbi"></div></div><span class="optt">Parar de procrastinar e finalmente começar.</span></div><div class="opt" onclick="pick(this,10)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me sentir bem comigo mesmo e parar de me cobrar tanto.</span></div><div class="opt" onclick="pick(this,10)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ter mais energia e disposição pra viver de verdade.</span></div><div class="opt" onclick="pick(this,10)"><div class="optb"><div class="optbi"></div></div><span class="optt">Entender por que tudo parece mais difícil pra mim.</span></div></div><button class="btnnxt" id="nx10" onclick="showResult()">VER MEU RESULTADO →</button></div>
 </div>
 
-<!-- ══════════════════════════════════
-     S3 — RESULTADO DINÂMICO
-══════════════════════════════════ -->
+<!-- ══ S3 RESULTADO ══ -->
 <div class="screen" id="s-result">
-  <span class="restag au on d1" id="res-tag">Seu diagnóstico</span>
-  <h2 class="au on d2" id="res-titulo">VOCÊ ESTÁ<br>PRESO NO<br><em>LOOP.</em></h2>
-  <p class="resdesc au on d3" id="res-desc">Suas respostas mostram um padrão claro: <strong>ansiedade gera evitação, evitação gera culpa, culpa gera mais ansiedade.</strong> Não é preguiça. É um loop — e loops têm saída.</p>
-  <div class="resbars au on d4" id="res-bars">
-    <div class="rbarrow"><div class="rbarmeta"><span class="rbarlbl" id="bar1-lbl">Loop de ansiedade</span><span class="rbarval" id="bar1-val">94%</span></div><div class="rbartrack"><div class="rbarfill" id="bar1" data-w="94%"></div></div></div>
-    <div class="rbarrow"><div class="rbarmeta"><span class="rbarlbl" id="bar2-lbl">Culpa paralisante</span><span class="rbarval" id="bar2-val">88%</span></div><div class="rbartrack"><div class="rbarfill" id="bar2" data-w="88%"></div></div></div>
-    <div class="rbarrow"><div class="rbarmeta"><span class="rbarlbl" id="bar3-lbl">Desânimo acumulado</span><span class="rbarval" id="bar3-val">82%</span></div><div class="rbartrack"><div class="rbarfill" id="bar3" data-w="82%"></div></div></div>
-    <div class="rbarrow"><div class="rbarmeta"><span class="rbarlbl" id="bar4-lbl">Autossabotagem</span><span class="rbarval" id="bar4-val">79%</span></div><div class="rbartrack"><div class="rbarfill" id="bar4" data-w="79%"></div></div></div>
+  <span class="restag au on d1">Seu diagnóstico</span>
+  <h2 class="au on d2">VOCÊ ESTÁ<br>PRESO NO<br><em>LOOP.</em></h2>
+  <p class="resdesc au on d3">Suas respostas mostram um padrão claro: <strong>ansiedade gera evitação, evitação gera culpa, culpa gera mais ansiedade.</strong> Não é preguiça. É um loop — e loops têm saída.</p>
+  <div class="resbars au on d4">
+    <div class="rbarrow"><div class="rbarmeta"><span class="rbarlbl">Loop de ansiedade</span><span class="rbarval">94%</span></div><div class="rbartrack"><div class="rbarfill" data-w="94%"></div></div></div>
+    <div class="rbarrow"><div class="rbarmeta"><span class="rbarlbl">Culpa paralisante</span><span class="rbarval">88%</span></div><div class="rbartrack"><div class="rbarfill" data-w="88%"></div></div></div>
+    <div class="rbarrow"><div class="rbarmeta"><span class="rbarlbl">Desânimo acumulado</span><span class="rbarval">82%</span></div><div class="rbartrack"><div class="rbarfill" data-w="82%"></div></div></div>
+    <div class="rbarrow"><div class="rbarmeta"><span class="rbarlbl">Autossabotagem</span><span class="rbarval">79%</span></div><div class="rbartrack"><div class="rbarfill" data-w="79%"></div></div></div>
   </div>
   <button class="btn-cta au on d5" onclick="go('s-vsl')">VER COMO SAIR DESSE LOOP →</button>
   <p class="resnote">Preparando sua solução personalizada...</p>
 </div>
 
-<!-- ══════════════════════════════════
-     S4 — VSL + CARTA DE VENDAS
-══════════════════════════════════ -->
+<!-- ══ S4 VSL + CARTA ══ -->
 <div class="screen" id="s-vsl">
 
   <div class="vsl-top">
     <span class="eyebrow">Sua solução personalizada</span>
     <h2>BASEADO NAS SUAS<br>RESPOSTAS, ENCONTRAMOS<br><em>O QUE TE TRAVA.</em></h2>
-    <p>Assista ao vídeo abaixo. <strong>São menos de 2 minutos que podem mudar como você enxerga isso pra sempre.</strong></p>
+    <p>Assista ao vídeo abaixo. <strong>São 2 minutos que podem mudar como você enxerga isso pra sempre.</strong></p>
   </div>
 
-  <!-- PLAYER VSL -->
-  <!-- SUBSTITUA o data-src pelo embed real do Vimeo ou YouTube -->
   <div class="vsl-player-wrap">
     <div class="vsl-placeholder" id="vsl-placeholder">
       <img class="vsl-placeholder-img" src="https://images.unsplash.com/photo-1620862657788-c37e7b0b0c8e?w=800&q=80" alt="">
       <button class="vsl-play-btn" onclick="playVSL()"><div class="vsl-play-icon"></div></button>
-      <span class="vsl-play-label">ASSISTIR AGORA · 90 SEGUNDOS</span>
+      <span class="vsl-play-label">ASSISTIR AGORA · 2 MINUTOS</span>
     </div>
     <div id="vsl-iframe-wrap" style="display:none;position:relative;width:100%;aspect-ratio:1/1;background:#000;">
       <iframe id="vsl-iframe" src="" data-src="https://player.vimeo.com/video/1204975057?autoplay=1&title=0&byline=0&portrait=0&color=C8F400&transparent=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
@@ -584,10 +409,9 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
     <div class="vsl-progress"><div class="vsl-progress-fill" id="vsl-prog"></div></div>
   </div>
 
-  <!-- CTA MEIO — aparece aos 45s -->
   <div class="vsl-mid-cta" id="vsl-mid-cta">
-    <p>Reconheceu o loop? <strong>Quebre ele agora por R$ 47.</strong></p>
-    <button onclick="go('s-checkout')" style="display:block;width:100%;background:var(--acid);color:var(--black);font-family:Manrope,sans-serif;font-size:15px;font-weight:800;padding:16px;border-radius:3px;border:none;cursor:pointer;text-align:center;">QUERO POR R$ 47 AGORA →</button>
+    <p>Reconheceu o loop? <strong>Quebre ele agora por R$ 37.</strong></p>
+    <button onclick="go('s-checkout')" style="display:block;width:100%;background:var(--acid);color:var(--black);font-family:Manrope,sans-serif;font-size:15px;font-weight:800;padding:16px;border-radius:3px;border:none;cursor:pointer;text-align:center;">QUERO POR R$ 37 AGORA →</button>
   </div>
 
   <div class="ticker-w">
@@ -600,7 +424,6 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
     </div>
   </div>
 
-  <!-- CARTA: DOR -->
   <div class="carta-sec au" style="background:var(--dark);">
     <h2>VOCÊ SE<br>RECONHECEU<br><em>AQUI?</em></h2>
     <div class="dor-list">
@@ -611,7 +434,6 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
     </div>
   </div>
 
-  <!-- CARTA: TRANSFORMAÇÃO -->
   <div class="carta-sec au">
     <h2>COMO SERIA<br>SUA VIDA<br><em>SEM O LOOP</em></h2>
     <div class="transf-grid">
@@ -620,21 +442,19 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
     </div>
   </div>
 
-  <!-- CARTA: ANCORAGEM PREÇO -->
   <div class="carta-sec au" style="background:var(--dark);">
     <h2>QUANTO ESTÁ<br>TE CUSTANDO<br><em>NÃO AGIR?</em></h2>
-    <p>Uma sessão de terapia custa R$ 180. E você precisaria de várias. Um coach cobra R$ 500 por hora.</p>
+    <p>Uma sessão de terapia custa R$ 180. Um curso de produtividade custa R$ 297. Um coach cobra R$ 500 por hora.</p>
     <div class="anchor-box">
-      <p>Ou você pode entender o que te trava agora por <strong>menos que um jantar.</strong></p>
+      <p>Ou você pode entender o que te trava agora por <strong>menos que um almoço.</strong></p>
       <div class="anchor-vs">
-        <div class="anchor-item"><div class="anchor-price s">R$180</div><div class="anchor-lbl">1 sessão de terapia</div></div>
+        <div class="anchor-item"><div class="anchor-price s">R$297</div><div class="anchor-lbl">curso médio</div></div>
         <div class="anchor-div">VS</div>
-        <div class="anchor-item"><div class="anchor-price r">R$47</div><div class="anchor-lbl">Vontade de Agir</div></div>
+        <div class="anchor-item"><div class="anchor-price r">R$37</div><div class="anchor-lbl">Vontade de Agir</div></div>
       </div>
     </div>
   </div>
 
-  <!-- CARTA: PRODUTO -->
   <div class="carta-sec au">
     <h2>O QUE VOCÊ<br>VAI <em>RECEBER</em></h2>
     <div class="ebook-box">
@@ -658,28 +478,71 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
     <h2>+ 5 BÔNUS<br><em>EXCLUSIVOS</em></h2>
     <p class="bonus-sub">Incluídos sem custo extra. <strong>Só pra quem comprar hoje.</strong></p>
     <div class="bonus-list">
-      <div class="bonus-item"><span class="bonus-icon">⚡</span><div class="bonus-info"><h4>Guia de Emergência — 5 Passos</h4><p>PDF de bolso pra usar no momento exato em que a trava aparecer. Sai do bloqueio em menos de 3 minutos.</p><span class="bonus-tag">Bônus 01 · Valor: R$ 27</span></div></div>
-      <div class="bonus-item"><span class="bonus-icon">📓</span><div class="bonus-info"><h4>Diário de 30 Dias — Quebrando o Loop</h4><p>Uma pergunta por dia. 30 perguntas criadas pra te ajudar a identificar seus gatilhos e padrões ao longo de um mês.</p><span class="bonus-tag">Bônus 02 · Valor: R$ 37</span></div></div>
-      <div class="bonus-item"><span class="bonus-icon">🧠</span><div class="bonus-info"><h4>Mapa Mental do Loop</h4><p>Visual completo do ciclo ansiedade → evitação → culpa com os pontos exatos de interrupção. Deixa fixado na parede ou na tela.</p><span class="bonus-tag">Bônus 03 · Valor: R$ 17</span></div></div>
-      <div class="bonus-item"><span class="bonus-icon">🌙</span><div class="bonus-info"><h4>Rotina Noturna Anti-Loop</h4><p>O que fazer nos últimos 10 minutos antes de dormir pra acordar com menos ansiedade e mais clareza no dia seguinte.</p><span class="bonus-tag">Bônus 04 · Valor: R$ 17</span></div></div>
-      <div class="bonus-item"><span class="bonus-icon">🎯</span><div class="bonus-info"><h4>Checklist Semanal de Progresso</h4><p>Acompanhe seus avanços semana a semana — sem cobrança, sem perfeição. Só pra ver o quanto você avançou.</p><span class="bonus-tag">Bônus 05 · Valor: R$ 17</span></div></div>
+      <div class="bonus-item">
+        <span class="bonus-icon">⚡</span>
+        <div class="bonus-info">
+          <h4>Guia de Emergência — 5 Passos</h4>
+          <p>PDF de bolso pra usar no momento exato em que a trava aparecer. Você abre, segue os 5 passos e sai do bloqueio em menos de 3 minutos.</p>
+          <span class="bonus-tag">Bônus 01 · Valor: R$ 27</span>
+        </div>
+      </div>
+      <div class="bonus-item">
+        <span class="bonus-icon">📓</span>
+        <div class="bonus-info">
+          <h4>Diário de 30 Dias — Quebrando o Loop</h4>
+          <p>Uma pergunta por dia. 30 perguntas criadas pra te ajudar a identificar seus gatilhos, padrões e progressos ao longo de um mês.</p>
+          <span class="bonus-tag">Bônus 02 · Valor: R$ 37</span>
+        </div>
+      </div>
+      <div class="bonus-item">
+        <span class="bonus-icon">🧠</span>
+        <div class="bonus-info">
+          <h4>Mapa Mental do Loop</h4>
+          <p>Um visual completo do ciclo ansiedade → evitação → culpa com os pontos exatos de interrupção. Deixa fixado na parede ou na tela do celular.</p>
+          <span class="bonus-tag">Bônus 03 · Valor: R$ 17</span>
+        </div>
+      </div>
+      <div class="bonus-item">
+        <span class="bonus-icon">🌙</span>
+        <div class="bonus-info">
+          <h4>Rotina Noturna Anti-Loop</h4>
+          <p>O que fazer nos últimos 10 minutos antes de dormir pra acordar com menos ansiedade e mais clareza no dia seguinte. Simples e funciona.</p>
+          <span class="bonus-tag">Bônus 04 · Valor: R$ 17</span>
+        </div>
+      </div>
+      <div class="bonus-item">
+        <span class="bonus-icon">🎯</span>
+        <div class="bonus-info">
+          <h4>Checklist Semanal de Progresso</h4>
+          <p>Uma folha de acompanhamento pra você marcar seus avanços semana a semana — sem cobrança, sem perfeição. Só pra ver o quanto você avançou.</p>
+          <span class="bonus-tag">Bônus 05 · Valor: R$ 17</span>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- DEPOIMENTOS ESTILO PRINT -->
+  <!-- DEPOIMENTOS -->
   <div class="carta-sec au" style="background:var(--dark);">
-    <h2>QUEM COMPROU<br><em>AGIU 💪</em></h2>
+    <h2>QUEM COMPROU<br><em>AGIU</em> 💪</h2>
 
+    <!-- URGÊNCIA SOCIAL -->
     <div class="urgencia-social">
       <div class="us-dot"></div>
       <p><strong>47 pessoas</strong> compraram o Vontade de Agir nas últimas 3 horas.</p>
     </div>
 
     <div class="deps-new">
+
       <div class="dep-new">
         <div class="dep-comprou"><span>💪</span> Mariana Silva comprou e agiu</div>
         <div class="dep-new-body">
-          <div class="dep-new-header"><div class="dep-avatar" style="background:#C8F400;">M</div><div class="dep-name-wrap"><span class="dep-new-name">Mariana Silva</span><span class="dep-new-verified">✓ Compra verificada</span></div></div>
+          <div class="dep-new-header">
+            <div class="dep-avatar" style="background:#C8F400;">M</div>
+            <div class="dep-name-wrap">
+              <span class="dep-new-name">Mariana Silva</span>
+              <span class="dep-new-verified">✓ Compra verificada</span>
+            </div>
+          </div>
           <div class="dep-new-stars">★★★★★</div>
           <p class="dep-new-txt">"Li numa tarde e fiquei em silêncio depois. <strong>Fez sentido de um jeito que nenhum vídeo de produtividade fez.</strong> Alguém finalmente entendeu o que acontece comigo."</p>
         </div>
@@ -688,21 +551,34 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
       <div class="dep-new">
         <div class="dep-comprou"><span>💪</span> Lucas Ferreira comprou e agiu</div>
         <div class="dep-new-body">
-          <div class="dep-new-header"><div class="dep-avatar" style="background:#A8D4FF;">L</div><div class="dep-name-wrap"><span class="dep-new-name">Lucas Ferreira</span><span class="dep-new-verified">✓ Compra verificada</span></div></div>
+          <div class="dep-new-header">
+            <div class="dep-avatar" style="background:#A8D4FF;">L</div>
+            <div class="dep-name-wrap">
+              <span class="dep-new-name">Lucas Ferreira</span>
+              <span class="dep-new-verified">✓ Compra verificada</span>
+            </div>
+          </div>
           <div class="dep-new-stars">★★★★★</div>
           <p class="dep-new-txt">"Tentei de tudo — Pomodoro, GTD, coach online. Esse foi o único que <strong>foi direto no problema de verdade</strong>, não só nos sintomas. Diferença absurda."</p>
         </div>
       </div>
 
+      <!-- URGÊNCIA NO MEIO -->
       <div class="urgencia-social">
         <div class="us-dot"></div>
-        <p>Preço de R$ 47 <strong>válido por tempo limitado.</strong> Sobe pra R$ 97 em breve.</p>
+        <p>Preço de R$ 37 <strong>válido por tempo limitado.</strong> Sobe pra R$ 97 em breve.</p>
       </div>
 
       <div class="dep-new">
         <div class="dep-comprou"><span>💪</span> Juliana Matos comprou e agiu</div>
         <div class="dep-new-body">
-          <div class="dep-new-header"><div class="dep-avatar" style="background:#FFB3C1;">J</div><div class="dep-name-wrap"><span class="dep-new-name">Juliana Matos</span><span class="dep-new-verified">✓ Compra verificada</span></div></div>
+          <div class="dep-new-header">
+            <div class="dep-avatar" style="background:#FFB3C1;">J</div>
+            <div class="dep-name-wrap">
+              <span class="dep-new-name">Juliana Matos</span>
+              <span class="dep-new-verified">✓ Compra verificada</span>
+            </div>
+          </div>
           <div class="dep-new-stars">★★★★★</div>
           <p class="dep-new-txt">"O capítulo sobre culpa foi o mais importante que já li. <strong>O problema não era eu — era o loop.</strong> Isso muda tudo na forma de se enxergar."</p>
         </div>
@@ -711,16 +587,28 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
       <div class="dep-new">
         <div class="dep-comprou"><span>💪</span> Rafael Costa Mendes comprou e agiu</div>
         <div class="dep-new-body">
-          <div class="dep-new-header"><div class="dep-avatar" style="background:#FFD580;">R</div><div class="dep-name-wrap"><span class="dep-new-name">Rafael Costa Mendes</span><span class="dep-new-verified">✓ Compra verificada</span></div></div>
+          <div class="dep-new-header">
+            <div class="dep-avatar" style="background:#FFD580;">R</div>
+            <div class="dep-name-wrap">
+              <span class="dep-new-name">Rafael Costa Mendes</span>
+              <span class="dep-new-verified">✓ Compra verificada</span>
+            </div>
+          </div>
           <div class="dep-new-stars">★★★★★</div>
-          <p class="dep-new-txt">"Comprei sem expectativa. No capítulo 4 já estava aplicando. <strong>Simples, direto, sem enrolação.</strong> Valeu muito mais que R$ 47."</p>
+          <p class="dep-new-txt">"Comprei sem expectativa. No capítulo 4 já estava aplicando. <strong>Simples, direto, sem enrolação.</strong> Valeu muito mais que R$ 37."</p>
         </div>
       </div>
 
       <div class="dep-new">
         <div class="dep-comprou"><span>💪</span> Camila Rodrigues comprou e agiu</div>
         <div class="dep-new-body">
-          <div class="dep-new-header"><div class="dep-avatar" style="background:#B5EAD7;">C</div><div class="dep-name-wrap"><span class="dep-new-name">Camila Rodrigues</span><span class="dep-new-verified">✓ Compra verificada</span></div></div>
+          <div class="dep-new-header">
+            <div class="dep-avatar" style="background:#B5EAD7;">C</div>
+            <div class="dep-name-wrap">
+              <span class="dep-new-name">Camila Rodrigues</span>
+              <span class="dep-new-verified">✓ Compra verificada</span>
+            </div>
+          </div>
           <div class="dep-new-stars">★★★★★</div>
           <p class="dep-new-txt">"Tinha dias que não conseguia fazer nada e me odiava por isso. Agora <strong>entendo o que está acontecendo</strong> — e isso muda tudo. Compartilhei com três amigas."</p>
         </div>
@@ -729,20 +617,28 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
       <div class="dep-new">
         <div class="dep-comprou"><span>💪</span> Thiago Almeida comprou e agiu</div>
         <div class="dep-new-body">
-          <div class="dep-new-header"><div class="dep-avatar" style="background:#D4A5F5;">T</div><div class="dep-name-wrap"><span class="dep-new-name">Thiago Almeida</span><span class="dep-new-verified">✓ Compra verificada</span></div></div>
+          <div class="dep-new-header">
+            <div class="dep-avatar" style="background:#D4A5F5;">T</div>
+            <div class="dep-name-wrap">
+              <span class="dep-new-name">Thiago Almeida</span>
+              <span class="dep-new-verified">✓ Compra verificada</span>
+            </div>
+          </div>
           <div class="dep-new-stars">★★★★★</div>
           <p class="dep-new-txt">"Eu sempre achei que era só falta de disciplina. Depois de ler entendi que <strong>o problema era emocional — não organizacional.</strong> Mudou minha relação comigo mesmo."</p>
         </div>
       </div>
 
+      <!-- URGÊNCIA FINAL -->
       <div class="urgencia-social">
         <div class="us-dot"></div>
         <p><strong>Mais 12 pessoas</strong> estão vendo essa página agora.</p>
       </div>
+
     </div>
   </div>
 
-  <!-- OFERTA FINAL -->
+  <!-- CTA FINAL -->
   <div class="carta-sec au" id="ancora-ck">
     <h2>SUA DECISÃO<br><em>É AGORA</em></h2>
 
@@ -753,31 +649,28 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
     </div>
 
     <p>Você pode fechar e continuar no loop. <strong>Amanhã vai ser igual a hoje — e você sabe disso.</strong></p>
-
     <div class="counter-box">
       <span class="counter-lbl">Preço de lançamento encerra em</span>
       <div class="counter-time" id="counter">15:00</div>
       <p class="counter-sub">Depois sobe pra R$ 97</p>
     </div>
-
     <div class="oferta-box">
       <p class="of-de">De R$ 97</p>
-      <div class="of-por"><sup>R$</sup>47</div>
-      <p class="of-parcela">ou 2× de R$ 24,90 sem juros</p>
+      <div class="of-por"><sup>R$</sup>37</div>
+      <p class="of-parcela">ou 2× de R$ 19,90 sem juros</p>
       <ul class="of-items">
         <li>E-book completo — 6 capítulos</li>
-        <li>Bônus 01 — Guia de Emergência (R$ 27)</li>
-        <li>Bônus 02 — Diário de 30 Dias (R$ 37)</li>
-        <li>Bônus 03 — Mapa Mental do Loop (R$ 17)</li>
-        <li>Bônus 04 — Rotina Noturna Anti-Loop (R$ 17)</li>
-        <li>Bônus 05 — Checklist Semanal (R$ 17)</li>
+        <li>Bônus 01 — Guia de Emergência</li>
+        <li>Bônus 02 — Diário de 30 Dias</li>
+        <li>Bônus 03 — Mapa Mental do Loop</li>
+        <li>Bônus 04 — Rotina Noturna Anti-Loop</li>
+        <li>Bônus 05 — Checklist Semanal</li>
         <li>Acesso imediato em PDF · Funciona no celular</li>
       </ul>
-      <button class="btn-cta" onclick="go('s-checkout')">GARANTIR MEU ACESSO — R$ 47 →</button>
+      <button class="btn-cta" onclick="go('s-checkout')">GARANTIR MEU ACESSO — R$ 37 →</button>
       <p class="of-safe">Pix, Cartão ou Boleto · Acesso imediato</p>
       <div class="of-guar"><div class="of-guar-bar"></div><p><strong>Garantia de 7 dias.</strong> Se não gostar devolvemos 100%. Sem perguntas.</p></div>
     </div>
-
     <div class="faqs">
       <div class="faqit"><p class="faqq">Quando recebo o e-book e os bônus?</p><p class="faqa">Imediatamente. O link chega no e-mail em até 5 minutos com tudo incluído.</p></div>
       <div class="faqit"><p class="faqq">Funciona no celular?</p><p class="faqa">Sim. PDF — você lê onde e quando quiser.</p></div>
@@ -792,9 +685,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     S5 — UPSELL
-══════════════════════════════════ -->
+<!-- ══ S5 UPSELL ══ -->
 <div class="screen" id="s-upsell">
   <div class="upsell-confirm au on d1">Compra confirmada — seu e-book está a caminho</div>
   <h2 class="au on d2">ESPERA —<br><em>UMA OFERTA<br>SÓ PRA VOCÊ</em></h2>
@@ -814,9 +705,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
   <button class="btn-ghost" onclick="go('s-downsell')">Não, prefiro só o e-book por agora</button>
 </div>
 
-<!-- ══════════════════════════════════
-     S6 — DOWNSELL
-══════════════════════════════════ -->
+<!-- ══ S6 DOWNSELL ══ -->
 <div class="screen" id="s-downsell">
   <span class="ds-tag au on">Última chance</span>
   <h2 class="au on d2">E SE A<br>TRAVA BATER<br><em>HOJE?</em></h2>
@@ -836,25 +725,21 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     S7 — CHECKOUT EXIT DOWNSELL
-══════════════════════════════════ -->
+<!-- ══ S7 DOWNSELL CHECKOUT ══ -->
 <div class="screen" id="s-checkout-exit">
   <span class="exit-tag au on">Espera — antes de ir embora</span>
   <h2 class="au on d2">E SE EU TE<br>DESSE AGORA<br><em>POR AINDA<br>MENOS?</em></h2>
-  <p class="exit-sub au on d3">Você estava prestes a sair. Mas e se o preço não fosse o problema? <strong>Aceita R$ 37 pelo e-book completo + bônus — só agora, só pra você.</strong></p>
+  <p class="exit-sub au on d3">Você estava prestes a sair. Mas e se o preço não fosse o problema? <strong>Aceita R$ 27 pelo e-book completo — só agora, só pra você.</strong></p>
   <div class="exit-card au on d4">
-    <p class="exit-de">De R$ 47</p>
-    <div class="exit-por"><sup>R$</sup>37</div>
+    <p class="exit-de">De R$ 37</p>
+    <div class="exit-por"><sup>R$</sup>27</div>
     <p class="exit-desc">Mesmo e-book completo. Mesmos 6 capítulos. Mesmos 5 bônus. Mesma garantia de 7 dias. Só o preço mudou — e só agora.</p>
-    <button class="btn-cta" onclick="go('s-thanks')">QUERO POR R$ 37 AGORA →</button>
+    <button class="btn-cta" onclick="go('s-thanks')">QUERO POR R$ 27 AGORA →</button>
     <button class="btn-ghost" onclick="go('s-thanks')" style="color:#444;border-color:transparent;">Não, prefiro perder essa oferta</button>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     S8 — CHECKOUT
-══════════════════════════════════ -->
+<!-- ══ S8 CHECKOUT ══ -->
 <div class="screen" id="s-checkout">
   <div class="ckhdr"><p>PAGAMENTO 100% SEGURO · ACESSO IMEDIATO</p></div>
   <div class="ckbody">
@@ -862,8 +747,8 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
     <p class="cksub au on d2">Você está a um passo de sair do loop.</p>
     <div class="order-box au on d3">
       <div class="orow"><span class="olbl">Vontade de Agir + 5 Bônus</span><span class="oval s">R$ 97</span></div>
-      <div class="orow"><span class="olbl">Desconto de lançamento</span><span class="oval" style="color:var(--acid)">−R$ 50</span></div>
-      <div class="orow total"><span class="olbl">Total hoje</span><span class="oval">R$ 47</span></div>
+      <div class="orow"><span class="olbl">Desconto de lançamento</span><span class="oval" style="color:var(--acid)">−R$ 60</span></div>
+      <div class="orow total"><span class="olbl">Total hoje</span><span class="oval">R$ 37</span></div>
     </div>
     <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#666;margin-bottom:10px;" class="au on d3">Forma de pagamento</p>
     <div class="pay-methods au on d3">
@@ -878,283 +763,103 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
       <div class="fgrp"><label class="flbl">Número do cartão</label><input class="finput" type="text" placeholder="0000 0000 0000 0000"></div>
       <div class="frow"><div class="fgrp"><label class="flbl">Validade</label><input class="finput" type="text" placeholder="MM/AA"></div><div class="fgrp"><label class="flbl">CVV</label><input class="finput" type="text" placeholder="000"></div></div>
     </div>
-    <!-- PROCESSANDO (oculto por padrão) -->
-    <div class="processando" id="processando">
-      <div class="proc-spinner"></div>
-      <p class="proc-txt">PROCESSANDO...</p>
-    </div>
-    <button class="ckpaybtn au on d5" id="btn-pagar" onclick="processarPagamento()">PAGAR R$ 47 — ACESSO IMEDIATO</button>
+    <button class="ckpaybtn au on d5" onclick="go('s-upsell')">PAGAR R$ 37 — ACESSO IMEDIATO</button>
     <div class="cksafe au on d5"><span>🔒</span><p>Compra protegida · SSL · Dados criptografados</p></div>
     <div class="ckguar au on d5"><p><strong>Garantia de 7 dias.</strong> Devolução de 100% sem perguntas.</p></div>
     <button class="btn-exit" onclick="go('s-checkout-exit')">Não quero — sair sem comprar</button>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     S9 — OBRIGADO
-══════════════════════════════════ -->
+<!-- ══ S9 OBRIGADO ══ -->
 <div class="screen" id="s-thanks">
   <div class="thanks-line"></div>
   <h1 class="au on d1">TUDO<br><em>CERTO.</em></h1>
-  <p class="thanks-sub au on d2"><strong>Seu pedido foi confirmado.</strong> Em alguns minutos você vai receber o link de acesso no seu e-mail com o e-book e todos os bônus.</p>
+  <p class="thanks-sub au on d2"><strong>Seu pedido foi confirmado.</strong> Em alguns minutos você vai receber o link de acesso no seu e-mail.</p>
   <div class="steps-list au on d3">
-    <div class="tstep"><span class="tstepn">1</span><p><strong>Verifique seu e-mail</strong> — incluindo spam. O link chega em até 5 minutos com tudo incluído.</p></div>
+    <div class="tstep"><span class="tstepn">1</span><p><strong>Verifique seu e-mail</strong> — incluindo spam. O link chega em até 5 minutos com o e-book e todos os bônus.</p></div>
     <div class="tstep"><span class="tstepn">2</span><p><strong>Baixe o PDF</strong> no celular ou computador. Acesse quando e onde quiser.</p></div>
     <div class="tstep"><span class="tstepn">3</span><p><strong>Comece pelo Capítulo 1.</strong> 20 minutos que mudam como você enxerga o loop.</p></div>
   </div>
   <p class="thanks-foot au on d4">Qualquer dúvida: <strong>contato@vontadedeagir.com</strong></p>
 </div>
 
-<!-- ══════════════════════════════════
-     JAVASCRIPT
-══════════════════════════════════ -->
 <script>
-// ── DADOS DO QUIZ ──
-const ans = {}; // {questao: opcao (1-4)}
-const TOTAL = 10;
+const ans={};
+const TOTAL=10;
+let countSecs=15*60,countInt=null;
 
-// ── PERFIS DINÂMICOS ──
-const perfis = {
-  procrastinador: {
-    tag: 'Seu diagnóstico',
-    titulo: 'VOCÊ É O\nPROCRASTINADOR\n<em>CULPADO.</em>',
-    desc: 'Você sabe exatamente o que precisa fazer — e não consegue começar. A culpa chega pesada, drena sua energia e piora o ciclo. <strong>Não é preguiça. É um loop de evitação e autopunição</strong> que se alimenta sozinho.',
-    bars: [
-      {lbl:'Procrastinação crônica', val:'94%', w:'94%'},
-      {lbl:'Culpa paralisante',      val:'88%', w:'88%'},
-      {lbl:'Autossabotagem',         val:'82%', w:'82%'},
-      {lbl:'Desânimo acumulado',     val:'70%', w:'70%'},
-    ]
-  },
-  ansioso: {
-    tag: 'Seu diagnóstico',
-    titulo: 'VOCÊ ESTÁ\nPARISADO PELA\n<em>ANSIEDADE.</em>',
-    desc: 'Sua mente acelera antes de você começar qualquer coisa. A ansiedade chega antes da tarefa e paralisa antes de você fazer qualquer movimento. <strong>Não é fraqueza. É um loop emocional</strong> que bloqueia a ação antes que ela aconteça.',
-    bars: [
-      {lbl:'Loop de ansiedade',      val:'96%', w:'96%'},
-      {lbl:'Paralisia antes de agir',val:'90%', w:'90%'},
-      {lbl:'Evitação defensiva',     val:'84%', w:'84%'},
-      {lbl:'Culpa acumulada',        val:'75%', w:'75%'},
-    ]
-  },
-  desanimado: {
-    tag: 'Seu diagnóstico',
-    titulo: 'VOCÊ ESTÁ\nSEM ENERGIA\nPRA <em>NADA.</em>',
-    desc: 'Não é preguiça e não é falta de vontade. É um desânimo acumulado que apaga o gás antes de você começar. <strong>Seu sistema emocional está em modo de sobrevivência</strong> — e precisa de mais do que técnicas de produtividade.',
-    bars: [
-      {lbl:'Desânimo acumulado',     val:'95%', w:'95%'},
-      {lbl:'Falta de energia',       val:'89%', w:'89%'},
-      {lbl:'Vazio de motivação',     val:'83%', w:'83%'},
-      {lbl:'Procrastinação',         val:'72%', w:'72%'},
-    ]
-  }
-};
-
-// ── NAVEGAÇÃO ──
-function go(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  const el = document.getElementById(id);
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const el=document.getElementById(id);
   el.classList.add('active');
-  window.scrollTo(0, 0);
-  setTimeout(() => {
-    el.querySelectorAll('.au').forEach(a => a.classList.add('on'));
-  }, 60);
-
-  // Pixel events
-  if (id === 's-vsl') {
-    fbq('track', 'ViewContent');
-    gtag('event', 'view_vsl');
-  }
-  if (id === 's-checkout') {
-    fbq('track', 'InitiateCheckout');
-    gtag('event', 'begin_checkout');
-  }
-  if (id === 's-thanks') {
-    fbq('track', 'Purchase', {value: 47, currency: 'BRL'});
-    gtag('event', 'purchase', {value: 47, currency: 'BRL'});
-  }
-
-  if (id === 's-result') {
-    calcularPerfil();
-    setTimeout(() => {
-      document.querySelectorAll('.rbarfill').forEach(b => b.style.width = b.dataset.w);
-    }, 400);
-  }
-  if (id === 's-vsl') {
-    initScrollAnim();
-    startCountdown();
-    setTimeout(() => document.getElementById('float-bar').classList.add('on'), 4000);
-  }
-  if (id === 's-checkout' || id === 's-thanks') {
-    document.getElementById('float-bar').classList.remove('on');
-  }
+  window.scrollTo(0,0);
+  setTimeout(()=>{el.querySelectorAll('.au').forEach(a=>a.classList.add('on'));},60);
+  if(id==='s-result') setTimeout(()=>{document.querySelectorAll('.rbarfill').forEach(b=>b.style.width=b.dataset.w);},400);
+  if(id==='s-vsl'){initScrollAnim();startCountdown();setTimeout(()=>document.getElementById('float-bar').classList.add('on'),4000);}
+  if(id==='s-checkout'||id==='s-thanks') document.getElementById('float-bar').classList.remove('on');
 }
 
-// ── INICIAR QUIZ ──
-function startQuiz() {
-  fbq('track', 'Lead');
-  gtag('event', 'quiz_start');
-  go('s-quiz');
-  setTimeout(() => {
-    document.querySelectorAll('#s-quiz .au').forEach(a => a.classList.add('on'));
-  }, 80);
+function initQuiz(){setTimeout(()=>{document.querySelectorAll('#s-quiz .au').forEach(a=>a.classList.add('on'));},80);}
+
+function pick(el,n){
+  el.closest('.opts').querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');ans[n]=true;
+  const nx=document.getElementById('nx'+n);if(nx)nx.classList.add('show');
 }
-
-// ── QUIZ ──
-function pick(el, qNum, opcao) {
-  el.closest('.opts').querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
-  el.classList.add('sel');
-  ans[qNum] = opcao;
-  const nx = document.getElementById('nx' + qNum);
-  if (nx) nx.classList.add('show');
+function nextQ(from,to){
+  if(!ans[from])return;
+  document.getElementById('q'+from).classList.remove('active');
+  document.getElementById('q'+to).classList.add('active');
+  const pct=Math.round((to/TOTAL)*100);
+  document.getElementById('qfill').style.width=pct+'%';
+  document.getElementById('qn').textContent=to+' / '+TOTAL;
+  document.getElementById('qpct').textContent=pct+'%';
+  window.scrollTo(0,0);
 }
+function showResult(){if(!ans[10])return;go('s-result');}
 
-function nextQ(from, to) {
-  if (!ans[from]) return;
-  document.getElementById('q' + from).classList.remove('active');
-  document.getElementById('q' + to).classList.add('active');
-  const pct = Math.round((to / TOTAL) * 100);
-  document.getElementById('qfill').style.width = pct + '%';
-  document.getElementById('qn').textContent = to + ' / ' + TOTAL;
-  document.getElementById('qpct').textContent = pct + '%';
-  window.scrollTo(0, 0);
-}
-
-function showResult() {
-  if (!ans[10]) return;
-  go('s-result');
-}
-
-// ── CALCULAR PERFIL ──
-function calcularPerfil() {
-  let c1=0, c2=0, c3=0, c4=0;
-  Object.values(ans).forEach(v => {
-    if (v===1) c1++;
-    else if (v===2) c2++;
-    else if (v===3) c3++;
-    else if (v===4) c4++;
-  });
-
-  let perfil;
-  if (c2 >= c1 && c2 >= c3 && c2 >= c4) perfil = 'ansioso';
-  else if (c3 >= c1 && c3 >= c4) perfil = 'desanimado';
-  else perfil = 'procrastinador';
-
-  const p = perfis[perfil];
-
-  document.getElementById('res-tag').textContent = p.tag;
-  document.getElementById('res-titulo').innerHTML = p.titulo.replace(/\n/g,'<br>');
-  document.getElementById('res-desc').innerHTML = p.desc;
-
-  const bars = document.querySelectorAll('.rbarfill');
-  const lbls = document.querySelectorAll('.rbarlbl');
-  const vals = document.querySelectorAll('.rbarval');
-  p.bars.forEach((b, i) => {
-    if (bars[i]) bars[i].dataset.w = b.w;
-    if (lbls[i]) lbls[i].textContent = b.lbl;
-    if (vals[i]) vals[i].textContent = b.val;
-  });
-}
-
-// ── VSL PLAYER ──
-function playVSL() {
-  const ph = document.getElementById('vsl-placeholder');
-  const wrap = document.getElementById('vsl-iframe-wrap');
-  const iframe = document.getElementById('vsl-iframe');
+function playVSL(){
+  const ph=document.getElementById('vsl-placeholder');
+  const wrap=document.getElementById('vsl-iframe-wrap');
+  const iframe=document.getElementById('vsl-iframe');
   ph.classList.add('hide');
-  wrap.style.display = 'block';
-  iframe.src = iframe.dataset.src;
-
-  // 90 segundos · CTA aos 45s
-  let secs = 0;
-  const midCta = document.getElementById('vsl-mid-cta');
-  const prog = document.getElementById('vsl-prog');
-  const t = setInterval(() => {
+  wrap.style.display='block';
+  iframe.src=iframe.dataset.src;
+  let secs=0;
+  const midCta=document.getElementById('vsl-mid-cta');
+  const prog=document.getElementById('vsl-prog');
+  const t=setInterval(()=>{
     secs++;
-    if (prog) prog.style.width = Math.min((secs / 90) * 100, 100) + '%';
-    if (secs === 45 && midCta && !midCta.classList.contains('show')) {
-      midCta.classList.add('show');
-    }
-    if (secs >= 90) clearInterval(t);
-  }, 1000);
+    if(prog) prog.style.width=Math.min((secs/120)*100,100)+'%';
+    if(secs===60&&midCta&&!midCta.classList.contains('show')) midCta.classList.add('show');
+    if(secs>=120) clearInterval(t);
+  },1000);
 }
 
-// ── PROCESSAMENTO CHECKOUT ──
-function processarPagamento() {
-  const btn = document.getElementById('btn-pagar');
-  const proc = document.getElementById('processando');
-  btn.style.display = 'none';
-  proc.classList.add('show');
-  setTimeout(() => {
-    proc.classList.remove('show');
-    btn.style.display = 'block';
-    go('s-upsell');
-  }, 1500);
+function selPay(el){document.querySelectorAll('.paym').forEach(p=>p.classList.remove('active'));el.classList.add('active');}
+
+function startCountdown(){
+  if(countInt)return;
+  countInt=setInterval(()=>{
+    countSecs--;if(countSecs<=0){countSecs=0;clearInterval(countInt);}
+    const m=String(Math.floor(countSecs/60)).padStart(2,'0');
+    const s=String(countSecs%60).padStart(2,'0');
+    const txt=m+':'+s;
+    const c=document.getElementById('counter');
+    const fb=document.getElementById('fb-timer');
+    if(c) c.textContent=txt;
+    if(fb) fb.textContent=txt;
+    if(countSecs<=60&&c) c.style.color='#FF4444';
+  },1000);
 }
 
-// ── CHECKOUT PAGAMENTO ──
-function selPay(el) {
-  document.querySelectorAll('.paym').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-}
-
-// ── TIMER PERSISTENTE (localStorage) ──
-let countInt = null;
-
-function startCountdown() {
-  if (countInt) return;
-
-  const KEY = 'vda_timer_end';
-  let endTime = localStorage.getItem(KEY);
-
-  if (!endTime) {
-    endTime = Date.now() + 15 * 60 * 1000;
-    localStorage.setItem(KEY, endTime);
-  } else {
-    endTime = parseInt(endTime);
-    // Se já expirou, reseta
-    if (endTime <= Date.now()) {
-      endTime = Date.now() + 15 * 60 * 1000;
-      localStorage.setItem(KEY, endTime);
-    }
-  }
-
-  function tick() {
-    const remaining = Math.max(0, endTime - Date.now());
-    const m = String(Math.floor(remaining / 60000)).padStart(2, '0');
-    const s = String(Math.floor((remaining % 60000) / 1000)).padStart(2, '0');
-    const txt = m + ':' + s;
-
-    const c = document.getElementById('counter');
-    const fb = document.getElementById('fb-timer');
-    if (c) c.textContent = txt;
-    if (fb) fb.textContent = txt;
-
-    if (remaining <= 60000 && c) c.style.color = '#FF4444';
-
-    if (remaining <= 0) {
-      clearInterval(countInt);
-      localStorage.removeItem(KEY);
-    }
-  }
-
-  tick();
-  countInt = setInterval(tick, 1000);
-}
-
-// ── SCROLL ANIMATIONS NA VSL ──
-let obs = null;
-function initScrollAnim() {
-  if (obs) return;
-  obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('on');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('#s-vsl .au').forEach(el => obs.observe(el));
+let obs=null;
+function initScrollAnim(){
+  if(obs)return;
+  obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
+  },{threshold:0.08});
+  document.querySelectorAll('#s-vsl .au').forEach(el=>obs.observe(el));
 }
 </script>
 </body>
