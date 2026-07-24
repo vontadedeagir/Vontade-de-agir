@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Vontade de Agir</title>
-
-<!-- META PIXEL -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -15,7 +13,6 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1063480819537218');
 fbq('track','PageView');
 </script>
-
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -26,36 +23,38 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes pisca{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes popUp{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:translateY(0)}}
 .au{opacity:0;animation:fadeUp .5s ease .1s forwards;}
-
 .btn-cta{display:block;width:100%;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;padding:20px;border-radius:3px;border:none;cursor:pointer;text-align:center;letter-spacing:.3px;animation:pulse 2.5s infinite;}
 .eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--acid);display:block;margin-bottom:14px;}
 
 /* FLOAT BAR */
-.float-bar{position:fixed;bottom:0;left:0;right:0;background:#08080A;border-top:1px solid rgba(200,244,0,.2);padding:10px 18px;z-index:999;display:flex;gap:10px;align-items:center;}
+.float-bar{position:fixed;bottom:0;left:0;right:0;background:#08080A;border-top:1px solid rgba(200,244,0,.2);padding:10px 18px;z-index:998;display:flex;gap:10px;align-items:center;}
 .fb-timer{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);letter-spacing:2px;flex-shrink:0;}
 .fb-btn{flex:1;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;padding:13px;border-radius:3px;border:none;cursor:pointer;text-align:center;}
 
-/* VSL */
-.vsl-top{padding:28px 22px 20px;background:var(--dark);border-bottom:1px solid var(--border);}
-.vsl-top h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,8vw,40px);line-height:.93;letter-spacing:2px;margin-bottom:8px;}
-.vsl-top h2 em{font-style:normal;color:var(--acid);}
-.vsl-top p{font-size:15px;color:var(--text);line-height:1.65;}
-.vsl-top p strong{color:var(--white);}
-.vsl-player-wrap{position:relative;background:#000;width:100%;}
-.vsl-placeholder{width:100%;aspect-ratio:1/1;background:#0A0A0A;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.vsl-placeholder-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(60%) brightness(.3);}
-.vsl-play-btn{position:relative;z-index:2;width:72px;height:72px;border-radius:50%;background:var(--acid);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s;}
-.vsl-play-btn:active{transform:scale(.92);}
-.vsl-play-icon{width:0;height:0;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:22px solid var(--black);margin-left:4px;}
-.vsl-play-label{position:relative;z-index:2;margin-top:14px;font-size:13px;color:rgba(255,255,255,.7);letter-spacing:1px;}
-.vsl-placeholder.hide{display:none;}
-.vsl-progress{height:3px;background:var(--border);}
-.vsl-progress-fill{height:100%;background:var(--acid);width:0%;transition:width .5s linear;}
-.vsl-mid-cta{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 22px;display:none;}
-.vsl-mid-cta.show{display:block;}
-.vsl-mid-cta p{font-size:14px;color:var(--text);margin-bottom:10px;line-height:1.5;}
-.vsl-mid-cta p strong{color:var(--white);}
+/* EXIT INTENT POPUP */
+.exit-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;display:none;align-items:flex-end;justify-content:center;}
+.exit-overlay.show{display:flex;}
+.exit-popup{background:var(--dark);border:1px solid var(--border);border-top:3px solid var(--acid);border-radius:12px 12px 0 0;padding:28px 22px 48px;width:100%;max-width:480px;animation:popUp .35s ease forwards;}
+.exit-tag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);display:block;margin-bottom:12px;}
+.exit-popup h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,10vw,52px);line-height:.88;letter-spacing:2px;margin-bottom:12px;}
+.exit-popup h2 em{font-style:normal;color:var(--acid);display:block;}
+.exit-popup p.exit-desc{font-size:14px;color:var(--text);line-height:1.75;margin-bottom:20px;}
+.exit-popup p.exit-desc strong{color:var(--white);}
+.exit-preco-wrap{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px;margin-bottom:20px;}
+.exit-de{font-size:12px;color:#555;text-decoration:line-through;margin-bottom:2px;}
+.exit-price{font-family:'Bebas Neue',sans-serif;font-size:60px;color:var(--white);letter-spacing:2px;line-height:1;margin-bottom:2px;}
+.exit-price sup{font-size:20px;vertical-align:super;}
+.exit-parcel{font-size:12px;color:var(--text);}
+.exit-items{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:20px;}
+.exit-items li{display:flex;gap:8px;font-size:13px;color:var(--text);}
+.exit-items li::before{content:'✓';color:var(--acid);font-weight:700;flex-shrink:0;}
+.exit-btn{display:block;width:100%;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;padding:18px;border-radius:3px;border:none;cursor:pointer;text-align:center;animation:pulse 2.5s infinite;margin-bottom:12px;}
+.exit-nao{display:block;width:100%;background:transparent;color:#555;font-family:'Manrope',sans-serif;font-size:12px;padding:10px;border:none;cursor:pointer;text-align:center;text-decoration:underline;}
+.exit-guar{font-size:11px;color:#555;text-align:center;margin-top:6px;}
+
+/* TICKER */
 .ticker-w{background:var(--acid);overflow:hidden;padding:10px 0;white-space:nowrap;}
 .ticker-i{display:inline-flex;animation:ticker 14s linear infinite;}
 .tit{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--black);padding:0 18px;}
@@ -101,8 +100,6 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .capn{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--acid);flex-shrink:0;line-height:1.1;min-width:26px;}
 .cap h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:2px;}
 .cap p{font-size:14px;color:var(--text);line-height:1.6;}
-
-/* BÔNUS */
 .bonus-sec{padding:40px 22px;background:var(--dark);border-top:1px solid var(--border);}
 .bonus-sec h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,8vw,42px);line-height:.92;letter-spacing:2px;margin-bottom:6px;}
 .bonus-sec h2 em{font-style:normal;color:var(--acid);}
@@ -114,8 +111,6 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .bonus-info h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;}
 .bonus-info p{font-size:13px;color:var(--text);line-height:1.6;}
 .bonus-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:rgba(200,244,0,.1);color:var(--acid);padding:3px 8px;border-radius:2px;margin-top:6px;}
-
-/* DEPOIMENTOS */
 .deps-new{display:flex;flex-direction:column;gap:12px;margin:14px 0;}
 .dep-new{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
 .dep-comprou{background:rgba(200,244,0,.07);border-bottom:1px solid var(--border);padding:10px 14px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--acid);font-weight:700;}
@@ -132,8 +127,6 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .us-dot{width:8px;height:8px;border-radius:50%;background:#FF4444;flex-shrink:0;animation:pisca 1.2s infinite;}
 .urgencia-social p{font-size:13px;color:var(--text);line-height:1.5;}
 .urgencia-social p strong{color:var(--white);}
-
-/* OFERTA */
 .counter-box{background:#0A0800;border:1px solid rgba(200,244,0,.15);border-radius:6px;padding:14px 16px;margin:14px 0;text-align:center;}
 .counter-lbl{font-size:12px;color:var(--acid);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;display:block;}
 .counter-time{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--white);letter-spacing:4px;line-height:1;}
@@ -156,7 +149,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .faqit{background:var(--card);padding:16px;}
 .faqq{font-size:15px;font-weight:700;color:var(--white);margin-bottom:6px;}
 .faqa{font-size:14px;color:var(--text);line-height:1.7;}
-.cfooter{background:var(--black);border-top:1px solid var(--border);padding:22px;text-align:center;}
+.cfooter{background:var(--black);border-top:1px solid var(--border);padding:22px;text-align:center;padding-bottom:80px;}
 .cfooter p{font-size:13px;color:#777;line-height:1.7;}
 .flogo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;margin-bottom:4px;}
 .flogo em{font-style:normal;color:var(--acid);}
@@ -164,35 +157,47 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 </head>
 <body>
 
+<!-- ══ EXIT INTENT POPUP ══ -->
+<div class="exit-overlay" id="exit-overlay">
+  <div class="exit-popup">
+    <span class="exit-tag">⚠️ Espera — oferta exclusiva</span>
+    <h2>ANTES DE<br>IR EMBORA,<br><em>R$ 37<br>POR TUDO.</em></h2>
+    <p class="exit-desc">Você estava prestes a sair. Mas e se o preço fosse o problema? <strong>Leva o e-book completo + todos os 5 bônus por R$ 37 — só agora, só pra você.</strong></p>
+    <div class="exit-preco-wrap">
+      <p class="exit-de">De R$ 47</p>
+      <div class="exit-price"><sup>R$</sup>37</div>
+      <p class="exit-parcel">Pix, Cartão ou Boleto · Acesso imediato</p>
+    </div>
+    <ul class="exit-items">
+      <li>E-book completo — 6 capítulos</li>
+      <li>Bônus 01 — Guia de Emergência</li>
+      <li>Bônus 02 — Diário de 30 Dias</li>
+      <li>Bônus 03 — Mapa Mental do Loop</li>
+      <li>Bônus 04 — Rotina Noturna Anti-Loop</li>
+      <li>Bônus 05 — Checklist Semanal</li>
+    </ul>
+    <button class="exit-btn" onclick="irCheckoutExit()">QUERO POR R$ 37 AGORA →</button>
+    <button class="exit-nao" onclick="fecharPopup()">Não, prefiro perder essa oferta</button>
+    <p class="exit-guar">🔒 Garantia de 7 dias · Devolução 100% sem perguntas</p>
+  </div>
+</div>
+
 <!-- FLOAT BAR -->
 <div class="float-bar">
   <span class="fb-timer" id="fb-timer">15:00</span>
   <button class="fb-btn" onclick="irCheckout()">GARANTIR R$ 47 →</button>
 </div>
 
-<!-- HERO DE ABERTURA -->
+<!-- HERO -->
 <div style="background:var(--dark);padding:36px 22px 32px;border-bottom:1px solid var(--border);">
   <span class="eyebrow au">Resultado do seu diagnóstico</span>
   <h1 class="au" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,13vw,72px);line-height:.86;letter-spacing:2px;margin-bottom:16px;">VOCÊ NÃO<br>É PREGUIÇOSO.<br><span style="color:var(--acid);">VOCÊ ESTÁ<br>PRESO NUM<br>LOOP.</span></h1>
   <p class="au" style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:24px;">Ansiedade gera evitação. Evitação gera culpa. Culpa gera mais ansiedade. <strong style="color:var(--white);">Esse ciclo roda sozinho todo dia — e ninguém te ensinou como quebrá-lo.</strong></p>
-
-  <!-- MINI PROVA SOCIAL -->
   <div class="au" style="display:flex;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin-bottom:24px;">
-    <div style="flex:1;background:var(--card);padding:14px 10px;text-align:center;">
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--acid);line-height:1;display:block;">4.8K</span>
-      <span style="font-size:11px;color:#888;display:block;margin-top:3px;">já descobriram</span>
-    </div>
-    <div style="flex:1;background:var(--card);padding:14px 10px;text-align:center;">
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--acid);line-height:1;display:block;">2h</span>
-      <span style="font-size:11px;color:#888;display:block;margin-top:3px;">de leitura</span>
-    </div>
-    <div style="flex:1;background:var(--card);padding:14px 10px;text-align:center;">
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--acid);line-height:1;display:block;">7d</span>
-      <span style="font-size:11px;color:#888;display:block;margin-top:3px;">de garantia</span>
-    </div>
+    <div style="flex:1;background:var(--card);padding:14px 10px;text-align:center;"><span style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--acid);line-height:1;display:block;">4.8K</span><span style="font-size:11px;color:#888;display:block;margin-top:3px;">já descobriram</span></div>
+    <div style="flex:1;background:var(--card);padding:14px 10px;text-align:center;"><span style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--acid);line-height:1;display:block;">2h</span><span style="font-size:11px;color:#888;display:block;margin-top:3px;">de leitura</span></div>
+    <div style="flex:1;background:var(--card);padding:14px 10px;text-align:center;"><span style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--acid);line-height:1;display:block;">7d</span><span style="font-size:11px;color:#888;display:block;margin-top:3px;">de garantia</span></div>
   </div>
-
-  <!-- CTA HERO -->
   <button class="btn-cta au" onclick="irCheckout()">QUERO QUEBRAR O LOOP — R$ 47 →</button>
   <p class="au" style="font-size:12px;color:#555;text-align:center;margin-top:10px;">Pix, Cartão ou Boleto · Acesso imediato · Garantia de 7 dias</p>
 </div>
@@ -316,7 +321,6 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
       <li>Bônus 05 — Checklist Semanal (R$ 17)</li>
       <li>Acesso imediato em PDF · Funciona no celular</li>
     </ul>
-    <!-- CTA → dispara InitiateCheckout e vai pro link da Kirvano -->
     <button class="btn-cta" onclick="irCheckout()">GARANTIR MEU ACESSO — R$ 47 →</button>
     <p class="of-safe">Pix, Cartão ou Boleto · Acesso imediato</p>
     <div class="of-guar"><div class="of-guar-bar"></div><p><strong>Garantia de 7 dias.</strong> Se não gostar devolvemos 100%. Sem perguntas.</p></div>
@@ -335,7 +339,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 </div>
 
 <script>
-// Timer persistente com localStorage
+// ── TIMER PERSISTENTE ──
 const KEY = 'vda_timer_end';
 let endTime = localStorage.getItem(KEY);
 if (!endTime || parseInt(endTime) <= Date.now()) {
@@ -344,7 +348,6 @@ if (!endTime || parseInt(endTime) <= Date.now()) {
 } else {
   endTime = parseInt(endTime);
 }
-
 setInterval(() => {
   const rem = Math.max(0, endTime - Date.now());
   const m = String(Math.floor(rem/60000)).padStart(2,'0');
@@ -358,28 +361,58 @@ setInterval(() => {
   if(rem <= 0) localStorage.removeItem(KEY);
 }, 1000);
 
-// VSL — 90 segundos, CTA aos 45s
-function playVSL() {
-  document.getElementById('vsl-placeholder').classList.add('hide');
-  const wrap = document.getElementById('vsl-iframe-wrap');
-  const iframe = document.getElementById('vsl-iframe');
-  wrap.style.display = 'block';
-  iframe.src = iframe.dataset.src;
-  let secs = 0;
-  const midCta = document.getElementById('vsl-mid-cta');
-  const prog = document.getElementById('vsl-prog');
-  const t = setInterval(() => {
-    secs++;
-    if(prog) prog.style.width = Math.min((secs/90)*100,100)+'%';
-    if(secs===45 && midCta && !midCta.classList.contains('show')) midCta.classList.add('show');
-    if(secs>=90) clearInterval(t);
-  },1000);
+// ── EXIT INTENT ──
+let exitShown = false;
+let exitEnabled = false;
+
+// Habilita após 5 segundos na página
+setTimeout(() => { exitEnabled = true; }, 5000);
+
+// DESKTOP — mouse saindo pelo topo
+document.addEventListener('mouseleave', (e) => {
+  if (e.clientY <= 5 && !exitShown && exitEnabled) {
+    mostrarExit();
+  }
+});
+
+// MOBILE — botão voltar / visibilidade
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden' && !exitShown && exitEnabled) {
+    mostrarExit();
+  }
+});
+
+// MOBILE — toque no botão voltar via popstate
+history.pushState(null, '', location.href);
+window.addEventListener('popstate', () => {
+  if (!exitShown && exitEnabled) {
+    mostrarExit();
+    history.pushState(null, '', location.href);
+  }
+});
+
+function mostrarExit() {
+  exitShown = true;
+  document.getElementById('exit-overlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
 }
 
-// CTA → dispara InitiateCheckout e redireciona pro checkout da Kirvano
+function fecharPopup() {
+  document.getElementById('exit-overlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+// ── CTAs ──
 function irCheckout() {
-  fbq('track','InitiateCheckout');
+  fbq('track', 'InitiateCheckout');
+  // Checkout principal R$ 47
   window.location.href = 'https://pay.kiwify.com.br/Q5oBR0d';
+}
+
+function irCheckoutExit() {
+  fbq('track', 'InitiateCheckout');
+  // Checkout com desconto R$ 37 — crie na Kiwify e cole o link aqui
+  window.location.href = 'LINK_CHECKOUT_37_KIWIFY_AQUI';
 }
 </script>
 </body>
