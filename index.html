@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Vontade de Agir — Quiz</title>
-
-<!-- META PIXEL -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -15,11 +13,10 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1063480819537218');
 fbq('track','PageView');
 </script>
-
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{--black:#070707;--dark:#0E0E0E;--card:#161616;--border:#272727;--text:#C2BEB6;--soft:#D8D4CC;--white:#F0EDE6;--acid:#C8F400;--acid2:#A5CB00;}
+:root{--black:#070707;--dark:#0E0E0E;--card:#161616;--border:#272727;--text:#C2BEB6;--soft:#D8D4CC;--white:#F0EDE6;--acid:#C8F400;--acid2:#A5CB00;--red:#FF4444;}
 html,body{-webkit-font-smoothing:antialiased;}
 body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
 .screen{display:none;min-height:100vh;flex-direction:column;}
@@ -30,7 +27,6 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .d1{animation-delay:.06s!important}.d2{animation-delay:.14s!important}
 .d3{animation-delay:.22s!important}.d4{animation-delay:.30s!important}
 .d5{animation-delay:.38s!important}
-
 .btn-cta{display:block;width:100%;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;padding:20px;border-radius:3px;border:none;cursor:pointer;text-align:center;letter-spacing:.3px;animation:pulse 2.5s infinite;}
 .eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--acid);display:block;margin-bottom:14px;}
 
@@ -42,7 +38,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .intro-body{padding:16px 22px 80px;flex:1;display:flex;flex-direction:column;}
 .intro-body h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,12vw,64px);line-height:.88;letter-spacing:2px;margin-bottom:16px;}
 .intro-body h1 em{font-style:normal;color:var(--acid);display:block;}
-.intro-sub{font-size:15px;color:var(--text);line-height:1.75;margin-bottom:10px;}
+.intro-sub{font-size:15px;color:var(--text);line-height:1.75;margin-bottom:20px;}
 .intro-sub strong{color:var(--white);}
 .proof-strip{display:flex;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin-bottom:28px;}
 .proof-item{flex:1;background:var(--card);padding:14px 10px;text-align:center;}
@@ -74,11 +70,30 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .opt.sel .optt{color:var(--white);}
 .btnnxt{display:block;width:100%;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;padding:16px;border-radius:3px;border:none;cursor:pointer;margin-top:22px;opacity:0;pointer-events:none;transition:opacity .2s;}
 .btnnxt.show{opacity:1;pointer-events:all;}
+
+/* RESULTADO */
+#s-result{background:var(--black);padding:44px 22px 80px;flex-direction:column;}
+.restag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--acid);display:block;margin-bottom:18px;}
+#s-result h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,11vw,60px);line-height:.88;letter-spacing:2px;margin-bottom:16px;}
+#s-result h2 em{font-style:normal;color:var(--acid);display:block;}
+.resdesc{font-size:15px;color:var(--text);line-height:1.8;margin-bottom:28px;}
+.resdesc strong{color:var(--white);}
+.resbars{display:flex;flex-direction:column;gap:13px;margin-bottom:32px;}
+.rbarrow{display:flex;flex-direction:column;gap:5px;}
+.rbarmeta{display:flex;justify-content:space-between;}
+.rbarlbl{font-size:12px;color:var(--soft);}
+.rbarval{font-size:12px;font-weight:700;color:var(--acid);}
+.rbartrack{height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.rbarfill{height:100%;background:var(--acid);border-radius:3px;width:0;transition:width 1s cubic-bezier(.4,0,.2,1);}
+.res-cta-box{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--acid);border-radius:6px;padding:22px 18px;margin-bottom:16px;}
+.res-cta-box p{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:16px;}
+.res-cta-box p strong{color:var(--white);}
+.resnote{font-size:12px;color:#555;text-align:center;margin-top:10px;}
 </style>
 </head>
 <body>
 
-<!-- S1: INTRO -->
+<!-- ══ S1: INTRO ══ -->
 <div class="screen active" id="s-intro">
   <div class="intro-img">
     <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&q=80" alt="">
@@ -87,7 +102,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
   <div class="intro-body">
     <span class="eyebrow au on d1">Teste gratuito · 2 minutos</span>
     <h1 class="au on d2">VOCÊ SABE<br>O QUE FAZER.<br><em>E NÃO<br>CONSEGUE<br>FAZER.</em></h1>
-    <p class="intro-sub au on d3">Responda <strong>10 perguntas honestas</strong> e descubra exatamente o que está te travando.</p>
+    <p class="intro-sub au on d3">Responda <strong>10 perguntas honestas</strong> e descubra exatamente o que está te travando — e o que fazer sobre isso hoje.</p>
     <div class="proof-strip au on d4">
       <div class="proof-item"><span class="proof-num">4.8K</span><span class="proof-lbl">já fizeram</span></div>
       <div class="proof-item"><span class="proof-num">2min</span><span class="proof-lbl">pra completar</span></div>
@@ -98,160 +113,104 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
   </div>
 </div>
 
-<!-- S2: QUIZ -->
+<!-- ══ S2: QUIZ ══ -->
 <div class="screen" id="s-quiz">
   <div class="qhdr">
     <div class="qprow"><span class="qpn" id="qn">1 / 10</span><span class="qppct" id="qpct">10%</span></div>
     <div class="qptrack"><div class="qpfill" id="qfill" style="width:10%"></div></div>
   </div>
+  <div class="qslide active" id="q1"><span class="qlbl">01 / 10</span><div class="qtxt">Quando pensa em tudo que precisa fazer, como você se sente?</div><p class="qhint">Seja honesto — ninguém está te julgando aqui.</p><div class="opts"><div class="opt" onclick="pick(this,1,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Paralisado. Tanta coisa que não sei por onde começar.</span></div><div class="opt" onclick="pick(this,1,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ansioso. Fico acelerado mas não sai nada.</span></div><div class="opt" onclick="pick(this,1,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Cansado antes de começar. O gás já acabou.</span></div><div class="opt" onclick="pick(this,1,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Culpado. Sei que deveria fazer e não consigo.</span></div></div><button class="btnnxt" id="nx1" onclick="nextQ(1,2)">Continuar →</button></div>
+  <div class="qslide" id="q2"><span class="qlbl">02 / 10</span><div class="qtxt">Qual dessas frases você já falou pra si mesmo?</div><p class="qhint">Marque a que mais combina com você.</p><div class="opts"><div class="opt" onclick="pick(this,2,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Amanhã eu começo de verdade."</span></div><div class="opt" onclick="pick(this,2,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Por que eu sou tão ansioso com tudo?"</span></div><div class="opt" onclick="pick(this,2,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Não tenho energia pra nada hoje."</span></div><div class="opt" onclick="pick(this,2,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Eu sei o que fazer mas não consigo fazer."</span></div></div><button class="btnnxt" id="nx2" onclick="nextQ(2,3)">Continuar →</button></div>
+  <div class="qslide" id="q3"><span class="qlbl">03 / 10</span><div class="qtxt">Quando você procrastina, o que acontece depois?</div><p class="qhint">Pensa em como você se sente no restante do dia.</p><div class="opts"><div class="opt" onclick="pick(this,3,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me sinto um fracasso e fico me cobrando.</span></div><div class="opt" onclick="pick(this,3,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Fico mais ansioso — a tarefa parece crescer.</span></div><div class="opt" onclick="pick(this,3,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me distraio com celular pra não pensar.</span></div><div class="opt" onclick="pick(this,3,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">A culpa fica na cabeça o dia inteiro.</span></div></div><button class="btnnxt" id="nx3" onclick="nextQ(3,4)">Continuar →</button></div>
+  <div class="qslide" id="q4"><span class="qlbl">04 / 10</span><div class="qtxt">Como é o seu fim de dia na maioria das vezes?</div><p class="qhint">Pensa nos últimos 30 dias.</p><div class="opts"><div class="opt" onclick="pick(this,4,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Com a mesma lista de amanhã que tinha ontem.</span></div><div class="opt" onclick="pick(this,4,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Aliviado que acabou — mas com preocupações acumuladas.</span></div><div class="opt" onclick="pick(this,4,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Esgotado mesmo sem ter feito quase nada.</span></div><div class="opt" onclick="pick(this,4,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Com culpa pesada por ter fugido do que era importante.</span></div></div><button class="btnnxt" id="nx4" onclick="nextQ(4,5)">Continuar →</button></div>
+  <div class="qslide" id="q5"><span class="qlbl">05 / 10</span><div class="qtxt">Você já tentou alguma técnica pra se organizar?</div><p class="qhint">Marque o que você já tentou.</p><div class="opts"><div class="opt" onclick="pick(this,5,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — listas, apps, metas. Nunca durou.</span></div><div class="opt" onclick="pick(this,5,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — mas a ansiedade sempre vence antes de começar.</span></div><div class="opt" onclick="pick(this,5,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Nem tentei — não tenho energia pra isso.</span></div><div class="opt" onclick="pick(this,5,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Tentei mas a culpa de falhar me desanimou mais.</span></div></div><button class="btnnxt" id="nx5" onclick="nextQ(5,6)">Continuar →</button></div>
+  <div class="qslide" id="q6"><span class="qlbl">06 / 10</span><div class="qtxt">Como você se sente quando vê alguém avançando?</div><p class="qhint">Seja honesto — essa pergunta é importante.</p><div class="opts"><div class="opt" onclick="pick(this,6,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me pergunto por que pra mim é sempre mais difícil.</span></div><div class="opt" onclick="pick(this,6,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Fico ansioso — parece que estou ficando pra trás.</span></div><div class="opt" onclick="pick(this,6,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me sinto sem energia até pra me comparar.</span></div><div class="opt" onclick="pick(this,6,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Admiração misturada com culpa por não estar avançando.</span></div></div><button class="btnnxt" id="nx6" onclick="nextQ(6,7)">Continuar →</button></div>
+  <div class="qslide" id="q7"><span class="qlbl">07 / 10</span><div class="qtxt">Como está sua saúde mental nos últimos meses?</div><p class="qhint">Responda com calma — não tem resposta errada.</p><div class="opts"><div class="opt" onclick="pick(this,7,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Estou bem, mas algo me trava mesmo assim.</span></div><div class="opt" onclick="pick(this,7,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ansioso com frequência — às vezes sem motivo claro.</span></div><div class="opt" onclick="pick(this,7,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Desanimado — acordo sem vontade de encarar o dia.</span></div><div class="opt" onclick="pick(this,7,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Os dois — oscilo entre ansiedade e vazio.</span></div></div><button class="btnnxt" id="nx7" onclick="nextQ(7,8)">Continuar →</button></div>
+  <div class="qslide" id="q8"><span class="qlbl">08 / 10</span><div class="qtxt">O que você faz quando a tarefa parece grande demais?</div><p class="qhint">Pensa no seu comportamento real.</p><div class="opts"><div class="opt" onclick="pick(this,8,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Deixo pra amanhã prometendo que vai ser diferente.</span></div><div class="opt" onclick="pick(this,8,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Fico pensando nela de forma ansiosa sem agir.</span></div><div class="opt" onclick="pick(this,8,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Abro o celular e fico lá até o tempo passar.</span></div><div class="opt" onclick="pick(this,8,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Faço coisas menores pra parecer produtivo mas evito o que importa.</span></div></div><button class="btnnxt" id="nx8" onclick="nextQ(8,9)">Continuar →</button></div>
+  <div class="qslide" id="q9"><span class="qlbl">09 / 10</span><div class="qtxt">Você já desistiu de algo que queria por não conseguir começar?</div><p class="qhint">Pode ser um projeto, uma mudança, um sonho.</p><div class="opts"><div class="opt" onclick="pick(this,9,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — várias vezes. Ainda dói pensar nisso.</span></div><div class="opt" onclick="pick(this,9,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — a ansiedade me paralisou antes de começar.</span></div><div class="opt" onclick="pick(this,9,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Quase — estou sem energia pra continuar algo agora.</span></div><div class="opt" onclick="pick(this,9,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — e me convenço de que "não era pra ser".</span></div></div><button class="btnnxt" id="nx9" onclick="nextQ(9,10)">Continuar →</button></div>
+  <div class="qslide" id="q10"><span class="qlbl">10 / 10 — ÚLTIMA</span><div class="qtxt">Se pudesse mudar uma coisa agora, qual seria?</div><p class="qhint">Essa resposta define seu resultado.</p><div class="opts"><div class="opt" onclick="pick(this,10,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Parar de procrastinar e finalmente começar.</span></div><div class="opt" onclick="pick(this,10,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me livrar da ansiedade que me paralisa.</span></div><div class="opt" onclick="pick(this,10,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ter mais energia e disposição pra viver de verdade.</span></div><div class="opt" onclick="pick(this,10,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Parar de me sabotar e de me cobrar de um jeito que paralisa.</span></div></div><button class="btnnxt" id="nx10" onclick="mostrarResultado()">VER MEU RESULTADO →</button></div>
+</div>
 
-  <div class="qslide active" id="q1">
-    <span class="qlbl">01 / 10</span>
-    <div class="qtxt">Quando pensa em tudo que precisa fazer, como você se sente?</div>
-    <p class="qhint">Seja honesto — ninguém está te julgando aqui.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Paralisado. Tanta coisa que não sei por onde começar.</span></div>
-      <div class="opt" onclick="pick(this,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ansioso. Fico acelerado mas não sai nada.</span></div>
-      <div class="opt" onclick="pick(this,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Cansado antes de começar. O gás já acabou.</span></div>
-      <div class="opt" onclick="pick(this,1)"><div class="optb"><div class="optbi"></div></div><span class="optt">Culpado. Sei que deveria fazer e não consigo.</span></div>
-    </div>
-    <button class="btnnxt" id="nx1" onclick="nextQ(1,2)">Continuar →</button>
+<!-- ══ S3: RESULTADO ══ -->
+<div class="screen" id="s-result">
+  <span class="restag au on d1" id="res-tag">Seu diagnóstico</span>
+  <h2 class="au on d2" id="res-titulo"></h2>
+  <p class="resdesc au on d3" id="res-desc"></p>
+  <div class="resbars au on d4" id="res-bars">
+    <div class="rbarrow"><div class="rbarmeta"><span class="rbarlbl" id="lbl1"></span><span class="rbarval" id="val1"></span></div><div class="rbartrack"><div class="rbarfill" id="bar1"></div></div></div>
+    <div class="rbarrow"><div class="rbarmeta"><span class="rbarlbl" id="lbl2"></span><span class="rbarval" id="val2"></span></div><div class="rbartrack"><div class="rbarfill" id="bar2"></div></div></div>
+    <div class="rbarrow"><div class="rbarmeta"><span class="rbarlbl" id="lbl3"></span><span class="rbarval" id="val3"></span></div><div class="rbartrack"><div class="rbarfill" id="bar3"></div></div></div>
+    <div class="rbarrow"><div class="rbarmeta"><span class="rbarlbl" id="lbl4"></span><span class="rbarval" id="val4"></span></div><div class="rbartrack"><div class="rbarfill" id="bar4"></div></div></div>
   </div>
-
-  <div class="qslide" id="q2">
-    <span class="qlbl">02 / 10</span>
-    <div class="qtxt">Qual dessas frases você já falou pra si mesmo?</div>
-    <p class="qhint">Marque a que mais combina com você.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Amanhã eu começo de verdade."</span></div>
-      <div class="opt" onclick="pick(this,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Por que eu sou tão preguiçoso?"</span></div>
-      <div class="opt" onclick="pick(this,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Eu sei o que fazer mas não consigo fazer."</span></div>
-      <div class="opt" onclick="pick(this,2)"><div class="optb"><div class="optbi"></div></div><span class="optt">"Todo mundo parece conseguir menos eu."</span></div>
-    </div>
-    <button class="btnnxt" id="nx2" onclick="nextQ(2,3)">Continuar →</button>
+  <!-- CTA QUE DISPARA LEAD E VAI PRA PÁGINA DE VENDAS -->
+  <div class="res-cta-box au on d5">
+    <p>Identificamos o que está te travando. <strong>Existe uma saída — e ela começa com entender o loop.</strong> Clica abaixo pra ver a solução completa.</p>
+    <button class="btn-cta" onclick="irParaPagina()">VER MINHA SOLUÇÃO PERSONALIZADA →</button>
   </div>
-
-  <div class="qslide" id="q3">
-    <span class="qlbl">03 / 10</span>
-    <div class="qtxt">Quando você procrastina, o que acontece depois?</div>
-    <p class="qhint">Pensa em como você se sente no restante do dia.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">A culpa fica na minha cabeça o dia inteiro.</span></div>
-      <div class="opt" onclick="pick(this,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me distraio com celular pra não pensar.</span></div>
-      <div class="opt" onclick="pick(this,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Fico irritado comigo mesmo e com todo mundo.</span></div>
-      <div class="opt" onclick="pick(this,3)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me sinto um fracasso — como se nunca fosse mudar.</span></div>
-    </div>
-    <button class="btnnxt" id="nx3" onclick="nextQ(3,4)">Continuar →</button>
-  </div>
-
-  <div class="qslide" id="q4">
-    <span class="qlbl">04 / 10</span>
-    <div class="qtxt">Como é o seu fim de dia na maioria das vezes?</div>
-    <p class="qhint">Pensa nos últimos 30 dias.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Cansado mas não fiz quase nada do que precisava.</span></div>
-      <div class="opt" onclick="pick(this,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Aliviado que acabou — mas com culpa acumulada.</span></div>
-      <div class="opt" onclick="pick(this,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Com a mesma lista de amanhã que tinha ontem.</span></div>
-      <div class="opt" onclick="pick(this,4)"><div class="optb"><div class="optbi"></div></div><span class="optt">Com a sensação que o dia passou e eu fiquei parado.</span></div>
-    </div>
-    <button class="btnnxt" id="nx4" onclick="nextQ(4,5)">Continuar →</button>
-  </div>
-
-  <div class="qslide" id="q5">
-    <span class="qlbl">05 / 10</span>
-    <div class="qtxt">Você já tentou alguma técnica pra se organizar?</div>
-    <p class="qhint">Marque o que você já tentou.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,5)"><div class="optb"><div class="optbi"></div></div><span class="optt">Aplicativos, Pomodoro, agenda — não durou.</span></div>
-      <div class="opt" onclick="pick(this,5)"><div class="optb"><div class="optbi"></div></div><span class="optt">Vídeos de produtividade — motiva na hora, some depois.</span></div>
-      <div class="opt" onclick="pick(this,5)"><div class="optb"><div class="optbi"></div></div><span class="optt">Listas de metas — começo empolgado, abandono em dias.</span></div>
-      <div class="opt" onclick="pick(this,5)"><div class="optb"><div class="optbi"></div></div><span class="optt">Nunca tentei — nem sei por onde começar.</span></div>
-    </div>
-    <button class="btnnxt" id="nx5" onclick="nextQ(5,6)">Continuar →</button>
-  </div>
-
-  <div class="qslide" id="q6">
-    <span class="qlbl">06 / 10</span>
-    <div class="qtxt">Como você se sente quando vê alguém avançando?</div>
-    <p class="qhint">Seja honesto — essa pergunta é importante.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,6)"><div class="optb"><div class="optbi"></div></div><span class="optt">Feliz por eles, mas por dentro me sinto pra trás.</span></div>
-      <div class="opt" onclick="pick(this,6)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me pergunto o que eles têm que eu não tenho.</span></div>
-      <div class="opt" onclick="pick(this,6)"><div class="optb"><div class="optbi"></div></div><span class="optt">Admiração misturada com frustração comigo mesmo.</span></div>
-      <div class="opt" onclick="pick(this,6)"><div class="optb"><div class="optbi"></div></div><span class="optt">Evito ver — dói demais comparar.</span></div>
-    </div>
-    <button class="btnnxt" id="nx6" onclick="nextQ(6,7)">Continuar →</button>
-  </div>
-
-  <div class="qslide" id="q7">
-    <span class="qlbl">07 / 10</span>
-    <div class="qtxt">Como está sua saúde mental nos últimos meses?</div>
-    <p class="qhint">Responda com calma — não tem resposta errada.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,7)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ansioso com frequência — às vezes sem motivo claro.</span></div>
-      <div class="opt" onclick="pick(this,7)"><div class="optb"><div class="optbi"></div></div><span class="optt">Desanimado — acordo sem vontade de encarar o dia.</span></div>
-      <div class="opt" onclick="pick(this,7)"><div class="optb"><div class="optbi"></div></div><span class="optt">Os dois — oscilo entre ansiedade e vazio.</span></div>
-      <div class="opt" onclick="pick(this,7)"><div class="optb"><div class="optbi"></div></div><span class="optt">Estou bem, mas algo me trava mesmo assim.</span></div>
-    </div>
-    <button class="btnnxt" id="nx7" onclick="nextQ(7,8)">Continuar →</button>
-  </div>
-
-  <div class="qslide" id="q8">
-    <span class="qlbl">08 / 10</span>
-    <div class="qtxt">O que você faz quando a tarefa parece grande demais?</div>
-    <p class="qhint">Pensa no seu comportamento real.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,8)"><div class="optb"><div class="optbi"></div></div><span class="optt">Abro o celular e fico lá até o tempo passar.</span></div>
-      <div class="opt" onclick="pick(this,8)"><div class="optb"><div class="optbi"></div></div><span class="optt">Faço coisas menores pra parecer produtivo.</span></div>
-      <div class="opt" onclick="pick(this,8)"><div class="optb"><div class="optbi"></div></div><span class="optt">Fico pensando nela sem agir — angústia que não para.</span></div>
-      <div class="opt" onclick="pick(this,8)"><div class="optb"><div class="optbi"></div></div><span class="optt">Deixo pra amanhã prometendo que vai ser diferente.</span></div>
-    </div>
-    <button class="btnnxt" id="nx8" onclick="nextQ(8,9)">Continuar →</button>
-  </div>
-
-  <div class="qslide" id="q9">
-    <span class="qlbl">09 / 10</span>
-    <div class="qtxt">Você já desistiu de algo que queria por não conseguir começar?</div>
-    <p class="qhint">Pode ser um projeto, uma mudança, um sonho.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,9)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — várias vezes. Ainda dói pensar nisso.</span></div>
-      <div class="opt" onclick="pick(this,9)"><div class="optb"><div class="optbi"></div></div><span class="optt">Sim — e me convenço de que "não era pra ser".</span></div>
-      <div class="opt" onclick="pick(this,9)"><div class="optb"><div class="optbi"></div></div><span class="optt">Quase — estou no limite de desistir de algo agora.</span></div>
-      <div class="opt" onclick="pick(this,9)"><div class="optb"><div class="optbi"></div></div><span class="optt">Não ainda — mas sinto que posso chegar lá.</span></div>
-    </div>
-    <button class="btnnxt" id="nx9" onclick="nextQ(9,10)">Continuar →</button>
-  </div>
-
-  <div class="qslide" id="q10">
-    <span class="qlbl">10 / 10 — ÚLTIMA</span>
-    <div class="qtxt">Se pudesse mudar uma coisa agora, qual seria?</div>
-    <p class="qhint">Essa resposta define seu resultado.</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,10)"><div class="optb"><div class="optbi"></div></div><span class="optt">Parar de procrastinar e finalmente começar.</span></div>
-      <div class="opt" onclick="pick(this,10)"><div class="optb"><div class="optbi"></div></div><span class="optt">Me sentir bem comigo mesmo e parar de me cobrar tanto.</span></div>
-      <div class="opt" onclick="pick(this,10)"><div class="optb"><div class="optbi"></div></div><span class="optt">Ter mais energia e disposição pra viver de verdade.</span></div>
-      <div class="opt" onclick="pick(this,10)"><div class="optb"><div class="optbi"></div></div><span class="optt">Entender por que tudo parece mais difícil pra mim.</span></div>
-    </div>
-    <!-- BOTÃO FINAL — dispara Lead e vai pra página de vendas -->
-    <button class="btnnxt" id="nx10" onclick="finalizarQuiz()">VER MEU RESULTADO →</button>
-  </div>
+  <p class="resnote au on d5">Preparando sua solução personalizada...</p>
 </div>
 
 <script>
-const ans = {};
+// ── DADOS ──
+const ans = {}; // {questao: opcao 1-4}
 const TOTAL = 10;
 
-function startQuiz() {
-  document.getElementById('s-intro').classList.remove('active');
-  document.getElementById('s-quiz').classList.add('active');
-  window.scrollTo(0,0);
+const perfis = {
+  procrastinador: {
+    titulo: 'VOCÊ ESTÁ<br>PRESO NO<br><em>LOOP DA<br>PROCRASTINAÇÃO.</em>',
+    desc: 'Suas respostas mostram um padrão claro: você sabe o que fazer, começa a evitar, a culpa chega pesada e o ciclo reinicia. <strong>Não é preguiça — é um loop emocional que se alimenta sozinho.</strong>',
+    bars: [
+      {lbl:'Procrastinação crônica', val:'94%', w:'94%'},
+      {lbl:'Culpa paralisante',      val:'88%', w:'88%'},
+      {lbl:'Autossabotagem',         val:'82%', w:'82%'},
+      {lbl:'Desânimo acumulado',     val:'71%', w:'71%'},
+    ]
+  },
+  ansioso: {
+    titulo: 'VOCÊ ESTÁ<br>PARALISADO<br><em>PELA<br>ANSIEDADE.</em>',
+    desc: 'Suas respostas mostram que a ansiedade chega antes de qualquer ação e te paralisa antes de você começar. <strong>Não é fraqueza — é um loop emocional que bloqueia a ação antes que ela aconteça.</strong>',
+    bars: [
+      {lbl:'Loop de ansiedade',       val:'96%', w:'96%'},
+      {lbl:'Paralisia antes de agir', val:'90%', w:'90%'},
+      {lbl:'Evitação defensiva',      val:'84%', w:'84%'},
+      {lbl:'Culpa acumulada',         val:'76%', w:'76%'},
+    ]
+  },
+  desanimado: {
+    titulo: 'VOCÊ ESTÁ<br>SEM ENERGIA<br><em>PRA SAIR<br>DO LUGAR.</em>',
+    desc: 'Suas respostas mostram um desânimo acumulado que apaga o gás antes de você começar. <strong>Não é preguiça — é um esgotamento emocional que precisa de atenção real, não de mais técnicas.</strong>',
+    bars: [
+      {lbl:'Desânimo acumulado', val:'95%', w:'95%'},
+      {lbl:'Falta de energia',   val:'89%', w:'89%'},
+      {lbl:'Vazio de motivação', val:'83%', w:'83%'},
+      {lbl:'Procrastinação',     val:'72%', w:'72%'},
+    ]
+  }
+};
+
+// ── NAVEGAÇÃO ──
+function goScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+  setTimeout(() => {
+    document.getElementById(id).querySelectorAll('.au').forEach(a => a.classList.add('on'));
+  }, 60);
 }
 
-function pick(el, n) {
+function startQuiz() {
+  goScreen('s-quiz');
+  setTimeout(() => {
+    document.querySelectorAll('#s-quiz .au').forEach(a => a.classList.add('on'));
+  }, 80);
+}
+
+// ── QUIZ ──
+function pick(el, q, opcao) {
   el.closest('.opts').querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
   el.classList.add('sel');
-  ans[n] = true;
-  const nx = document.getElementById('nx' + n);
+  ans[q] = opcao;
+  const nx = document.getElementById('nx' + q);
   if (nx) nx.classList.add('show');
 }
 
@@ -266,12 +225,51 @@ function nextQ(from, to) {
   window.scrollTo(0, 0);
 }
 
-function finalizarQuiz() {
+// ── CALCULAR E MOSTRAR RESULTADO ──
+function mostrarResultado() {
   if (!ans[10]) return;
-  // Dispara evento Lead — lead quente saiu do quiz
+
+  // Conta opções
+  let c1=0, c2=0, c3=0, c4=0;
+  Object.values(ans).forEach(v => {
+    if(v===1) c1++;
+    else if(v===2) c2++;
+    else if(v===3) c3++;
+    else if(v===4) c4++;
+  });
+
+  // Define perfil
+  let perfil;
+  if (c2 >= c1 && c2 >= c3 && c2 >= c4) perfil = 'ansioso';
+  else if (c3 >= c1 && c3 >= c4) perfil = 'desanimado';
+  else perfil = 'procrastinador';
+
+  const p = perfis[perfil];
+
+  // Preenche resultado
+  document.getElementById('res-titulo').innerHTML = p.titulo;
+  document.getElementById('res-desc').innerHTML = p.desc;
+  p.bars.forEach((b, i) => {
+    document.getElementById('lbl'+(i+1)).textContent = b.lbl;
+    document.getElementById('val'+(i+1)).textContent = b.val;
+    document.getElementById('bar'+(i+1)).dataset.w = b.w;
+  });
+
+  goScreen('s-result');
+
+  // Anima barras após render
+  setTimeout(() => {
+    p.bars.forEach((b, i) => {
+      document.getElementById('bar'+(i+1)).style.width = b.w;
+    });
+  }, 500);
+}
+
+// ── CTA RESULTADO — dispara Lead e vai pra página de vendas ──
+function irParaPagina() {
   fbq('track', 'Lead');
-  // Redireciona para a página de vendas
-  window.location.href = 'Landingpage.html';
+  // Redireciona pra página de vendas
+  window.location.href = 'https://vontadedeagir.github.io/Vontade-de-agir/Landingpage.html';
 }
 </script>
 </body>
