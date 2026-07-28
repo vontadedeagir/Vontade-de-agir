@@ -33,43 +33,26 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .fb-timer{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);letter-spacing:2px;flex-shrink:0;}
 .fb-btn{flex:1;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;padding:13px;border-radius:3px;border:none;cursor:pointer;text-align:center;}
 
-/* ══ POPUP BASE ══ */
+/* EXIT INTENT POPUP */
 .exit-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;display:none;align-items:flex-end;justify-content:center;}
 .exit-overlay.show{display:flex;}
-.exit-popup{background:var(--dark);border:1px solid var(--border);border-radius:12px 12px 0 0;padding:28px 22px 48px;width:100%;max-width:480px;animation:popUp .35s ease forwards;}
-.exit-tag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:12px;}
-.exit-popup h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,10vw,50px);line-height:.88;letter-spacing:2px;margin-bottom:12px;}
-.exit-popup h2 em{font-style:normal;display:block;}
-.exit-desc{font-size:14px;color:var(--text);line-height:1.75;margin-bottom:16px;}
-.exit-desc strong{color:var(--white);}
-.exit-preco-box{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:14px 16px;margin-bottom:16px;}
+.exit-popup{background:var(--dark);border:1px solid var(--border);border-top:3px solid var(--acid);border-radius:12px 12px 0 0;padding:28px 22px 48px;width:100%;max-width:480px;animation:popUp .35s ease forwards;}
+.exit-tag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);display:block;margin-bottom:12px;}
+.exit-popup h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,10vw,52px);line-height:.88;letter-spacing:2px;margin-bottom:12px;}
+.exit-popup h2 em{font-style:normal;color:var(--acid);display:block;}
+.exit-popup p.exit-desc{font-size:14px;color:var(--text);line-height:1.75;margin-bottom:20px;}
+.exit-popup p.exit-desc strong{color:var(--white);}
+.exit-preco-wrap{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px;margin-bottom:20px;}
 .exit-de{font-size:12px;color:#555;text-decoration:line-through;margin-bottom:2px;}
-.exit-price{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:1;letter-spacing:2px;margin-bottom:2px;}
-.exit-price sup{font-size:18px;vertical-align:super;}
-.exit-parcel{font-size:11px;color:var(--text);}
-.exit-items{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+.exit-price{font-family:'Bebas Neue',sans-serif;font-size:60px;color:var(--white);letter-spacing:2px;line-height:1;margin-bottom:2px;}
+.exit-price sup{font-size:20px;vertical-align:super;}
+.exit-parcel{font-size:12px;color:var(--text);}
+.exit-items{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:20px;}
 .exit-items li{display:flex;gap:8px;font-size:13px;color:var(--text);}
-.exit-items li::before{font-weight:700;flex-shrink:0;}
-.exit-btn{display:block;width:100%;font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;padding:18px;border-radius:3px;border:none;cursor:pointer;text-align:center;animation:pulse 2.5s infinite;margin-bottom:10px;}
+.exit-items li::before{content:'✓';color:var(--acid);font-weight:700;flex-shrink:0;}
+.exit-btn{display:block;width:100%;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;padding:18px;border-radius:3px;border:none;cursor:pointer;text-align:center;animation:pulse 2.5s infinite;margin-bottom:12px;}
 .exit-nao{display:block;width:100%;background:transparent;color:#555;font-family:'Manrope',sans-serif;font-size:12px;padding:10px;border:none;cursor:pointer;text-align:center;text-decoration:underline;}
 .exit-guar{font-size:11px;color:#555;text-align:center;margin-top:6px;}
-
-/* POPUP 1 — R$ 37 */
-#popup1 .exit-popup{border-top:3px solid var(--acid);}
-#popup1 .exit-tag{color:var(--red);}
-#popup1 .exit-popup h2 em{color:var(--acid);}
-#popup1 .exit-price{color:var(--white);}
-#popup1 .exit-items li::before{content:'✓';color:var(--acid);}
-#popup1 .exit-btn{background:var(--acid);color:var(--black);}
-
-/* POPUP 2 — R$ 19 */
-#popup2 .exit-popup{border-top:3px solid var(--orange);}
-#popup2 .exit-tag{color:var(--orange);}
-#popup2 .exit-popup h2 em{color:var(--orange);}
-#popup2 .exit-price{color:var(--white);}
-#popup2 .exit-items li::before{content:'—';color:var(--orange);}
-#popup2 .exit-btn{background:var(--orange);color:var(--white);}
-#popup2 .exit-preco-box{border-color:rgba(224,112,16,.3);}
 
 /* TICKER */
 .ticker-w{background:var(--acid);overflow:hidden;padding:10px 0;white-space:nowrap;}
@@ -174,15 +157,13 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 </head>
 <body>
 
-<!-- ══════════════════════════
-     POPUP 1 — EXIT R$ 37
-══════════════════════════ -->
-<div class="exit-overlay" id="popup1">
+<!-- ══ EXIT INTENT POPUP ══ -->
+<div class="exit-overlay" id="exit-overlay">
   <div class="exit-popup">
     <span class="exit-tag">⚠️ Espera — oferta exclusiva</span>
     <h2>ANTES DE<br>IR EMBORA,<br><em>R$ 37<br>POR TUDO.</em></h2>
     <p class="exit-desc">Você estava prestes a sair. Mas e se o preço fosse o problema? <strong>Leva o e-book completo + todos os 5 bônus por R$ 37 — só agora, só pra você.</strong></p>
-    <div class="exit-preco-box">
+    <div class="exit-preco-wrap">
       <p class="exit-de">De R$ 47</p>
       <div class="exit-price"><sup>R$</sup>37</div>
       <p class="exit-parcel">Pix, Cartão ou Boleto · Acesso imediato</p>
@@ -195,34 +176,8 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
       <li>Bônus 04 — Rotina Noturna Anti-Loop</li>
       <li>Bônus 05 — Checklist Semanal</li>
     </ul>
-    <button class="exit-btn" onclick="irCheckout37()">QUERO POR R$ 37 AGORA →</button>
-    <button class="exit-nao" onclick="recusar37()">Não, prefiro perder essa oferta</button>
-    <p class="exit-guar">🔒 Garantia de 7 dias · Devolução 100% sem perguntas</p>
-  </div>
-</div>
-
-<!-- ══════════════════════════
-     POPUP 2 — DOWNSELL R$ 19
-══════════════════════════ -->
-<div class="exit-overlay" id="popup2">
-  <div class="exit-popup">
-    <span class="exit-tag">Última chance — só isso</span>
-    <h2>OK. MAS LEVA<br>ISSO POR<br><em>R$ 19.<br>SÓ PRA<br>VOCÊ.</em></h2>
-    <p class="exit-desc">Já que o e-book não é pra agora, leva o <strong>Guia de Energia Mental</strong> — um guia prático pra recuperar disposição nos dias em que não tem gás pra nada. <strong>Queremos te ajudar de alguma forma.</strong></p>
-    <div class="exit-preco-box">
-      <p class="exit-de">De R$ 37</p>
-      <div class="exit-price" style="color:var(--orange);"><sup>R$</sup>19</div>
-      <p class="exit-parcel">Pagamento único · Acesso imediato em PDF</p>
-    </div>
-    <ul class="exit-items">
-      <li>Por que você acorda já cansado mesmo dormindo</li>
-      <li>O que drena sua energia sem você perceber</li>
-      <li>3 práticas de 5 minutos pra recuperar clareza mental</li>
-      <li>Ritual mínimo de recarga nos dias ruins</li>
-      <li>O que comer, como se mover e descansar de verdade</li>
-    </ul>
-    <button class="exit-btn" onclick="irGuiaEnergia()">QUERO O GUIA POR R$ 19 →</button>
-    <button class="exit-nao" onclick="fecharTudo()">Não, prefiro sair sem nada</button>
+    <button class="exit-btn" onclick="irCheckoutExit()">QUERO POR R$ 37 AGORA →</button>
+    <button class="exit-nao" onclick="fecharPopup()">Não, prefiro perder essa oferta</button>
     <p class="exit-guar">🔒 Garantia de 7 dias · Devolução 100% sem perguntas</p>
   </div>
 </div>
@@ -406,72 +361,58 @@ setInterval(() => {
   if(rem <= 0) localStorage.removeItem(KEY);
 }, 1000);
 
-// ── EXIT INTENT — 2 POPUPS EM SEQUÊNCIA ──
-let popup1Shown = false;
-let popup2Shown = false;
+// ── EXIT INTENT ──
+let exitShown = false;
 let exitEnabled = false;
 
-// Habilita após 8 segundos
-setTimeout(() => { exitEnabled = true; }, 8000);
-
-function mostrarPopup1() {
-  if (popup1Shown || !exitEnabled) return;
-  popup1Shown = true;
-  document.getElementById('popup1').classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-
-function mostrarPopup2() {
-  document.getElementById('popup1').classList.remove('show');
-  if (popup2Shown) { fecharTudo(); return; }
-  popup2Shown = true;
-  document.getElementById('popup2').classList.add('show');
-}
-
-function fecharTudo() {
-  document.getElementById('popup1').classList.remove('show');
-  document.getElementById('popup2').classList.remove('show');
-  document.body.style.overflow = '';
-}
+// Habilita após 5 segundos na página
+setTimeout(() => { exitEnabled = true; }, 5000);
 
 // DESKTOP — mouse saindo pelo topo
 document.addEventListener('mouseleave', (e) => {
-  if (e.clientY <= 5) mostrarPopup1();
+  if (e.clientY <= 5 && !exitShown && exitEnabled) {
+    mostrarExit();
+  }
 });
 
-// MOBILE — botão voltar
+// MOBILE — botão voltar / visibilidade
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden' && !exitShown && exitEnabled) {
+    mostrarExit();
+  }
+});
+
+// MOBILE — toque no botão voltar via popstate
 history.pushState(null, '', location.href);
 window.addEventListener('popstate', () => {
-  if (!popup1Shown && exitEnabled) {
-    mostrarPopup1();
-    history.pushState(null, '', location.href);
-  } else if (popup1Shown && !popup2Shown) {
-    mostrarPopup2();
+  if (!exitShown && exitEnabled) {
+    mostrarExit();
     history.pushState(null, '', location.href);
   }
 });
 
-// Recusa popup 1 → abre popup 2
-function recusar37() {
-  mostrarPopup2();
+function mostrarExit() {
+  exitShown = true;
+  document.getElementById('exit-overlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharPopup() {
+  document.getElementById('exit-overlay').classList.remove('show');
+  document.body.style.overflow = '';
 }
 
 // ── CTAs ──
 function irCheckout() {
   fbq('track', 'InitiateCheckout');
+  // Checkout principal R$ 47
   window.location.href = 'https://pay.kiwify.com.br/Q5oBR0d';
 }
 
-function irCheckout37() {
+function irCheckoutExit() {
   fbq('track', 'InitiateCheckout');
-  // Cole aqui o link do checkout R$ 37 da Kiwify
+  // Checkout com desconto R$ 37 — crie na Kiwify e cole o link aqui
   window.location.href = 'LINK_CHECKOUT_37_KIWIFY_AQUI';
-}
-
-function irGuiaEnergia() {
-  fbq('track', 'InitiateCheckout');
-  // Cole aqui o link do Guia Energia Mental R$ 19 da Kiwify
-  window.location.href = 'LINK_GUIA_ENERGIA_KIWIFY_AQUI';
 }
 </script>
 </body>
