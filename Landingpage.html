@@ -33,7 +33,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .fb-timer{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);letter-spacing:2px;flex-shrink:0;}
 .fb-btn{flex:1;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;padding:13px;border-radius:3px;border:none;cursor:pointer;text-align:center;}
 
-/* EXIT INTENT POPUP */
+/* ══ EXIT INTENT POPUP 1 — DOWSELL R$ 37 ══ */
 .exit-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;display:none;align-items:flex-end;justify-content:center;}
 .exit-overlay.show{display:flex;}
 .exit-popup{background:var(--dark);border:1px solid var(--border);border-top:3px solid var(--acid);border-radius:12px 12px 0 0;padding:28px 22px 48px;width:100%;max-width:480px;animation:popUp .35s ease forwards;}
@@ -53,6 +53,27 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .exit-btn{display:block;width:100%;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;padding:18px;border-radius:3px;border:none;cursor:pointer;text-align:center;animation:pulse 2.5s infinite;margin-bottom:12px;}
 .exit-nao{display:block;width:100%;background:transparent;color:#555;font-family:'Manrope',sans-serif;font-size:12px;padding:10px;border:none;cursor:pointer;text-align:center;text-decoration:underline;}
 .exit-guar{font-size:11px;color:#555;text-align:center;margin-top:6px;}
+
+/* ══ EXIT INTENT POPUP 2 — DOWSELL 2 R$ 9,90 ══ */
+.exit2-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:10000;display:none;align-items:flex-end;justify-content:center;}
+.exit2-overlay.show{display:flex;}
+.exit2-popup{background:var(--dark);border:1px solid var(--border);border-top:3px solid var(--orange);border-radius:12px 12px 0 0;padding:28px 22px 48px;width:100%;max-width:480px;animation:popUp .35s ease forwards;}
+.exit2-tag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:12px;}
+.exit2-popup h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,9vw,48px);line-height:.88;letter-spacing:2px;margin-bottom:12px;}
+.exit2-popup h2 em{font-style:normal;color:var(--orange);display:block;}
+.exit2-popup p.exit2-desc{font-size:14px;color:var(--text);line-height:1.75;margin-bottom:20px;}
+.exit2-popup p.exit2-desc strong{color:var(--white);}
+.exit2-preco-wrap{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px;margin-bottom:20px;text-align:center;}
+.exit2-de{font-size:12px;color:#555;text-decoration:line-through;margin-bottom:2px;}
+.exit2-price{font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--white);letter-spacing:2px;line-height:1;margin-bottom:2px;}
+.exit2-price sup{font-size:20px;vertical-align:super;}
+.exit2-parcel{font-size:12px;color:var(--text);}
+.exit2-items{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:20px;}
+.exit2-items li{display:flex;gap:8px;font-size:13px;color:var(--text);}
+.exit2-items li::before{content:'✓';color:var(--orange);font-weight:700;flex-shrink:0;}
+.exit2-btn{display:block;width:100%;background:var(--orange);color:var(--black);font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;padding:18px;border-radius:3px;border:none;cursor:pointer;text-align:center;animation:pulse 2.5s infinite;margin-bottom:12px;}
+.exit2-nao{display:block;width:100%;background:transparent;color:#555;font-family:'Manrope',sans-serif;font-size:12px;padding:10px;border:none;cursor:pointer;text-align:center;text-decoration:underline;}
+.exit2-guar{font-size:11px;color:#555;text-align:center;margin-top:6px;}
 
 /* TICKER */
 .ticker-w{background:var(--acid);overflow:hidden;padding:10px 0;white-space:nowrap;}
@@ -157,7 +178,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 </head>
 <body>
 
-<!-- ══ EXIT INTENT POPUP ══ -->
+<!-- ══ EXIT INTENT POPUP 1 — DOWSELL R$ 37 ══ -->
 <div class="exit-overlay" id="exit-overlay">
   <div class="exit-popup">
     <span class="exit-tag">⚠️ Espera — oferta exclusiva</span>
@@ -177,8 +198,32 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
       <li>Bônus 05 — Checklist Semanal</li>
     </ul>
     <button class="exit-btn" onclick="irCheckoutExit()">QUERO POR R$ 37 AGORA →</button>
-    <button class="exit-nao" onclick="fecharPopup()">Não, prefiro perder essa oferta</button>
+    <button class="exit-nao" onclick="mostrarDownsell2()">Não, prefiro perder essa oferta</button>
     <p class="exit-guar">🔒 Garantia de 7 dias · Devolução 100% sem perguntas</p>
+  </div>
+</div>
+
+<!-- ══ EXIT INTENT POPUP 2 — DOWSELL 2 R$ 9,90 ══ -->
+<div class="exit2-overlay" id="exit2-overlay">
+  <div class="exit2-popup">
+    <span class="exit2-tag">🔋 Última chance — não volta mais</span>
+    <h2>TUDO BEM.<br>MAS E SE<br><em>R$ 9,90</em><br>RESOLVESSE?</h2>
+    <p class="exit2-desc">Você não quis o pacote completo. Também não quis por R$ 37. Mas a gente não quer que você saia de mãos abanando. <strong>Pega o Guia de Energia Mental por R$ 9,90 — leitura de 30 min que pode mudar como você acorda amanhã.</strong></p>
+    <div class="exit2-preco-wrap">
+      <p class="exit2-de">De R$ 47</p>
+      <div class="exit2-price"><sup>R$</sup>9<sup>,90</sup></div>
+      <p class="exit2-parcel">Pagamento único · Pix, Cartão ou Boleto · Acesso imediato</p>
+    </div>
+    <ul class="exit2-items">
+      <li>Guia de Energia Mental — PDF completo</li>
+      <li>Protocolo Matinal de 5 Minutos</li>
+      <li>Checklist dos 3 Drenadores de Energia</li>
+      <li>Técnica do Micro-Reabastecimento</li>
+      <li>Rotina Noturna Anti-Esgotamento</li>
+    </ul>
+    <button class="exit2-btn" onclick="irCheckoutDownsell2()">QUERO MINHA ENERGIA DE VOLTA — R$ 9,90 →</button>
+    <button class="exit2-nao" onclick="fecharDownsell2()">Não, vou continuar sem energia mesmo</button>
+    <p class="exit2-guar">🔒 Garantia de 7 dias · Devolução 100% sem perguntas</p>
   </div>
 </div>
 
@@ -361,8 +406,9 @@ setInterval(() => {
   if(rem <= 0) localStorage.removeItem(KEY);
 }, 1000);
 
-// ── EXIT INTENT ──
+// ── EXIT INTENT CONTROLE ──
 let exitShown = false;
+let exit2Shown = false;
 let exitEnabled = false;
 
 // Habilita após 5 segundos na página
@@ -370,14 +416,14 @@ setTimeout(() => { exitEnabled = true; }, 5000);
 
 // DESKTOP — mouse saindo pelo topo
 document.addEventListener('mouseleave', (e) => {
-  if (e.clientY <= 5 && !exitShown && exitEnabled) {
+  if (e.clientY <= 5 && !exitShown && !exit2Shown && exitEnabled) {
     mostrarExit();
   }
 });
 
 // MOBILE — botão voltar / visibilidade
 document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'hidden' && !exitShown && exitEnabled) {
+  if (document.visibilityState === 'hidden' && !exitShown && !exit2Shown && exitEnabled) {
     mostrarExit();
   }
 });
@@ -385,12 +431,13 @@ document.addEventListener('visibilitychange', () => {
 // MOBILE — toque no botão voltar via popstate
 history.pushState(null, '', location.href);
 window.addEventListener('popstate', () => {
-  if (!exitShown && exitEnabled) {
+  if (!exitShown && !exit2Shown && exitEnabled) {
     mostrarExit();
     history.pushState(null, '', location.href);
   }
 });
 
+// ── POPUP 1 — DOWSELL R$ 37 ──
 function mostrarExit() {
   exitShown = true;
   document.getElementById('exit-overlay').classList.add('show');
@@ -399,6 +446,21 @@ function mostrarExit() {
 
 function fecharPopup() {
   document.getElementById('exit-overlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+// ── POPUP 2 — DOWSELL 2 R$ 9,90 ──
+function mostrarDownsell2() {
+  // Fecha o popup 1
+  document.getElementById('exit-overlay').classList.remove('show');
+  // Abre o popup 2
+  exit2Shown = true;
+  document.getElementById('exit2-overlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharDownsell2() {
+  document.getElementById('exit2-overlay').classList.remove('show');
   document.body.style.overflow = '';
 }
 
@@ -413,6 +475,12 @@ function irCheckoutExit() {
   fbq('track', 'InitiateCheckout');
   // Checkout com desconto R$ 37 — crie na Kiwify e cole o link aqui
   window.location.href = 'LINK_CHECKOUT_37_KIWIFY_AQUI';
+}
+
+function irCheckoutDownsell2() {
+  fbq('track', 'InitiateCheckout');
+  // ⬇️ SUBSTITUA PELO LINK DA KIWIFY DO GUIA DE ENERGIA MENTAL (R$ 9,90)
+  window.location.href = 'https://pay.kiwify.com.br/Q5oBR0d';
 }
 </script>
 </body>
