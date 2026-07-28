@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+html_corrigido = '''<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -74,6 +75,16 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .ticker-i{display:inline-flex;animation:ticker 14s linear infinite;}
 .tit{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--black);padding:0 18px;}
 .tit::after{content:'·';margin-left:18px;opacity:.35;}
+
+/* VSL */
+.vsl-sec{padding:0 18px 28px;background:var(--dark);border-bottom:1px solid var(--border);}
+.vsl-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;border:1px solid var(--border);background:var(--card);}
+.vsl-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:8px;}
+.vsl-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--card);}
+.vsl-placeholder .play-btn{width:64px;height:64px;border-radius:50%;background:var(--acid);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s;}
+.vsl-placeholder .play-btn:hover{transform:scale(1.1);}
+.vsl-placeholder .play-btn svg{width:24px;height:24px;fill:var(--black);margin-left:4px;}
+.vsl-placeholder p{font-size:13px;color:var(--text);}
 
 /* CARTA */
 .sec{padding:36px 18px;border-top:1px solid var(--border);}
@@ -174,7 +185,7 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 
 <!-- ════════════════════════════════════════
      POPUP 1 — DOWSELL R$ 37
-     (aparece quando volta do checkout)
+     (aparece quando volta do checkout ou tenta sair)
 ════════════════════════════════════════ -->
 <div class="overlay" id="overlay1">
   <div class="popup-box" id="p1">
@@ -265,6 +276,25 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
   
   <button class="btn-cta au" onclick="irCheckout()">QUERO QUEBRAR O LOOP — R$ 47 →</button>
   <p class="au" style="font-size:11px;color:#555;text-align:center;margin-top:8px;">Pix, Cartão ou Boleto · Acesso imediato · Garantia de 7 dias</p>
+</div>
+
+<!-- ════════════════════════════════════════
+     VSL — VÍDEO SALES LETTER
+     Substitua o src do iframe pelo link do Vimeo
+════════════════════════════════════════ -->
+<div class="vsl-sec">
+  <div class="vsl-wrap" id="vsl-container">
+    <!-- QUANDO TIVER O LINK DO VIMEO, SUBSTITUA ABAIXO: -->
+    <!-- <iframe src="https://player.vimeo.com/video/SEU_VIDEO_ID?autoplay=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> -->
+    
+    <!-- PLACEHOLDER — remove quando colocar o iframe -->
+    <div class="vsl-placeholder" id="vsl-placeholder">
+      <div class="play-btn" onclick="playVSL()">
+        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+      </div>
+      <p>▶️ Assista antes de continuar</p>
+    </div>
+  </div>
 </div>
 
 <!-- TICKER -->
@@ -423,17 +453,45 @@ setInterval(()=>{
 },1000);
 
 // ════════════════════════════════════════
-// FLUXO DE DOWSELLS (botão voltar do celular)
+// VSL — PLAYER DO VIMEO
 // ════════════════════════════════════════
-let p1=false,p2=false,foiCheckout=false;
+const VIMEO_ID = 'SEU_VIDEO_ID'; // ← SUBSTITUA PELO ID DO SEU VÍDEO NO VIMEO
+function playVSL(){
+  const container = document.getElementById('vsl-container');
+  const placeholder = document.getElementById('vsl-placeholder');
+  if(placeholder) placeholder.remove();
+  const iframe = document.createElement('iframe');
+  iframe.src = 'https://player.vimeo.com/video/' + VIMEO_ID + '?autoplay=1&title=0&byline=0&portrait=0';
+  iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+  iframe.allowFullscreen = true;
+  container.appendChild(iframe);
+}
+
+// ════════════════════════════════════════
+// FLUXO DE DOWSELLS — CORRIGIDO
+// Persiste estado no localStorage pra funcionar ao voltar do checkout
+// ════════════════════════════════════════
+const LS_FOI_CHECKOUT = 'vda_foi_checkout';
+const LS_P1_VISTO = 'vda_p1_visto';
+const LS_P2_VISTO = 'vda_p2_visto';
+
+function getLS(key){ return localStorage.getItem(key) === '1'; }
+function setLS(key){ localStorage.setItem(key,'1'); }
+function delLS(key){ localStorage.removeItem(key); }
 
 // Marca que foi pro checkout
-function marcarCheckout(){foiCheckout=true;}
+function marcarCheckout(){
+  setLS(LS_FOI_CHECKOUT);
+  // Limpa flags de popup pra permitir reabrir se voltar
+  delLS(LS_P1_VISTO);
+  delLS(LS_P2_VISTO);
+}
 
 // Abre popup 1 (Downsell R$ 37)
 function abrirP1(){
-  if(p1||!foiCheckout)return;
-  p1=true;
+  if(getLS(LS_P1_VISTO)) return;
+  if(!getLS(LS_FOI_CHECKOUT)) return;
+  setLS(LS_P1_VISTO);
   document.getElementById('overlay1').classList.add('ativo');
   document.body.style.overflow='hidden';
 }
@@ -441,8 +499,8 @@ function abrirP1(){
 // Recusa R$ 37 → abre popup 2 (Downsell R$ 14,90)
 function recusar37(){
   document.getElementById('overlay1').classList.remove('ativo');
-  if(p2){fecharTudo();return;}
-  p2=true;
+  if(getLS(LS_P2_VISTO)){ fecharTudo(); return; }
+  setLS(LS_P2_VISTO);
   document.getElementById('overlay2').classList.add('ativo');
 }
 
@@ -453,15 +511,50 @@ function fecharTudo(){
   document.body.style.overflow='';
 }
 
-// MOBILE — detecta botão voltar (popstate)
-history.pushState(null,'',location.href);
-window.addEventListener('popstate',()=>{
-  if(foiCheckout&&!p1){abrirP1();history.pushState(null,'',location.href);}
-  else if(p1&&!p2){recusar37();history.pushState(null,'',location.href);}
+// ════════════════════════════════════════
+// DETECÇÃO DE VOLTAR DO CHECKOUT
+// ════════════════════════════════════════
+
+// 1) Ao carregar a página: se já foi pro checkout e ainda não viu P1, abre automaticamente
+window.addEventListener('DOMContentLoaded', () => {
+  if(getLS(LS_FOI_CHECKOUT) && !getLS(LS_P1_VISTO)){
+    // Pequeno delay pra página carregar antes de mostrar o popup
+    setTimeout(() => { abrirP1(); }, 800);
+  }
 });
 
-// DESKTOP — mouse saindo pelo topo (fallback)
-document.addEventListener('mouseleave',e=>{if(e.clientY<=5&&foiCheckout)abrirP1();});
+// 2) Botão voltar no mobile (popstate)
+history.pushState(null,'',location.href);
+window.addEventListener('popstate',()=>{
+  if(getLS(LS_FOI_CHECKOUT) && !getLS(LS_P1_VISTO)){
+    abrirP1();
+    history.pushState(null,'',location.href);
+  }
+  else if(getLS(LS_P1_VISTO) && !getLS(LS_P2_VISTO)){
+    recusar37();
+    history.pushState(null,'',location.href);
+  }
+});
+
+// 3) Exit intent — mouse saindo pelo topo (desktop)
+document.addEventListener('mouseleave', e => {
+  if(e.clientY <= 5 && getLS(LS_FOI_CHECKOUT) && !getLS(LS_P1_VISTO)){
+    abrirP1();
+  }
+});
+
+// 4) Tentativa de fechar a página — mostra popup antes de sair
+let exitIntentTriggered = false;
+window.addEventListener('beforeunload', (e) => {
+  if(getLS(LS_FOI_CHECKOUT) && !getLS(LS_P1_VISTO) && !exitIntentTriggered){
+    exitIntentTriggered = true;
+    abrirP1();
+    // Mensagem padrão do navegador (não funciona em todos, mas tenta)
+    e.preventDefault();
+    e.returnValue = '';
+    return '';
+  }
+});
 
 // ════════════════════════════════════════
 // CTAs — CHECKOUTS
