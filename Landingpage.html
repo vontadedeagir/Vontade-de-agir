@@ -17,7 +17,7 @@ fbq('track','PageView');
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{--black:#070707;--dark:#0E0E0E;--card:#161616;--border:#272727;--text:#C2BEB6;--soft:#D8D4CC;--white:#F0EDE6;--acid:#C8F400;--acid2:#A5CB00;--red:#FF4444;--orange:#E07010;}
-html,body{-webkit-font-smoothing:antialiased;touch-action:manipulation;}
+html,body{-webkit-font-smoothing:antialiased;}
 body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
@@ -25,59 +25,67 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 @keyframes pisca{0%,100%{opacity:1}50%{opacity:.2}}
 @keyframes slideUp{from{opacity:0;transform:translateY(100%)}to{opacity:1;transform:translateY(0)}}
 .au{opacity:0;animation:fadeUp .5s ease .1s forwards;}
-.btn-cta{display:block;width:100%;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;padding:18px;border-radius:3px;border:none;cursor:pointer;text-align:center;letter-spacing:.3px;animation:pulse 2.5s infinite;}
+.btn-cta{display:block;width:100%;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;padding:20px;border-radius:3px;border:none;cursor:pointer;text-align:center;letter-spacing:.3px;animation:pulse 2.5s infinite;}
 .eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--acid);display:block;margin-bottom:14px;}
 
 /* FLOAT BAR */
-.float-bar{position:fixed;bottom:0;left:0;right:0;background:#08080A;border-top:1px solid rgba(200,244,0,.2);padding:10px 16px;z-index:998;display:flex;gap:10px;align-items:center;}
-.fb-timer{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--white);letter-spacing:2px;flex-shrink:0;}
-.fb-btn{flex:1;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;padding:12px;border-radius:3px;border:none;cursor:pointer;text-align:center;}
+.float-bar{position:fixed;bottom:0;left:0;right:0;background:#08080A;border-top:1px solid rgba(200,244,0,.2);padding:10px 18px;z-index:100;display:flex;gap:10px;align-items:center;}
+.fb-timer{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);letter-spacing:2px;flex-shrink:0;}
+.fb-btn{flex:1;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;padding:13px;border-radius:3px;border:none;cursor:pointer;text-align:center;}
 
-/* ══ BOTÃO NÃO QUERO (MOBILE) ══ */
-.nao-quero-btn{position:fixed;bottom:68px;left:50%;transform:translateX(-50%);background:transparent;color:#666;font-family:'Manrope',sans-serif;font-size:11px;padding:6px 16px;border:1px solid #333;border-radius:20px;cursor:pointer;text-align:center;z-index:997;opacity:0;transition:opacity .3s;white-space:nowrap;}
-.nao-quero-btn.show{opacity:1;}
+/* ══ POPUPS ══ */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+.overlay.ativo{opacity:1;pointer-events:all;}
+.popup-box{background:var(--dark);width:100%;max-width:480px;border-radius:14px 14px 0 0;padding:28px 22px 52px;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);}
+.overlay.ativo .popup-box{transform:translateY(0);}
+.popup-tag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:12px;}
+.popup-box h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,9vw,48px);line-height:.88;letter-spacing:2px;margin-bottom:12px;}
+.popup-box h2 em{font-style:normal;display:block;}
+.popup-desc{font-size:14px;color:var(--text);line-height:1.75;margin-bottom:16px;}
+.popup-desc strong{color:var(--white);}
+.popup-preco{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:14px 16px;margin-bottom:16px;}
+.popup-de{font-size:12px;color:#555;text-decoration:line-through;margin-bottom:2px;}
+.popup-valor{font-family:'Bebas Neue',sans-serif;font-size:58px;line-height:1;letter-spacing:2px;margin-bottom:2px;}
+.popup-valor sup{font-size:18px;vertical-align:super;}
+.popup-parcel{font-size:11px;color:var(--text);}
+.popup-items{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+.popup-items li{display:flex;gap:8px;font-size:13px;color:var(--text);align-items:flex-start;}
+.popup-sim{display:block;width:100%;font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;padding:18px;border-radius:3px;border:none;cursor:pointer;text-align:center;margin-bottom:10px;animation:pulse 2.5s infinite;}
+.popup-nao{display:block;width:100%;background:transparent;color:#555;font-family:'Manrope',sans-serif;font-size:12px;padding:10px;border:none;cursor:pointer;text-align:center;text-decoration:underline;}
+.popup-guar{font-size:11px;color:#555;text-align:center;margin-top:6px;}
 
-/* ══ MODAL DOWSELL 1 — R$ 37 ══ */
-.ds1-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;display:none;align-items:flex-end;justify-content:center;}
-.ds1-overlay.show{display:flex;}
-.ds1-modal{background:var(--dark);border:1px solid var(--border);border-top:3px solid var(--acid);border-radius:16px 16px 0 0;padding:24px 20px 40px;width:100%;max-width:480px;animation:slideUp .3s ease forwards;}
-.ds1-tag{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);display:block;margin-bottom:10px;}
-.ds1-modal h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,11vw,48px);line-height:.9;letter-spacing:1.5px;margin-bottom:10px;}
-.ds1-modal h2 em{font-style:normal;color:var(--acid);display:block;}
-.ds1-desc{font-size:13px;color:var(--text);line-height:1.7;margin-bottom:16px;}
-.ds1-desc strong{color:var(--white);}
-.ds1-preco{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:14px;margin-bottom:16px;}
-.ds1-de{font-size:11px;color:#555;text-decoration:line-through;margin-bottom:2px;}
-.ds1-price{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--white);letter-spacing:1px;line-height:1;margin-bottom:2px;}
-.ds1-price sup{font-size:18px;vertical-align:super;}
-.ds1-parcel{font-size:11px;color:var(--text);}
-.ds1-items{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:16px;}
-.ds1-items li{display:flex;gap:8px;font-size:12px;color:var(--text);}
-.ds1-items li::before{content:'✓';color:var(--acid);font-weight:700;flex-shrink:0;}
-.ds1-btn{display:block;width:100%;background:var(--acid);color:var(--black);font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;padding:16px;border-radius:3px;border:none;cursor:pointer;text-align:center;animation:pulse 2.5s infinite;margin-bottom:10px;}
-.ds1-nao{display:block;width:100%;background:transparent;color:#555;font-family:'Manrope',sans-serif;font-size:11px;padding:8px;border:none;cursor:pointer;text-align:center;text-decoration:underline;}
-.ds1-guar{font-size:10px;color:#555;text-align:center;margin-top:6px;}
+/* POPUP 1 — verde R$37 */
+#p1{border-top:3px solid var(--acid);}
+#p1 .popup-tag{color:var(--red);}
+#p1 h2 em{color:var(--acid);}
+#p1 .popup-valor{color:var(--white);}
+#p1 .popup-items li::before{content:'✓';color:var(--acid);font-weight:700;flex-shrink:0;}
+#p1 .popup-sim{background:var(--acid);color:var(--black);}
 
-/* ══ MODAL DOWSELL 2 — R$ 9,90 ══ */
-.ds2-overlay{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:10000;display:none;align-items:flex-end;justify-content:center;}
-.ds2-overlay.show{display:flex;}
-.ds2-modal{background:var(--dark);border:1px solid var(--border);border-top:3px solid var(--orange);border-radius:16px 16px 0 0;padding:24px 20px 40px;width:100%;max-width:480px;animation:slideUp .3s ease forwards;}
-.ds2-tag{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:10px;}
-.ds2-modal h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,11vw,48px);line-height:.9;letter-spacing:1.5px;margin-bottom:10px;}
-.ds2-modal h2 em{font-style:normal;color:var(--orange);display:block;}
-.ds2-desc{font-size:13px;color:var(--text);line-height:1.7;margin-bottom:16px;}
-.ds2-desc strong{color:var(--white);}
-.ds2-preco{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:14px;margin-bottom:16px;text-align:center;}
-.ds2-de{font-size:11px;color:#555;text-decoration:line-through;margin-bottom:2px;}
-.ds2-price{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--white);letter-spacing:1px;line-height:1;margin-bottom:2px;}
-.ds2-price sup{font-size:18px;vertical-align:super;}
-.ds2-parcel{font-size:11px;color:var(--text);}
-.ds2-items{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:16px;}
-.ds2-items li{display:flex;gap:8px;font-size:12px;color:var(--text);}
-.ds2-items li::before{content:'✓';color:var(--orange);font-weight:700;flex-shrink:0;}
-.ds2-btn{display:block;width:100%;background:var(--orange);color:var(--black);font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;padding:16px;border-radius:3px;border:none;cursor:pointer;text-align:center;animation:pulse 2.5s infinite;margin-bottom:10px;}
-.ds2-nao{display:block;width:100%;background:transparent;color:#555;font-family:'Manrope',sans-serif;font-size:11px;padding:8px;border:none;cursor:pointer;text-align:center;text-decoration:underline;}
-.ds2-guar{font-size:10px;color:#555;text-align:center;margin-top:6px;}
+/* POPUP 2 — laranja R$19 */
+#p2{border-top:3px solid var(--orange);}
+#p2 .popup-tag{color:var(--orange);}
+#p2 h2 em{color:var(--orange);}
+#p2 .popup-valor{color:var(--orange);}
+#p2 .popup-items li::before{content:'—';color:var(--orange);font-weight:700;flex-shrink:0;}
+#p2 .popup-sim{background:var(--orange);color:#fff;}
+
+/* VSL */
+.vsl-wrap{background:#000;width:100%;position:relative;}
+.vsl-placeholder{width:100%;aspect-ratio:9/16;background:#0A0A0A;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:pointer;}
+.vsl-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.4);}
+.vsl-play{position:relative;z-index:2;width:72px;height:72px;border-radius:50%;background:var(--acid);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.vsl-play-icon{width:0;height:0;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:22px solid var(--black);margin-left:4px;}
+.vsl-label{position:relative;z-index:2;margin-top:14px;font-size:13px;color:rgba(255,255,255,.7);letter-spacing:1px;}
+.vsl-placeholder.hide{display:none;}
+.vsl-iframe-wrap{display:none;width:100%;aspect-ratio:9/16;background:#000;position:relative;}
+.vsl-iframe-wrap iframe{position:absolute;inset:0;width:100%;height:100%;}
+.vsl-prog-bar{height:3px;background:var(--border);}
+.vsl-prog-fill{height:100%;background:var(--acid);width:0%;transition:width .5s linear;}
+.vsl-mid-cta{background:var(--dark);border-top:1px solid var(--border);padding:18px 22px;display:none;}
+.vsl-mid-cta.show{display:block;}
+.vsl-mid-cta p{font-size:14px;color:var(--text);margin-bottom:10px;line-height:1.5;}
+.vsl-mid-cta p strong{color:var(--white);}
 
 /* TICKER */
 .ticker-w{background:var(--acid);overflow:hidden;padding:10px 0;white-space:nowrap;}
@@ -86,117 +94,116 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 .tit::after{content:'·';margin-left:18px;opacity:.35;}
 
 /* CARTA */
-.sec{padding:36px 18px;border-top:1px solid var(--border);}
-.sec h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,8vw,40px);line-height:.92;letter-spacing:2px;margin-bottom:12px;}
+.sec{padding:40px 22px;border-top:1px solid var(--border);}
+.sec h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,8vw,42px);line-height:.92;letter-spacing:2px;margin-bottom:14px;}
 .sec h2 em{font-style:normal;color:var(--acid);}
-.sec p{font-size:14px;color:var(--text);line-height:1.8;margin-bottom:10px;}
+.sec p{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:12px;}
 .sec p strong{color:var(--white);}
-.dor-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin:12px 0;}
-.dor-item{background:var(--dark);padding:14px 16px;display:flex;gap:10px;align-items:flex-start;}
-.dor-x{color:var(--red);font-size:14px;flex-shrink:0;font-weight:700;}
-.dor-item p{font-size:13px;color:var(--text);line-height:1.6;margin:0;}
+.dor-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin:14px 0;}
+.dor-item{background:var(--dark);padding:16px 18px;display:flex;gap:12px;align-items:flex-start;}
+.dor-x{color:var(--red);font-size:15px;flex-shrink:0;font-weight:700;}
+.dor-item p{font-size:14px;color:var(--text);line-height:1.65;}
 .dor-item p strong{color:var(--white);}
-.transf-grid{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin:12px 0;}
-.transf-b{background:#120808;padding:14px 16px;border-left:3px solid var(--red);}
-.transf-a{background:#080E08;padding:14px 16px;border-left:3px solid var(--acid);}
-.transf-lbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;display:block;}
+.transf-grid{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin:14px 0;}
+.transf-b{background:#120808;padding:16px 18px;border-left:3px solid var(--red);}
+.transf-a{background:#080E08;padding:16px 18px;border-left:3px solid var(--acid);}
+.transf-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;display:block;}
 .transf-b .transf-lbl{color:var(--red);}
 .transf-a .transf-lbl{color:var(--acid);}
-.transf-b p,.transf-a p{font-size:13px;line-height:1.6;margin:0;}
+.transf-b p,.transf-a p{font-size:14px;line-height:1.65;}
 .transf-b p{color:#C09090;}
 .transf-a p{color:var(--text);}
 .transf-a p strong{color:var(--white);}
-.anchor-box{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px 14px;margin:12px 0;}
-.anchor-vs{display:flex;gap:12px;align-items:center;margin-top:10px;}
+.anchor-box{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:18px 16px;margin:14px 0;}
+.anchor-vs{display:flex;gap:14px;align-items:center;margin-top:12px;}
 .anchor-item{flex:1;text-align:center;}
-.anchor-price{font-family:'Bebas Neue',sans-serif;font-size:26px;line-height:1;}
-.anchor-price.s{color:#555;text-decoration:line-through;font-size:18px;}
+.anchor-price{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;}
+.anchor-price.s{color:#555;text-decoration:line-through;font-size:20px;}
 .anchor-price.r{color:var(--acid);}
-.anchor-lbl{font-size:10px;color:#666;margin-top:2px;}
-.anchor-div{font-size:14px;color:#444;}
-.ebook-box{background:linear-gradient(145deg,#1A1A1A,#0A0A0A);border:1px solid var(--border);border-radius:6px;padding:20px 16px;position:relative;overflow:hidden;margin:12px 0;}
+.anchor-lbl{font-size:11px;color:#666;margin-top:3px;}
+.anchor-div{font-size:16px;color:#444;}
+.ebook-box{background:linear-gradient(145deg,#1A1A1A,#0A0A0A);border:1px solid var(--border);border-radius:6px;padding:22px 18px;position:relative;overflow:hidden;margin:14px 0;}
 .ebook-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--acid);}
-.ebook-bg{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:90px;color:rgba(200,244,0,.04);top:-6px;right:-4px;line-height:1;}
-.ebook-t{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--acid);display:block;margin-bottom:6px;position:relative;z-index:1;}
-.ebook-title{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:.9;letter-spacing:2px;position:relative;z-index:1;margin-bottom:4px;}
-.ebook-sub{font-size:12px;color:#888;line-height:1.5;position:relative;z-index:1;}
-.caps{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin:12px 0;}
-.cap{background:var(--card);padding:14px 14px;display:flex;gap:10px;align-items:flex-start;}
-.capn{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--acid);flex-shrink:0;line-height:1.1;min-width:24px;}
-.cap h4{font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;}
-.cap p{font-size:13px;color:var(--text);line-height:1.55;margin:0;}
-.bonus-sec{padding:36px 18px;background:var(--dark);border-top:1px solid var(--border);}
-.bonus-sec h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,8vw,40px);line-height:.92;letter-spacing:2px;margin-bottom:6px;}
+.ebook-bg{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:110px;color:rgba(200,244,0,.04);top:-8px;right:-6px;line-height:1;}
+.ebook-t{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--acid);display:block;margin-bottom:8px;position:relative;z-index:1;}
+.ebook-title{font-family:'Bebas Neue',sans-serif;font-size:34px;line-height:.9;letter-spacing:2px;position:relative;z-index:1;margin-bottom:6px;}
+.ebook-sub{font-size:13px;color:#888;line-height:1.5;position:relative;z-index:1;}
+.caps{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin:14px 0;}
+.cap{background:var(--card);padding:15px 16px;display:flex;gap:12px;align-items:flex-start;}
+.capn{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--acid);flex-shrink:0;line-height:1.1;min-width:26px;}
+.cap h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:2px;}
+.cap p{font-size:14px;color:var(--text);line-height:1.6;}
+.bonus-sec{padding:40px 22px;background:var(--dark);border-top:1px solid var(--border);}
+.bonus-sec h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,8vw,42px);line-height:.92;letter-spacing:2px;margin-bottom:6px;}
 .bonus-sec h2 em{font-style:normal;color:var(--acid);}
-.bonus-sub{font-size:13px;color:var(--text);margin-bottom:16px;line-height:1.6;}
+.bonus-sub{font-size:14px;color:var(--text);margin-bottom:20px;line-height:1.6;}
 .bonus-sub strong{color:var(--white);}
-.bonus-list{display:flex;flex-direction:column;gap:10px;}
-.bonus-item{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--acid);border-radius:6px;padding:16px 14px;display:flex;gap:12px;align-items:flex-start;}
-.bonus-icon{font-size:24px;flex-shrink:0;line-height:1;}
-.bonus-info h4{font-size:13px;font-weight:700;color:var(--white);margin-bottom:3px;}
-.bonus-info p{font-size:12px;color:var(--text);line-height:1.55;margin:0;}
-.bonus-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:rgba(200,244,0,.1);color:var(--acid);padding:2px 6px;border-radius:2px;margin-top:4px;}
-.deps-new{display:flex;flex-direction:column;gap:10px;margin:12px 0;}
+.bonus-list{display:flex;flex-direction:column;gap:12px;}
+.bonus-item{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--acid);border-radius:6px;padding:18px 16px;display:flex;gap:14px;align-items:flex-start;}
+.bonus-icon{font-size:28px;flex-shrink:0;line-height:1;}
+.bonus-info h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.bonus-info p{font-size:13px;color:var(--text);line-height:1.6;}
+.bonus-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:rgba(200,244,0,.1);color:var(--acid);padding:3px 8px;border-radius:2px;margin-top:6px;}
+.deps-new{display:flex;flex-direction:column;gap:12px;margin:14px 0;}
 .dep-new{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
-.dep-comprou{background:rgba(200,244,0,.07);border-bottom:1px solid var(--border);padding:8px 12px;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--acid);font-weight:700;}
-.dep-new-body{padding:14px 12px;}
-.dep-new-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-.dep-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--black);flex-shrink:0;}
-.dep-name-wrap{display:flex;flex-direction:column;gap:0;}
-.dep-new-name{font-size:13px;font-weight:700;color:var(--white);}
-.dep-new-verified{font-size:10px;color:var(--acid);}
-.dep-new-stars{color:var(--acid);font-size:11px;letter-spacing:1px;margin-bottom:6px;}
-.dep-new-txt{font-size:13px;color:var(--text);line-height:1.7;}
+.dep-comprou{background:rgba(200,244,0,.07);border-bottom:1px solid var(--border);padding:10px 14px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--acid);font-weight:700;}
+.dep-new-body{padding:16px 14px;}
+.dep-new-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.dep-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--black);flex-shrink:0;}
+.dep-name-wrap{display:flex;flex-direction:column;gap:1px;}
+.dep-new-name{font-size:14px;font-weight:700;color:var(--white);}
+.dep-new-verified{font-size:11px;color:var(--acid);}
+.dep-new-stars{color:var(--acid);font-size:12px;letter-spacing:1px;margin-bottom:8px;}
+.dep-new-txt{font-size:14px;color:var(--text);line-height:1.75;}
 .dep-new-txt strong{color:var(--white);}
-.urgencia-social{background:var(--dark);border:1px solid rgba(200,244,0,.15);border-radius:6px;padding:10px 14px;margin:10px 0;display:flex;align-items:center;gap:8px;}
-.us-dot{width:7px;height:7px;border-radius:50%;background:#FF4444;flex-shrink:0;animation:pisca 1.2s infinite;}
-.urgencia-social p{font-size:12px;color:var(--text);line-height:1.5;margin:0;}
+.urgencia-social{background:var(--dark);border:1px solid rgba(200,244,0,.15);border-radius:6px;padding:12px 16px;margin:12px 0;display:flex;align-items:center;gap:10px;}
+.us-dot{width:8px;height:8px;border-radius:50%;background:#FF4444;flex-shrink:0;animation:pisca 1.2s infinite;}
+.urgencia-social p{font-size:13px;color:var(--text);line-height:1.5;}
 .urgencia-social p strong{color:var(--white);}
-.counter-box{background:#0A0800;border:1px solid rgba(200,244,0,.15);border-radius:6px;padding:12px 14px;margin:12px 0;text-align:center;}
-.counter-lbl{font-size:11px;color:var(--acid);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;display:block;}
-.counter-time{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--white);letter-spacing:3px;line-height:1;}
-.counter-sub{font-size:12px;color:#777;margin-top:2px;}
-.oferta-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:22px 16px;position:relative;overflow:hidden;margin:12px 0;}
+.counter-box{background:#0A0800;border:1px solid rgba(200,244,0,.15);border-radius:6px;padding:14px 16px;margin:14px 0;text-align:center;}
+.counter-lbl{font-size:12px;color:var(--acid);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;display:block;}
+.counter-time{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--white);letter-spacing:4px;line-height:1;}
+.counter-sub{font-size:13px;color:#777;margin-top:3px;}
+.oferta-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:26px 18px;position:relative;overflow:hidden;margin:14px 0;}
 .oferta-box::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--acid);}
-.of-de{font-size:12px;color:#555;text-decoration:line-through;margin-bottom:2px;}
-.of-por{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:1;color:var(--white);letter-spacing:2px;}
-.of-por sup{font-size:22px;vertical-align:super;}
-.of-parcela{font-size:12px;color:var(--text);margin-bottom:18px;}
-.of-items{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
-.of-items li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--soft);}
+.of-de{font-size:13px;color:#555;text-decoration:line-through;margin-bottom:2px;}
+.of-por{font-family:'Bebas Neue',sans-serif;font-size:76px;line-height:1;color:var(--white);letter-spacing:2px;}
+.of-por sup{font-size:26px;vertical-align:super;}
+.of-parcela{font-size:13px;color:var(--text);margin-bottom:22px;}
+.of-items{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:22px;}
+.of-items li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:var(--soft);}
 .of-items li::before{content:'—';color:var(--acid);font-weight:700;flex-shrink:0;}
-.of-safe{font-size:12px;color:#888;text-align:center;margin-top:6px;}
-.of-guar{display:flex;gap:8px;align-items:flex-start;background:rgba(200,244,0,.04);border:1px solid rgba(200,244,0,.1);border-radius:4px;padding:10px 12px;margin-top:10px;}
+.of-safe{font-size:13px;color:#888;text-align:center;margin-top:8px;}
+.of-guar{display:flex;gap:10px;align-items:flex-start;background:rgba(200,244,0,.04);border:1px solid rgba(200,244,0,.1);border-radius:4px;padding:12px 14px;margin-top:12px;}
 .of-guar-bar{width:3px;background:var(--acid);border-radius:2px;flex-shrink:0;align-self:stretch;}
-.of-guar p{font-size:12px;color:var(--text);line-height:1.6;margin:0;}
+.of-guar p{font-size:13px;color:var(--text);line-height:1.6;}
 .of-guar p strong{color:var(--white);}
-.faqs{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin:12px 0;}
-.faqit{background:var(--card);padding:14px;}
-.faqq{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;}
-.faqa{font-size:13px;color:var(--text);line-height:1.65;}
-.cfooter{background:var(--black);border-top:1px solid var(--border);padding:20px;text-align:center;padding-bottom:90px;}
-.cfooter p{font-size:12px;color:#777;line-height:1.7;}
-.flogo{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;margin-bottom:4px;}
+.faqs{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin:14px 0;}
+.faqit{background:var(--card);padding:16px;}
+.faqq{font-size:15px;font-weight:700;color:var(--white);margin-bottom:6px;}
+.faqa{font-size:14px;color:var(--text);line-height:1.7;}
+.cfooter{background:var(--black);border-top:1px solid var(--border);padding:22px;text-align:center;padding-bottom:80px;}
+.cfooter p{font-size:13px;color:#777;line-height:1.7;}
+.flogo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;margin-bottom:4px;}
 .flogo em{font-style:normal;color:var(--acid);}
 </style>
 </head>
 <body>
 
-<!-- ══ BOTÃO NÃO QUERO (aparece após scroll) ══ -->
-<button class="nao-quero-btn" id="nao-quero-btn" onclick="mostrarDs1()">Não quero essa oferta</button>
-
-<!-- ══ MODAL DOWSELL 1 — R$ 37 ══ -->
-<div class="ds1-overlay" id="ds1-overlay">
-  <div class="ds1-modal">
-    <span class="ds1-tag">⚠️ Espera — oferta exclusiva</span>
-    <h2>ANTES DE<br>IR EMBORA<br><em>R$ 37</em></h2>
-    <p class="ds1-desc">Você estava prestes a sair. Mas e se o preço fosse o problema? <strong>Leva o e-book completo + todos os 5 bônus por R$ 37 — só agora, só pra você.</strong></p>
-    <div class="ds1-preco">
-      <p class="ds1-de">De R$ 47</p>
-      <div class="ds1-price"><sup>R$</sup>37</div>
-      <p class="ds1-parcel">Pix, Cartão ou Boleto · Acesso imediato</p>
+<!-- ══════════════════
+     POPUP 1 — R$ 37
+══════════════════ -->
+<div class="overlay" id="overlay1">
+  <div class="popup-box" id="p1">
+    <span class="popup-tag">⚠️ Espera — oferta exclusiva</span>
+    <h2>ANTES DE<br>IR EMBORA,<br><em>R$ 37<br>POR TUDO.</em></h2>
+    <p class="popup-desc">O preço era o problema? <strong>Leva o e-book completo + 5 bônus por R$ 37 — só agora, só pra você.</strong></p>
+    <div class="popup-preco">
+      <p class="popup-de">De R$ 47</p>
+      <div class="popup-valor"><sup>R$</sup>37</div>
+      <p class="popup-parcel">Pix, Cartão ou Boleto · Acesso imediato</p>
     </div>
-    <ul class="ds1-items">
+    <ul class="popup-items">
       <li>E-book completo — 6 capítulos</li>
       <li>Bônus 01 — Guia de Emergência</li>
       <li>Bônus 02 — Diário de 30 Dias</li>
@@ -204,33 +211,35 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
       <li>Bônus 04 — Rotina Noturna Anti-Loop</li>
       <li>Bônus 05 — Checklist Semanal</li>
     </ul>
-    <button class="ds1-btn" onclick="irCheckoutExit()">QUERO POR R$ 37 AGORA →</button>
-    <button class="ds1-nao" onclick="mostrarDs2()">Não, prefiro perder essa oferta</button>
-    <p class="ds1-guar">🔒 Garantia de 7 dias · Devolução 100% sem perguntas</p>
+    <button class="popup-sim" onclick="irCheckout37()">QUERO POR R$ 37 AGORA →</button>
+    <button class="popup-nao" onclick="recusar37()">Não, prefiro perder essa oferta</button>
+    <p class="popup-guar">🔒 Garantia de 7 dias · 100% devolvido sem perguntas</p>
   </div>
 </div>
 
-<!-- ══ MODAL DOWSELL 2 — R$ 9,90 ══ -->
-<div class="ds2-overlay" id="ds2-overlay">
-  <div class="ds2-modal">
-    <span class="ds2-tag">🔋 Última chance</span>
-    <h2>ANTES DE<br>IR EMBORA<br><em>R$ 9,90</em></h2>
-    <p class="ds2-desc">Você não quis o pacote completo. Também não quis por R$ 37. Mas a gente não quer que você saia de mãos abanando. <strong>Pega o Guia de Energia Mental por R$ 9,90 — leitura de 30 min.</strong></p>
-    <div class="ds2-preco">
-      <p class="ds2-de">De R$ 47</p>
-      <div class="ds2-price"><sup>R$</sup>9<sup>,90</sup></div>
-      <p class="ds2-parcel">Pagamento único · Pix, Cartão ou Boleto</p>
+<!-- ══════════════════
+     POPUP 2 — R$ 19
+══════════════════ -->
+<div class="overlay" id="overlay2">
+  <div class="popup-box" id="p2">
+    <span class="popup-tag">Última chance</span>
+    <h2>OK. MAS LEVA<br>ESSE POR<br><em>R$ 19.</em></h2>
+    <p class="popup-desc">Já que o e-book não é pra agora — leva o <strong>Guia de Energia Mental.</strong> Queremos te ajudar de alguma forma.</p>
+    <div class="popup-preco" style="border-color:rgba(224,112,16,.3);">
+      <p class="popup-de">De R$ 37</p>
+      <div class="popup-valor"><sup>R$</sup>19</div>
+      <p class="popup-parcel">Pagamento único · Acesso imediato em PDF</p>
     </div>
-    <ul class="ds2-items">
-      <li>Guia de Energia Mental — PDF completo</li>
-      <li>Protocolo Matinal de 5 Minutos</li>
-      <li>Checklist dos 3 Drenadores de Energia</li>
-      <li>Técnica do Micro-Reabastecimento</li>
-      <li>Rotina Noturna Anti-Esgotamento</li>
+    <ul class="popup-items">
+      <li>Por que você acorda já cansado mesmo dormindo</li>
+      <li>O que drena sua energia sem você perceber</li>
+      <li>3 práticas de 5 min pra recuperar clareza mental</li>
+      <li>Ritual mínimo de recarga nos dias ruins</li>
+      <li>O que comer, como se mover e descansar de verdade</li>
     </ul>
-    <button class="ds2-btn" onclick="irCheckoutDownsell2()">QUERO MINHA ENERGIA — R$ 9,90 →</button>
-    <button class="ds2-nao" onclick="fecharDs2()">Não, vou continuar sem energia</button>
-    <p class="ds2-guar">🔒 Garantia de 7 dias · Devolução 100% sem perguntas</p>
+    <button class="popup-sim" onclick="irGuiaEnergia()">QUERO O GUIA POR R$ 19 →</button>
+    <button class="popup-nao" onclick="fecharTudo()">Não, prefiro sair sem nada</button>
+    <p class="popup-guar">🔒 Garantia de 7 dias · 100% devolvido sem perguntas</p>
   </div>
 </div>
 
@@ -241,17 +250,31 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 </div>
 
 <!-- HERO -->
-<div style="background:var(--dark);padding:32px 18px 28px;border-bottom:1px solid var(--border);">
+<div style="background:var(--dark);padding:36px 22px 32px;border-bottom:1px solid var(--border);">
   <span class="eyebrow au">Resultado do seu diagnóstico</span>
-  <h1 class="au" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,12vw,64px);line-height:.86;letter-spacing:2px;margin-bottom:14px;">VOCÊ NÃO<br>É PREGUIÇOSO.<br><span style="color:var(--acid);">VOCÊ ESTÁ<br>PRESO NUM<br>LOOP.</span></h1>
-  <p class="au" style="font-size:14px;color:var(--text);line-height:1.75;margin-bottom:20px;">Ansiedade gera evitação. Evitação gera culpa. Culpa gera mais ansiedade. <strong style="color:var(--white);">Esse ciclo roda sozinho todo dia — e ninguém te ensinou como quebrá-lo.</strong></p>
-  <div class="au" style="display:flex;gap:1px;background:var(--border);border-radius:6px;overflow:hidden;margin-bottom:20px;">
-    <div style="flex:1;background:var(--card);padding:12px 8px;text-align:center;"><span style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--acid);line-height:1;display:block;">4.8K</span><span style="font-size:10px;color:#888;display:block;margin-top:2px;">já descobriram</span></div>
-    <div style="flex:1;background:var(--card);padding:12px 8px;text-align:center;"><span style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--acid);line-height:1;display:block;">2h</span><span style="font-size:10px;color:#888;display:block;margin-top:2px;">de leitura</span></div>
-    <div style="flex:1;background:var(--card);padding:12px 8px;text-align:center;"><span style="font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--acid);line-height:1;display:block;">7d</span><span style="font-size:10px;color:#888;display:block;margin-top:2px;">de garantia</span></div>
+  <h1 class="au" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,12vw,68px);line-height:.86;letter-spacing:2px;margin-bottom:16px;">VOCÊ NÃO<br>É PREGUIÇOSO.<br><span style="color:var(--acid);">VOCÊ ESTÁ<br>PRESO NUM<br>LOOP.</span></h1>
+  <p class="au" style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:20px;">Ansiedade gera evitação. Evitação gera culpa. Culpa gera mais ansiedade. <strong style="color:var(--white);">Esse ciclo roda sozinho todo dia — e ninguém te ensinou como quebrá-lo.</strong></p>
+  <p class="au" style="font-size:14px;color:var(--acid);font-weight:700;margin-bottom:16px;">👇 Assista ao vídeo — são 2 minutos que mudam tudo.</p>
+</div>
+
+<!-- VSL -->
+<div class="vsl-wrap">
+  <div class="vsl-placeholder" id="vsl-ph" onclick="playVSL()">
+    <img class="vsl-thumb" src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&q=80" alt="">
+    <button class="vsl-play" onclick="playVSL()"><div class="vsl-play-icon"></div></button>
+    <span class="vsl-label">ASSISTIR AGORA · 2 MINUTOS</span>
   </div>
-  <button class="btn-cta au" onclick="irCheckout()">QUERO QUEBRAR O LOOP — R$ 47 →</button>
-  <p class="au" style="font-size:11px;color:#555;text-align:center;margin-top:8px;">Pix, Cartão ou Boleto · Acesso imediato · Garantia de 7 dias</p>
+  <div class="vsl-iframe-wrap" id="vsl-wrap">
+    <!-- TROQUE O LINK ABAIXO PELO SEU VIMEO -->
+    <iframe id="vsl-frame" src="" data-src="https://player.vimeo.com/video/LINK_VIMEO_AQUI?autoplay=1&title=0&byline=0&portrait=0&color=C8F400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+  <div class="vsl-prog-bar"><div class="vsl-prog-fill" id="vsl-prog"></div></div>
+</div>
+
+<!-- CTA APÓS VSL APARECE AOS 60S -->
+<div class="vsl-mid-cta" id="vsl-cta">
+  <p>Reconheceu o loop? <strong>A solução completa está aqui — por R$ 47.</strong></p>
+  <button class="btn-cta" onclick="irCheckout()" style="animation:pulse 2.5s infinite;">QUERO QUEBRAR O LOOP — R$ 47 →</button>
 </div>
 
 <!-- TICKER -->
@@ -323,11 +346,11 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
   <h2>+ 5 BÔNUS<br><em>EXCLUSIVOS</em></h2>
   <p class="bonus-sub">Incluídos sem custo extra. <strong>Só pra quem comprar hoje.</strong></p>
   <div class="bonus-list">
-    <div class="bonus-item"><span class="bonus-icon">⚡</span><div class="bonus-info"><h4>Guia de Emergência — 5 Passos</h4><p>PDF de bolso pra usar no momento exato em que a trava aparecer. Sai do bloqueio em menos de 3 minutos.</p><span class="bonus-tag">Bônus 01 · Valor: R$ 27</span></div></div>
-    <div class="bonus-item"><span class="bonus-icon">📓</span><div class="bonus-info"><h4>Diário de 30 Dias — Quebrando o Loop</h4><p>Uma pergunta por dia durante 30 dias pra identificar seus gatilhos e padrões.</p><span class="bonus-tag">Bônus 02 · Valor: R$ 37</span></div></div>
-    <div class="bonus-item"><span class="bonus-icon">🧠</span><div class="bonus-info"><h4>Mapa Mental do Loop</h4><p>Visual completo do ciclo ansiedade → evitação → culpa com os pontos de interrupção.</p><span class="bonus-tag">Bônus 03 · Valor: R$ 17</span></div></div>
-    <div class="bonus-item"><span class="bonus-icon">🌙</span><div class="bonus-info"><h4>Rotina Noturna Anti-Loop</h4><p>O que fazer nos últimos 10 minutos antes de dormir pra acordar com menos ansiedade.</p><span class="bonus-tag">Bônus 04 · Valor: R$ 17</span></div></div>
-    <div class="bonus-item"><span class="bonus-icon">🎯</span><div class="bonus-info"><h4>Checklist Semanal de Progresso</h4><p>Acompanhe seus avanços semana a semana — sem cobrança, sem perfeição.</p><span class="bonus-tag">Bônus 05 · Valor: R$ 17</span></div></div>
+    <div class="bonus-item"><span class="bonus-icon">⚡</span><div class="bonus-info"><h4>Guia de Emergência — 5 Passos</h4><p>PDF de bolso pra sair do bloqueio em menos de 3 minutos.</p><span class="bonus-tag">Bônus 01 · R$ 27</span></div></div>
+    <div class="bonus-item"><span class="bonus-icon">📓</span><div class="bonus-info"><h4>Diário de 30 Dias</h4><p>Uma pergunta por dia pra identificar seus gatilhos e padrões.</p><span class="bonus-tag">Bônus 02 · R$ 37</span></div></div>
+    <div class="bonus-item"><span class="bonus-icon">🧠</span><div class="bonus-info"><h4>Mapa Mental do Loop</h4><p>Visual completo do ciclo com os pontos de interrupção.</p><span class="bonus-tag">Bônus 03 · R$ 17</span></div></div>
+    <div class="bonus-item"><span class="bonus-icon">🌙</span><div class="bonus-info"><h4>Rotina Noturna Anti-Loop</h4><p>10 minutos antes de dormir que mudam o dia seguinte.</p><span class="bonus-tag">Bônus 04 · R$ 17</span></div></div>
+    <div class="bonus-item"><span class="bonus-icon">🎯</span><div class="bonus-info"><h4>Checklist Semanal de Progresso</h4><p>Acompanhe avanços semana a semana — sem cobrança.</p><span class="bonus-tag">Bônus 05 · R$ 17</span></div></div>
   </div>
 </div>
 
@@ -337,12 +360,12 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
   <div class="urgencia-social"><div class="us-dot"></div><p><strong>47 pessoas</strong> compraram nas últimas 3 horas.</p></div>
   <div class="deps-new">
     <div class="dep-new"><div class="dep-comprou"><span>💪</span> Mariana Silva comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#C8F400;">M</div><div class="dep-name-wrap"><span class="dep-new-name">Mariana Silva</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"Li numa tarde e fiquei em silêncio depois. <strong>Fez sentido de um jeito que nenhum vídeo de produtividade fez.</strong>"</p></div></div>
-    <div class="dep-new"><div class="dep-comprou"><span>💪</span> Lucas Ferreira comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#A8D4FF;">L</div><div class="dep-name-wrap"><span class="dep-new-name">Lucas Ferreira</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"Tentei de tudo — Pomodoro, GTD, coach online. Esse foi o único que <strong>foi direto no problema de verdade.</strong>"</p></div></div>
+    <div class="dep-new"><div class="dep-comprou"><span>💪</span> Lucas Ferreira comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#A8D4FF;">L</div><div class="dep-name-wrap"><span class="dep-new-name">Lucas Ferreira</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"Tentei de tudo — esse foi o único que <strong>foi direto no problema de verdade.</strong>"</p></div></div>
     <div class="urgencia-social"><div class="us-dot"></div><p>Preço de R$ 47 <strong>válido por tempo limitado.</strong></p></div>
     <div class="dep-new"><div class="dep-comprou"><span>💪</span> Juliana Matos comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#FFB3C1;">J</div><div class="dep-name-wrap"><span class="dep-new-name">Juliana Matos</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"O capítulo sobre culpa foi o mais importante que já li. <strong>O problema não era eu — era o loop.</strong>"</p></div></div>
     <div class="dep-new"><div class="dep-comprou"><span>💪</span> Rafael Costa Mendes comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#FFD580;">R</div><div class="dep-name-wrap"><span class="dep-new-name">Rafael Costa Mendes</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"Comprei sem expectativa. No capítulo 4 já estava aplicando. <strong>Simples, direto, sem enrolação.</strong>"</p></div></div>
-    <div class="dep-new"><div class="dep-comprou"><span>💪</span> Camila Rodrigues comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#B5EAD7;">C</div><div class="dep-name-wrap"><span class="dep-new-name">Camila Rodrigues</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"Tinha dias que não conseguia fazer nada e me odiava por isso. Agora <strong>entendo o que está acontecendo</strong> — isso muda tudo."</p></div></div>
-    <div class="dep-new"><div class="dep-comprou"><span>💪</span> Thiago Almeida comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#D4A5F5;">T</div><div class="dep-name-wrap"><span class="dep-new-name">Thiago Almeida</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"Sempre achei que era só falta de disciplina. Agora entendi que <strong>o problema era emocional — não organizacional.</strong>"</p></div></div>
+    <div class="dep-new"><div class="dep-comprou"><span>💪</span> Camila Rodrigues comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#B5EAD7;">C</div><div class="dep-name-wrap"><span class="dep-new-name">Camila Rodrigues</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"Agora <strong>entendo o que está acontecendo</strong> — e isso muda tudo."</p></div></div>
+    <div class="dep-new"><div class="dep-comprou"><span>💪</span> Thiago Almeida comprou e agiu</div><div class="dep-new-body"><div class="dep-new-header"><div class="dep-avatar" style="background:#D4A5F5;">T</div><div class="dep-name-wrap"><span class="dep-new-name">Thiago Almeida</span><span class="dep-new-verified">✓ Compra verificada</span></div></div><div class="dep-new-stars">★★★★★</div><p class="dep-new-txt">"Entendi que <strong>o problema era emocional — não organizacional.</strong> Mudou tudo."</p></div></div>
     <div class="urgencia-social"><div class="us-dot"></div><p><strong>Mais 12 pessoas</strong> estão vendo essa página agora.</p></div>
   </div>
 </div>
@@ -350,11 +373,10 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 <!-- OFERTA FINAL -->
 <div class="sec au">
   <h2>SUA DECISÃO<br><em>É AGORA</em></h2>
-  <div style="background:#0A0808;border:1px solid #3A1010;border-radius:6px;padding:14px;margin-bottom:14px;">
-    <p style="font-size:12px;color:#FF8080;font-weight:700;margin-bottom:6px;">⚠️ Lê isso antes de fechar.</p>
-    <p style="font-size:13px;color:var(--text);line-height:1.7;margin:0;">Amanhã você vai lembrar que viu isso. Vai pensar "podia ter comprado." E vai continuar no mesmo loop. <strong style="color:var(--white);">Você chegou até aqui porque algo em você quer mudar. Não deixa esse momento passar.</strong></p>
+  <div style="background:#0A0808;border:1px solid #3A1010;border-radius:6px;padding:16px;margin-bottom:16px;">
+    <p style="font-size:13px;color:#FF8080;font-weight:700;margin-bottom:8px;">⚠️ Lê isso antes de fechar.</p>
+    <p style="font-size:14px;color:var(--text);line-height:1.75;margin:0;">Amanhã você vai lembrar que viu isso. <strong style="color:var(--white);">Você chegou até aqui porque algo em você quer mudar. Não deixa esse momento passar.</strong></p>
   </div>
-  <p>Você pode fechar e continuar no loop. <strong>Amanhã vai ser igual a hoje.</strong></p>
   <div class="counter-box">
     <span class="counter-lbl">Preço de lançamento encerra em</span>
     <div class="counter-time" id="counter">15:00</div>
@@ -391,75 +413,80 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 </div>
 
 <script>
-// ── TIMER PERSISTENTE ──
-const KEY = 'vda_timer_end';
-let endTime = localStorage.getItem(KEY);
-if (!endTime || parseInt(endTime) <= Date.now()) {
-  endTime = Date.now() + 15 * 60 * 1000;
-  localStorage.setItem(KEY, endTime);
-} else {
-  endTime = parseInt(endTime);
-}
-setInterval(() => {
-  const rem = Math.max(0, endTime - Date.now());
-  const m = String(Math.floor(rem/60000)).padStart(2,'0');
-  const s = String(Math.floor((rem%60000)/1000)).padStart(2,'0');
-  const txt = m+':'+s;
-  const c = document.getElementById('counter');
-  const fb = document.getElementById('fb-timer');
-  if(c) c.textContent = txt;
-  if(fb) fb.textContent = txt;
-  if(rem <= 60000 && c) c.style.color = '#FF4444';
-  if(rem <= 0) localStorage.removeItem(KEY);
-}, 1000);
+// ── TIMER ──
+const KEY='vda_end';
+let end=localStorage.getItem(KEY);
+if(!end||+end<=Date.now()){end=Date.now()+15*60*1000;localStorage.setItem(KEY,end);}
+else end=+end;
+setInterval(()=>{
+  const r=Math.max(0,end-Date.now());
+  const t=String(Math.floor(r/60000)).padStart(2,'0')+':'+String(Math.floor((r%60000)/1000)).padStart(2,'0');
+  const c=document.getElementById('counter'),f=document.getElementById('fb-timer');
+  if(c)c.textContent=t;if(f)f.textContent=t;
+  if(r<=60000&&c)c.style.color='#FF4444';
+  if(r<=0)localStorage.removeItem(KEY);
+},1000);
 
-// ── BOTÃO NÃO QUERO (aparece após scroll de 800px) ──
-const naoQueroBtn = document.getElementById('nao-quero-btn');
-let naoQueroShown = false;
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 800 && !naoQueroShown) {
-    naoQueroShown = true;
-    naoQueroBtn.classList.add('show');
-  }
+// ── VSL ──
+function playVSL(){
+  document.getElementById('vsl-ph').classList.add('hide');
+  const w=document.getElementById('vsl-wrap'),fr=document.getElementById('vsl-frame');
+  w.style.display='block';
+  fr.src=fr.dataset.src;
+  let s=0;
+  const p=document.getElementById('vsl-prog'),c=document.getElementById('vsl-cta');
+  const t=setInterval(()=>{
+    s++;
+    if(p)p.style.width=Math.min((s/120)*100,100)+'%';
+    if(s===60&&c&&!c.classList.contains('show'))c.classList.add('show');
+    if(s>=120)clearInterval(t);
+  },1000);
+}
+
+// ── EXIT INTENT — 2 POPUPS ──
+let p1=false,p2=false,ok=false;
+setTimeout(()=>{ok=true;},8000);
+
+function abrirP1(){
+  if(p1||!ok)return;
+  p1=true;
+  document.getElementById('overlay1').classList.add('ativo');
+  document.body.style.overflow='hidden';
+}
+function recusar37(){
+  document.getElementById('overlay1').classList.remove('ativo');
+  if(p2){fecharTudo();return;}
+  p2=true;
+  document.getElementById('overlay2').classList.add('ativo');
+}
+function fecharTudo(){
+  document.getElementById('overlay1').classList.remove('ativo');
+  document.getElementById('overlay2').classList.remove('ativo');
+  document.body.style.overflow='';
+}
+
+// Desktop — mouse sai pelo topo
+document.addEventListener('mouseleave',e=>{if(e.clientY<=5)abrirP1();});
+
+// Mobile — botão voltar
+history.pushState(null,'',location.href);
+window.addEventListener('popstate',()=>{
+  if(!p1&&ok){abrirP1();history.pushState(null,'',location.href);}
+  else if(p1&&!p2){recusar37();history.pushState(null,'',location.href);}
 });
 
-// ── MODAL DOWSELL 1 — R$ 37 ──
-function mostrarDs1() {
-  document.getElementById('ds1-overlay').classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-
-function fecharDs1() {
-  document.getElementById('ds1-overlay').classList.remove('show');
-  document.body.style.overflow = '';
-}
-
-// ── MODAL DOWSELL 2 — R$ 9,90 ──
-function mostrarDs2() {
-  document.getElementById('ds1-overlay').classList.remove('show');
-  document.getElementById('ds2-overlay').classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-
-function fecharDs2() {
-  document.getElementById('ds2-overlay').classList.remove('show');
-  document.body.style.overflow = '';
-}
-
 // ── CTAs ──
-function irCheckout() {
-  fbq('track', 'InitiateCheckout');
-  window.location.href = 'https://pay.kiwify.com.br/Q5oBR0d';
+function irCheckout(){
+  fbq('track','InitiateCheckout');
+  window.location.href='https://pay.kiwify.com.br/Q5oBR0d';
 }
-
-function irCheckoutExit() {
-  fbq('track', 'InitiateCheckout');
-  window.location.href = 'LINK_CHECKOUT_37_KIWIFY_AQUI';
+function irCheckout37(){
+  fbq('track','InitiateCheckout');
+  window.location.href='LINK_CHECKOUT_37_KIWIFY_AQUI';
 }
-
-function irCheckoutDownsell2() {
-  fbq('track', 'InitiateCheckout');
-  window.location.href = 'https://pay.kiwify.com.br/Q5oBR0d';
+function irGuiaEnergia(){
+  fbq('track','InitiateCheckout');
+  window.location.href='LINK_GUIA_ENERGIA_KIWIFY_AQUI';
 }
 </script>
 </body>
