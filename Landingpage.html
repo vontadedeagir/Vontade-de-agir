@@ -69,23 +69,6 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
 #p2 .popup-items li::before{content:'—';color:var(--orange);font-weight:700;flex-shrink:0;}
 #p2 .popup-sim{background:var(--orange);color:#fff;}
 
-/* VSL */
-.vsl-wrap{background:#000;width:100%;position:relative;}
-.vsl-placeholder{width:100%;aspect-ratio:9/16;background:#0A0A0A;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:pointer;}
-.vsl-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.35);}
-.vsl-play{position:relative;z-index:2;width:76px;height:76px;border-radius:50%;background:var(--acid);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 12px rgba(200,244,0,.15);}
-.vsl-play-icon{width:0;height:0;border-top:15px solid transparent;border-bottom:15px solid transparent;border-left:24px solid var(--black);margin-left:5px;}
-.vsl-label{position:relative;z-index:2;margin-top:16px;font-size:13px;color:rgba(255,255,255,.75);letter-spacing:1px;font-weight:600;}
-.vsl-placeholder.hide{display:none;}
-.vsl-iframe-wrap{display:none;width:100%;aspect-ratio:9/16;position:relative;background:#000;}
-.vsl-iframe-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
-.vsl-prog{height:3px;background:var(--border);}
-.vsl-prog-fill{height:100%;background:var(--acid);width:0;transition:width .5s linear;}
-.vsl-mid-cta{background:var(--dark);border-top:1px solid var(--border);padding:18px 22px;display:none;}
-.vsl-mid-cta.show{display:block;}
-.vsl-mid-cta p{font-size:14px;color:var(--text);margin-bottom:10px;line-height:1.5;}
-.vsl-mid-cta p strong{color:var(--white);}
-
 /* TICKER */
 .ticker-w{background:var(--acid);overflow:hidden;padding:10px 0;white-space:nowrap;}
 .ticker-i{display:inline-flex;animation:ticker 14s linear infinite;}
@@ -271,30 +254,24 @@ body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--white)
   <p class="au" style="font-size:13px;color:var(--acid);font-weight:700;text-align:center;">👇 Aperte o Play e Assista. 2 minutos que mudam tudo</p>
 </div>
 
-<!-- VSL VIMEO -->
-<div class="vsl-wrap">
-  <div class="vsl-placeholder" id="vsl-ph" onclick="playVSL()">
-    <img class="vsl-thumb" src="https://vimeo.com/1215660733?share=copy&fl=sv&fe=ci"alt="">
-    <button class="vsl-play" onclick="playVSL()"><div class="vsl-play-icon"></div></button>
-    <span class="vsl-label">ASSISTIR AGORA · 2 MINUTOS</span>
+<!-- TEXTO FORTE NO TOPO -->
+<div style="background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 22px;text-align:center;">
+  <p style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,8vw,46px);line-height:.95;letter-spacing:2px;color:var(--white);margin-bottom:16px;">
+    VOCÊ NÃO PRECISA DE MAIS MOTIVAÇÃO.<br>
+    <span style="color:var(--acid);">VOCÊ PRECISA ENTENDER O LOOP.</span>
+  </p>
+  <p style="font-size:15px;color:var(--text);line-height:1.85;max-width:520px;margin:0 auto 20px;">
+    Ansiedade gera evitação. Evitação gera culpa. Culpa gera mais ansiedade. <strong style="color:var(--white);">Esse ciclo roda sozinho todo dia e ninguém te ensinou como quebrá-lo.</strong> Até agora.
+  </p>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:18px 16px;max-width:480px;margin:0 auto;">
+    <p style="font-size:14px;color:var(--text);line-height:1.7;margin:0;">
+      <strong style="color:var(--white);">Vontade de Agir</strong> é o e-book que mapeia esse loop, mostra por que você está preso nele e entrega ferramentas práticas pra sair — <span style="color:var(--acid);font-weight:700;">sem enrolação, sem promessas de milagre.</span>
+    </p>
   </div>
-  <div class="vsl-iframe-wrap" id="vsl-wrap">
-    <iframe
-      id="vsl-frame"
-      src=""
-      data-src="https://player.vimeo.com/video/1213773777?autoplay=1&title=0&byline=0&portrait=0&color=C8F400&transparent=0&dnt=1"
-      frameborder="0"
-      allow="autoplay; fullscreen; picture-in-picture"
-      allowfullscreen>
-    </iframe>
+  <div style="margin-top:20px;">
+    <button class="btn-cta" onclick="irCheckout()">QUERO QUEBRAR O LOOP →</button>
   </div>
-  <div class="vsl-prog"><div class="vsl-prog-fill" id="vsl-prog"></div></div>
-</div>
-
-<!-- CTA MEIO VSL -->
-<div class="vsl-mid-cta" id="vsl-cta">
-  <p>Reconheceu o loop? <strong>A solução completa está aqui por R$ 37.</strong></p>
-  <button class="btn-cta" onclick="irCheckout()">QUERO QUEBRAR O LOOP →</button>
+  <p style="font-size:12px;color:#555;margin-top:10px;">Acesso imediato · 7 dias de garantia</p>
 </div>
 
 <!-- TICKER -->
@@ -446,26 +423,6 @@ setInterval(()=>{
   if(r<=60000&&c)c.style.color='#FF4444';
   if(r<=0)localStorage.removeItem(KEY);
 },1000);
-
-// ── VSL ──
-function playVSL(){
-  const ph=document.getElementById('vsl-ph');
-  const wrap=document.getElementById('vsl-wrap');
-  const frame=document.getElementById('vsl-frame');
-  ph.classList.add('hide');
-  wrap.style.display='block';
-  // Carrega src só ao clicar
-  frame.src=frame.dataset.src;
-  let s=0;
-  const prog=document.getElementById('vsl-prog');
-  const cta=document.getElementById('vsl-cta');
-  const timer=setInterval(()=>{
-    s++;
-    if(prog)prog.style.width=Math.min((s/120)*100,100)+'%';
-    if(s===60&&cta)cta.classList.add('show');
-    if(s>=120)clearInterval(timer);
-  },1000);
-}
 
 // ── EXIT INTENT — POPUP EM SEQUÊNCIA ──
 let p1Shown=false, p2Shown=false, exitOk=false;
